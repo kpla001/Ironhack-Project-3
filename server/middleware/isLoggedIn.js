@@ -1,4 +1,4 @@
-const Session = require("../models/Session.model");
+const Session = require("../models/session/Session.model");
 
 module.exports = (req, res, next) => {
   // checks if the user is logged in when trying to access a specific page
