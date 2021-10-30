@@ -12,8 +12,13 @@ const cookBookSchema = new Schema({
 
   author: {
     type: Schema.Types.ObjectId,
-    ref: "Recipe",
+    ref: "User",
   },
+
+  recipes: [{
+    type: Schema.Types.ObjectId,
+    ref: "Recipe"
+  }],
 
   image: String,
 
