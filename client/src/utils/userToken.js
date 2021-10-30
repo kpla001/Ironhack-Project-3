@@ -11,3 +11,11 @@ export function setUserToken(value) {
 export function removeUserToken() {
   return localStorage.removeItem(CONSTS.ACCESS_TOKEN);
 }
+
+const USER_HELPERS = {
+  getUserToken,
+  setUserToken,
+  removeUserToken,
+};
+
+export default USER_HELPERS;
