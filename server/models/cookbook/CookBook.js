@@ -6,14 +6,21 @@ const cookBookSchema = new Schema({
     require: true,
   },
 
-  id: {
+  spoonifyId: {
     type: String,
   },
 
   author: {
     type: Schema.Types.ObjectId,
-    ref: "Recipe",
+    ref: "User",
   },
+
+  recipes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "recipe",
+    },
+  ],
 
   image: String,
 
@@ -22,4 +29,5 @@ const cookBookSchema = new Schema({
   timestamps: true,
 });
 
+const Cookbook = model("CookBook", cookBookSchema);
 module.exports = Cookbook;
