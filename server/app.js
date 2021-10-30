@@ -18,7 +18,7 @@ require("./config")(app);
 // Contrary to the views version, all routes are controlled from the routes/index.js
 const allRoutes = require("./routes");
 app.use("/api", allRoutes);
-app.use("/api/cookbooks", require("./routes/cookBook"));
+app.use("/api/cookbooks", require("./routes/cookBook.routes"));
 app.use("/api/ingredients", require("./routes/ingredient.routes.js"));
 app.use("/api/recipes", require("./routes/recipe.routes.js"));
 
