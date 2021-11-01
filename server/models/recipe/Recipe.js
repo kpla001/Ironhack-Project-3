@@ -18,3 +18,6 @@ const recipeSchema = new Schema({
 const Recipe = model("Recipe", recipeSchema);
 
 module.exports = Recipe;
+
+
+// Note from Kyle: "Take another look at your author and ingredient keys and compare it to how I wrote mine in the Ingredient model"
