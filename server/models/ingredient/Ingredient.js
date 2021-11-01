@@ -18,9 +18,6 @@ const ingredientSchema = new Schema({
     image: String,
 
 
-    timestamps: true,
-
-
 })
 
 module.exports = model("Ingredient", ingredientSchema);
