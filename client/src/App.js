@@ -98,12 +98,12 @@ class App extends React.Component {
             authenticate={this.authenticate}
             component={LogIn}
           />
-          <ProtectedRoute
+          {/* <ProtectedRoute
             exact
             path={PATHS.PROTECTEDPAGE}
             component={ProtectedPage}
             user={this.state.user}
-          />
+          /> */}
         </Switch>
       </div>
     );
