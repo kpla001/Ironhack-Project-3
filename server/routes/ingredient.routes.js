@@ -6,7 +6,46 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 router.get("/",
     //  isLoggedIn,
     (req, res) => {
-        res.send("These are my ingredients")
-    })
+        Ingredient.find()
+        .populate("author recipes")
+        .then((ingredientsFromDb) => res.status(200).json({ingredients: ingredientsFromDb}))
+        .catch(err => res.json({ errorMessage: err }));
+})
+
+router.post("/",
+    // isLoggedIn,
+    (req, res) => {
+        Ingredient.create(req.body)
+        .then((ingredientToDb) => res.status(200).json({ingredient: ingredientToDb}))
+        .catch(err => res.json({ errorMessage: err }));
+    }
+)
+
+router.get("/:id",
+// isLoggedIn,
+(req, res) => {
+        Ingredient.findById(req.params.id)
+        .populate("author recipes")
+        .then((ingredientFromDb) => res.status(200).json({ ingredient: ingredientFromDb }))
+        .catch((err)=> res.json({ errorMessage: err }))
+})
+
+router.post("/:id", 
+// isLoggedOut,
+    (req, res) => {
+        Ingredient.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        .then((ingredientToUpdate) => res.status(200).json({ ingredient: ingredientToUpdate }))
+        .catch(err => res.json({ errorMessage: err }));
+    }
+)
+
+router.delete("/:id", 
+// isLoggedOut,
+    (req, res) => {
+        Ingredient.findByIdAndDelete(req.params.id)
+        .then(() => res.status(200).json({ success: true }))
+        .catch(err => res.json({ errorMessage: err }));
+    }
+)
 
 module.exports = router;
