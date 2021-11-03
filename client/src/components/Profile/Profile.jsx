@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import './Profile.css';
 import service from '../../services/service';
+import Ingredients from '../Ingredients/Ingredients';
 
 export default class Profile extends Component {
     state = {
-        ingredients: null,
+        ingredients: [],
     };
+
+    
 
     componentDidMount(){
         service.getIngredientsList().then((data) => {
@@ -18,7 +21,7 @@ export default class Profile extends Component {
     render() {
         return (
             <div>
-                
+                <Ingredients ingredients={this.state.ingredients}/>
             </div>
         )
     }

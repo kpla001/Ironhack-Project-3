@@ -1,9 +1,10 @@
 import React from "react";
+import Profile from '../components/Profile/Profile';
 
 const ProtectedPage = () => {
   return (
     <div>
-      <h1>This page is hyper protected!</h1>
+      <Profile />
     </div>
   );
 };
