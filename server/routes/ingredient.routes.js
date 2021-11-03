@@ -27,13 +27,14 @@ router.post("/",
 )
 
 router.get("/:id",
-// isLoggedIn,
-(req, res) => {
-        Ingredient.findById(req.params.id)
-        // .populate("author").populate("recipes")`
-        .then((ingredientFromDb) => res.status(200).json({ ingredient: ingredientFromDb }))
-        .catch((err)=> res.json({ errorMessage: err }))
-})
+    // isLoggedIn,
+    (req, res) => {
+            Ingredient.findById(req.params.id)
+            // .populate("author").populate("recipes")`
+            .then((ingredientFromDb) => res.status(200).json({ ingredient: ingredientFromDb }))
+            .catch((err)=> res.json({ errorMessage: err }))
+    }
+)
 
 router.post("/:id", 
 // isLoggedOut,
