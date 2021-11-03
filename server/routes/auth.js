@@ -16,8 +16,9 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/session", (req, res) => {
+  console.log(req.headers.authorization);
   // we dont want to throw an error, and just maintain the user as null
-  if (!req.headers.authorization) {
+  if (req.headers.authorization !== "") {
     return res.json(null);
   }
 
@@ -149,7 +150,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 });
 
 router.delete("/logout", isLoggedIn, (req, res) => {
-  Session.findByIdAndDelete(req.headers.authorization)
+  Session.findByIdAndDelete(req.headers?.authorization)
     .then(() => {
       res.status(200).json({ message: "User was logged out" });
     })

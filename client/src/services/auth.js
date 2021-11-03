@@ -3,11 +3,11 @@ import USER_HELPERS from "../utils/userToken";
 
 // here we are just maing our code look more DRY. With every backend call we must deal with errors and success states. The idea of creating these kinds of services is to make our lives easier in the components
 function internalServerError(err) {
-  console.log("err:", err.response.data);
-  if (err.response && err.response.data && err.response.data.errorMessage) {
+  console.log("err:", err.response?.data);
+  if (err.response && err.response?.data && err.response?.data.errorMessage) {
     return {
       status: false,
-      errorMessage: err.response.data.errorMessage,
+      errorMessage: err.response?.data.errorMessage,
     };
   }
   return {
@@ -19,7 +19,7 @@ function internalServerError(err) {
 function successStatus(res) {
   return {
     status: true,
-    data: res.data,
+    data: res?.data,
   };
 }
 
@@ -39,7 +39,7 @@ export function getLoggedIn() {
   return authService
     .get(`/session`, {
       headers: {
-        Authorization: USER_HELPERS.getUserToken(),
+        authorization: USER_HELPERS.getUserToken(),
       },
     })
     .then(successStatus)

@@ -29,8 +29,8 @@ export default class Login extends Component {
       if (!res.status) {
         // handle not great request
       }
-      USER_HELPERS.setUserToken(res.data.accessToken);
-      this.props.authenticate(res.data.user);
+      USER_HELPERS.setUserToken(res.data?.accessToken);
+      this.props.authenticate(res.data?.user);
       this.props.history.push(PATHS.HOMEPAGE);
     });
   };
