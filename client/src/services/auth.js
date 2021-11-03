@@ -39,7 +39,7 @@ export function getLoggedIn() {
   return authService
     .get(`/session`, {
       headers: {
-        Authorization: USER_HELPERS.getUserToken(),
+        authorization: USER_HELPERS.getUserToken(),
       },
     })
     .then(successStatus)
