@@ -57,7 +57,7 @@ export function logout() {
   return authService
     .delete("/logout", {
       headers: {
-        Authorization: USER_HELPERS.getUserToken(),
+        authorization: USER_HELPERS.getUserToken(),
       },
     })
     .then(successStatus)
