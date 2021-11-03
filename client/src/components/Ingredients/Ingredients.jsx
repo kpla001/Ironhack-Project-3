@@ -8,8 +8,8 @@ export default function Ingredients({ ingredients }) {
     return (
         <div className="ingredient-list">
             {ingredients.map(( ingredient => (
-                <div>
-                    <Link>{ingredient.name}</Link>
+                <div key={ingredient._id}>
+                    <Link to={`ingredient/${ingredient._id}`} >{ingredient.name}</Link>
                 </div>
             )))}
         </div>
