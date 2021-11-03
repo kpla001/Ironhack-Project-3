@@ -13,11 +13,6 @@ const ingredientSchema = new Schema({
         ref: "User"
     },
 
-    recipes: [{
-        type: Schema.Types.ObjectId,
-        ref: "Recipe"
-    }],
-
     image: String,
 
 
