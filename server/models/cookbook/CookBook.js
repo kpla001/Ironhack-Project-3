@@ -25,9 +25,8 @@ const cookBookSchema = new Schema({
   image: String,
 
   description: String,
-
-  timestamps: true,
 });
 
 const Cookbook = model("CookBook", cookBookSchema);
+
 module.exports = Cookbook;
