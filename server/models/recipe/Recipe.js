@@ -1,18 +1,16 @@
 const { Schema, model } = require("mongoose");
 
 const recipeSchema = new Schema({
-  title: String,
-  spoonifyId: String,
+  name: { type: String },
+  spoonifyId: { type: String },
   ingredients: [{ type: Schema.Types.ObjectId, ref: "Ingredient" }],
   author: { type: Schema.Types.ObjectId, ref: "User" },
-  images: String,
-  calories: Number,
-  description: String,
+  image: { type: String },
+  calories: { type: Number },
+  description: { type: String },
   directions: [String],
 });
 
-const Recipe = model("Recipe", recipeSchema);
-
-module.exports = Recipe;
+module.exports = model("Recipe", recipeSchema);
 
 // Note from Kyle: "Take another look at your author and ingredient keys and compare it to how I wrote mine in the Ingredient model"
