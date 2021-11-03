@@ -12,11 +12,13 @@ import { getLoggedIn, logout } from "./services/auth";
 import * as PATHS from "./utils/paths";
 import * as CONSTS from "./utils/consts";
 import * as USER_HELPERS from "./utils/userToken";
+import service from './services/service';
 
 class App extends React.Component {
   state = {
     user: null,
     isLoading: true,
+    ingredients: null,
   };
 
   componentDidMount = () => {
