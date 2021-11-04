@@ -3,11 +3,13 @@ import "./Profile.css";
 import service from "../../services/service";
 import Ingredients from "../Ingredients/Ingredients";
 import Recipe from "../Recipe/Recipe";
+import Cookbooks from "../Cookbooks/Cookbooks";
 
 export default class Profile extends Component {
   state = {
     ingredients: [],
     recipes: [],
+    cookbooks: [],
   };
 
   componentDidMount() {
@@ -21,6 +23,9 @@ export default class Profile extends Component {
         recipes: data.recipes,
       });
     });
+    service.getCookbookList().then((data) => {
+      this.setState({ cookbooks: data.cookbooks });
+    });
   }
 
   render() {
@@ -28,6 +33,7 @@ export default class Profile extends Component {
       <div>
         <Ingredients ingredients={this.state.ingredients} />
         <Recipe recipes={this.state.recipes} />
+        <Cookbooks cookbooks={this.state.cookbooks} />
       </div>
     );
   }
