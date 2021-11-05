@@ -1,11 +1,18 @@
+import React, { Component } from 'react';
 import logo from "../logo.svg";
 import "../App.css";
 import Home from "../components/Home/Home";
 
-function HomePage() {
-  return <div className="home-page">
-    <Home />
-  </div>;
+class HomePage extends Component {
+  state ={
+    searchResults: '',
+  }
+  render(){
+    return (
+      <div className="home-page">
+        <Home />
+      </div>)
+  }
 }
 
 export default HomePage;
