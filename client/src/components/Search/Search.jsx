@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Search extends Component {
     state = {
@@ -19,6 +20,8 @@ export default class Search extends Component {
 
     onSubmitHandler = event => {
         event.preventDefault();
+
+        console.log(this.props)
         
         // console.log("state in onSubmitHandler", this.state);
 
@@ -40,7 +43,7 @@ export default class Search extends Component {
                     placeholder="Type in a recipe or ingredient"
                     onChange={this.onChangeHandler}
                     />
-                    <button>search</button>
+                        <button>search</button>
                 </form>
             </div>
         )
