@@ -43,7 +43,7 @@ export default class Search extends Component {
                     placeholder="Type in a recipe or ingredient"
                     onChange={this.onChangeHandler}
                     />
-                        <button>search</button>
+                        <button href="/search-results">search</button>
                 </form>
             </div>
         )
