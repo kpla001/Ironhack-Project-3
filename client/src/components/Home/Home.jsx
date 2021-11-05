@@ -11,11 +11,12 @@ export default class Home extends Component {
     })
 
     render() {
-        console.log("search submitted:", this.state.searchResults)
+        console.log("search submitted:", this.state.searchResults.input)
         return (
             <div>
                 This is the homepage
-                <Search submitSearch={this.searchHandler}/>
+                
+                <Search submitSearch={this.searchHandler} />
             </div>
         )
     }

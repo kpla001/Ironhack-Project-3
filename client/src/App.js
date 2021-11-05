@@ -106,6 +106,7 @@ class App extends React.Component {
             component={ProtectedPage}
             user={this.state.user}
           />
+
         </Switch>
       </div>
     );
