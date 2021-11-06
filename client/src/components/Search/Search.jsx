@@ -21,7 +21,7 @@ export default class Search extends Component {
     onSubmitHandler = event => {
         event.preventDefault();
 
-        console.log(this.props)
+        // console.log(this.props)
         
         // console.log("state in onSubmitHandler", this.state);
 
