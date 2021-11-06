@@ -9,7 +9,7 @@ export default class Profile extends Component {
   state = {
     ingredients: [],
     recipes: [],
-    cookbooks: [],
+    cookbooks: [{ id: 1 }],
   };
 
   componentDidMount() {
