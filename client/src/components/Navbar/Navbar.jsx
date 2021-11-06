@@ -12,6 +12,10 @@ const Navbar = (props) => {
       </Link>
 
       <div className="nav__authLinks">
+        <Link to="/search" className="authLink">
+          {" "}
+          Search{" "}
+        </Link>
         {props.user ? (
           <>
             {/* <Link to={PATHS.PROTECTEDPAGE} className="authLink">
