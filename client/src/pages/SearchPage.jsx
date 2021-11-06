@@ -1,44 +1,33 @@
-import React, { Component } from 'react';
-import logo from "../logo.svg";
+import React, { Component } from "react";
 import "../App.css";
 import Search from "../components/Search/Search";
 
 class SearchPage extends Component {
-  state ={
+  state = {
     searchResults: null,
-  }
-  
+  };
+
   // componentDidMount() {
   //   this.setState({
   //     searchResults: null,
   //   })
   // }
-  
-  searchHandler = (input) => this.setState({
-    searchResults: input
-  })
 
+  searchHandler = (input) =>
+    this.setState({
+      searchResults: input,
+    });
 
-  render(){
+  render() {
     // console.log("search submitted:", this.state.searchResults)
     return (
       <div className="searchPage">
-
-        {!this.state.searchResults && 
-        <div>
-        
-        </div>
-        }
+        {!this.state.searchResults && <div></div>}
         <Search submitSearch={this.searchHandler} />
-        
 
-        {!!this.state.searchResults && 
-        <div>
-        search results
-        </div>
-        }
+        {!!this.state.searchResults && <div>search results</div>}
       </div>
-    )
+    );
   }
 }
 

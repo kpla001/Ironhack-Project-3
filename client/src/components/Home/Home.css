@@ -1,0 +1,22 @@
+button.search_button {
+  font-family: inherit;
+  font-weight: inherit;
+  padding: 1em 3em;
+  background-color: #299640;
+  box-shadow: 0 0 5px 0 aliceblue;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #e3f2ff;
+  transition: all 0.2s ease-in-out;
+  position: sticky;
+  top: 0;
+}
+button:hover {
+  transform: scale(1.05);
+  background-color: #b5ce27;
+}
+div {
+  font-family: inherit;
+  font-weight: inherit;
+}
