@@ -12,8 +12,13 @@ router.get(
     CookBook.find()
       // .populate("author")
       // .populate("recipes")
-      .then((CookbooksFromDB) => {
-        console.log(CookbooksFromDB);
+      .then((cookbooksFromDb) => {
+        console.log(cookbooksFromDb);
+        res.status(200).json({ cookbooks: cookbooksFromDb });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json({ errorMessage: err });
       });
   }
 );

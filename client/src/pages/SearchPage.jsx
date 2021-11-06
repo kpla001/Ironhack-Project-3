@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import logo from "../logo.svg";
+import React, { Component } from "react";
 import "../App.css";
 import Search from "../components/Search/Search";
 import apiService from "../services/apiService";
 
 class SearchPage extends Component {
-  state ={
+  state = {
     searchResults: null,
+
   }
   
   componentDidMount() {
@@ -28,7 +28,7 @@ class SearchPage extends Component {
 
 
 
-  render(){
+  render() {
     // console.log("search submitted:", this.state.searchResults)
     return (
       <div className="searchPage">
@@ -41,7 +41,7 @@ class SearchPage extends Component {
         }
         
       </div>
-    )
+    );
   }
 }
 
