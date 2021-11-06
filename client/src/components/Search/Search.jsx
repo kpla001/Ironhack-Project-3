@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import { Link } from 'react-router-dom';
+// import axios from 'axios';
 
 export default class Search extends Component {
     state = {
         input: '',
+
         
     }
 
@@ -17,7 +18,9 @@ export default class Search extends Component {
 
         this.setState({
             [name]: value
-        }, () => console.log("state in onChangeHandler: ", this.state))
+        },
+        // () => console.log("state in onChangeHandler: ", this.state)
+        )
     }
 
     onSubmitHandler = event => {
@@ -27,7 +30,7 @@ export default class Search extends Component {
         
         // console.log("state in onSubmitHandler", this.state);
 
-        this.props.submitSearch(this.state)
+        this.props.submitSearch(this.state.input)
 
         this.setState({
             input: '',
