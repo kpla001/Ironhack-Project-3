@@ -3,7 +3,7 @@ nav {
   padding: 1em;
   justify-content: space-around;
   flex-wrap: wrap;
-  background: #282c34;
+  background: #4b8cec;
   font-weight: 600;
 }
 
@@ -13,7 +13,7 @@ nav {
 }
 
 .authLink {
-  color: #61dafb;
+  color: #ffffff;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
@@ -31,7 +31,7 @@ nav {
   font-weight: inherit;
   padding: 0.5em 1em;
   margin-left: 1em;
-  background-color: #5595ff;
+  background-color: #299640;
   box-shadow: 0 0 5px 0 aliceblue;
   border: none;
   border-radius: 2px;
@@ -44,5 +44,5 @@ nav {
 
 .nav-logoutbtn:hover {
   transform: scale(1.05);
-  background-color: #d13e3e;
+  background-color: #b5ce27;
 }

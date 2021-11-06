@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
 import ProtectedPage from "./pages/ProtectedPage";
 import Signup from "./pages/Signup";
+import SearchPage from "./pages/SearchPage";
 import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
 import { getLoggedIn, logout } from "./services/auth";
@@ -105,6 +106,12 @@ class App extends React.Component {
             path={PATHS.PROTECTEDPAGE}
             component={ProtectedPage}
             user={this.state.user}
+          />
+          <NormalRoute
+            exact
+            path={PATHS.SEARCHPAGE}
+            authenticate={this.authenticate}
+            component={SearchPage}
           />
 
         </Switch>

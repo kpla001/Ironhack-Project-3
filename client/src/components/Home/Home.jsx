@@ -1,23 +1,19 @@
-import React, { Component } from 'react';
-import Search from '../Search/Search';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 export default class Home extends Component {
-    state = {
-        searchResults: '',
-    }
-
-    searchHandler = (input) => this.setState({
-        searchResults: input
-    })
-
-    render() {
-        console.log("search submitted:", this.state.searchResults.input)
-        return (
-            <div>
-                This is the homepage
-                
-                <Search submitSearch={this.searchHandler} />
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <h1>Welcome to Recipez!</h1>
+        <h3>Come Find Your Flavor</h3>
+        <Link to="/search">
+          <button className="search_button" link="/search">
+            Search
+          </button>
+        </Link>
+      </div>
+    );
+  }
 }
