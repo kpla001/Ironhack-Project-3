@@ -9,13 +9,13 @@ class SearchPage extends Component {
   state = {
     searchResults: null,
     recipeResults: [],
-    ingredientResults: [],
+    // ingredientResults: [],
   }
   
   componentDidMount() {
-    this.setState({
-      searchResults: null,
-    })
+    // this.setState({
+    //   searchResults: null,
+    // })
   }
   
 //   searchHandler = (input) => this.setState({
@@ -32,30 +32,17 @@ class SearchPage extends Component {
 
   searchHandler = async (input) => {
     try {
-        console.log(input)
+        // console.log(input)
         const results = await apiService.getRecipesFromApi(input)
-        console.log({results});
+        console.log(results.data.results);
         this.setState({
             recipeResults: results.data.results,
             searchResults: input
         })
     } catch(err) {
-        console.log(err)
+        // console.log(err)
     }
 }
-
-//   searchRecipes = () => apiService.getRecipesFromApi(this.state.searchResults.input)
-//   .then((results) => {
-//     console.log(results.data.results)
-//     results.map(result => (
-//         <div>
-//             <Link to={`search-details/${result.data.results.id}`}> 
-//                 {result.data.results.name}
-//             </Link>
-//         </div>
-//     ))
-//   })
-//   .catch((err) => err)
 
 
 
@@ -64,10 +51,10 @@ class SearchPage extends Component {
     return (
       <div className="searchPage">
         <Search submitSearch={this.searchHandler} />
-
+        <br/>
         {!!this.state.searchResults && 
         <div>
-        
+        <h2>Results for recipe search:</h2>
         <RecipeResults results={this.state.recipeResults}/>
         </div>
         }
