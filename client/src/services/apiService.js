@@ -8,6 +8,8 @@ const apiService = {
  
   getRecipesFromApi: (input) =>
     instance.get(`/recipes/complexSearch?query=${input}&number=25&instructuionRequired=true&addRecipeInformation=true&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`).then((response) => response),
+
+  
  
 };
 

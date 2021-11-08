@@ -23,6 +23,20 @@ export default function RecipeResults({ results }) {
                 <b>Total Steps:{' '}</b>
                 {result.analyzedInstructions[0].steps.length}
               </div>
+              <div className="recipeDescription">
+                <b>Ready in:{' '}</b>
+                {`${result.readyInMinutes} minutes`}
+              </div>
+              <div className="recipeDescription">
+                <b>Cuisines:{' '}</b>
+                <ul >
+                {result.cuisines.map(( (cuisine, i) => (
+                  <li key={i}>
+                    {cuisine}
+                  </li>
+                )))}
+                </ul>
+              </div>
         </div>
       )))}
     </div>

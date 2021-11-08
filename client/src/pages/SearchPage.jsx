@@ -50,6 +50,7 @@ class SearchPage extends Component {
     // console.log("search submitted:", this.state.searchResults)
     return (
       <div className="searchPage">
+        <br/>
         <Search submitSearch={this.searchHandler} />
         <br/>
         {!!this.state.searchResults && 
