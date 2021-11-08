@@ -5,12 +5,19 @@ const instance = axios.create({
 });
 
 const apiService = {
- 
   getRecipesFromApi: (input) =>
-    instance.get(`/recipes/complexSearch?query=${input}&number=25&instructuionRequired=true&addRecipeInformation=true&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`).then((response) => response),
+    instance
+      .get(
+        `/recipes/complexSearch?query=${input}&number=25&instructuionRequired=true&addRecipeInformation=true&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`
+      )
+      .then((response) => response),
 
-  
- 
+  getRandomRecipeFromApi: (input) =>
+    instance
+      .get(
+        `/recipes/random?number=5&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`
+      )
+      .then((response) => response),
 };
 
 export default apiService;

@@ -8,6 +8,7 @@ const userSchema = new Schema(
       // unique: true -> Ideally, should be unique, but its up to you
     },
     password: String,
+    Cookbook: [{ type: Schema.Types.ObjectId, ref: "Cookbook" }],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
