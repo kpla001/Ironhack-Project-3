@@ -12,11 +12,29 @@ button.search_button {
   position: sticky;
   top: 0;
 }
-button:hover {
+button.search_button:hover {
   transform: scale(1.05);
   background-color: #b5ce27;
 }
 div {
   font-family: inherit;
   font-weight: inherit;
+}
+
+div.landing {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  width: 50vw;
+}
+.toppage {
+  display: flex;
+}
+
+div.aside {
+  width: 50vw;
+}
+.bottompage {
+  margin-top: 100px;
+  height: 25vw;
 }
