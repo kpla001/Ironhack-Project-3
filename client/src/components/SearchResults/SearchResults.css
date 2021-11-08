@@ -9,8 +9,8 @@
   display: block;
   align-items: center;
   place-self: center;
-  width: 50%;
-  height: 20vh;
+  width: 60%;
+  height: auto;
   border: 1px solid rgba(0, 0, 0, 0.418);
   border-radius: 15px;
   padding-bottom: 15px;
@@ -19,17 +19,23 @@
 }
 
 .recipeImage {
-  height: 15vh;
+  height: 17vh;
   float: left;
   margin: 10px 25px 10px 25px;
   border-radius: 5px;
+  place-self: center;
 }
 .recipeDescription {
   float: left;
+  place-self: center;
   margin: 1px;
-  margin-top: 6px;
-  font-size: 14pt;
+  margin-top: 5%;
+  font-size: 12pt;
   width: 20%;
   height: auto;
   text-align: left;
+}
+
+.recipeDescription ul {
+  margin-top: 1px;
 }
