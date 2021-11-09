@@ -13,22 +13,22 @@ export default function RecipeResults({ results }) {
     <div className="recipeResults" >
       {results.map(( result => (
         <div key={result.id} className="resultCard">
-          <Link to={`recipe-details/${result.id}`}>
+          <Link to={`recipe-details/${result.id}`} className="recipeTitle">
             {result.title}
           </Link>
             <div className="recipeDetails">
               <img src={`${result.image}`} alt='icon' className="recipeImage"/>
             </div>
-              <div className="recipeDescription">
-                <b>Total Steps:{' '}</b>
-                {result.analyzedInstructions[0].steps.length}
+              <div className="recipeDescriptionLeft">
+                <b>Total Steps:<span> </span></b>
+                {result.analyzedInstructions[0]?.steps.length}
               </div>
-              <div className="recipeDescription">
-                <b>Ready in:{' '}</b>
+              <div className="recipeDescriptionLeft">
+                <b>Ready in:<span> </span></b>
                 {`${result.readyInMinutes} minutes`}
               </div>
-              <div className="recipeDescription">
-                <b>Appropriate for:{' '}</b>
+              <div className="recipeDescriptionRight">
+                <b>Appropriate for:</b>
                 <ul>
                 {result.dishTypes.map(( (dishType, i) => (
                   <li key={i}>
@@ -37,15 +37,9 @@ export default function RecipeResults({ results }) {
                 )))}
                 </ul>
               </div>
-              <div className="recipeDescription">
-                <b>Cuisines:{' '}</b>
-                <ul >
-                {result.cuisines.map(( (cuisine, i) => (
-                  <li key={i}>
-                    {cuisine}
-                  </li>
-                )))}
-                </ul>
+              <div className="recipeDescriptionRight">
+                <b>Servings:<span> </span></b>
+                {result.servings}
               </div>
         </div>
       )))}

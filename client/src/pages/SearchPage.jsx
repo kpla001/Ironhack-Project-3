@@ -55,7 +55,7 @@ class SearchPage extends Component {
         <br/>
         {!!this.state.searchResults && 
         <div>
-        <h2>Results for recipe search:</h2>
+        <h2>Results for search "{`${this.state.searchResults}`}":</h2>
         <RecipeResults results={this.state.recipeResults}/>
         </div>
         }
