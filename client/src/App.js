@@ -14,7 +14,6 @@ import * as PATHS from "./utils/paths";
 import * as CONSTS from "./utils/consts";
 import * as USER_HELPERS from "./utils/userToken";
 
-
 class App extends React.Component {
   state = {
     user: null,
@@ -89,6 +88,7 @@ class App extends React.Component {
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
           <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
+
           <NormalRoute
             exact
             path={PATHS.SIGNUPPAGE}
@@ -107,13 +107,19 @@ class App extends React.Component {
             component={ProtectedPage}
             user={this.state.user}
           />
+          {/* <ProtectedRoute
+            exact
+            path={PATHS.PROTECTEDPAGE}
+            component={Movies}
+            user={this.state.user}
+          /> */}
+
           <NormalRoute
             exact
             path={PATHS.SEARCHPAGE}
             authenticate={this.authenticate}
             component={SearchPage}
           />
-
         </Switch>
       </div>
     );
