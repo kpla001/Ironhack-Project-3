@@ -1,53 +1,55 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from "react";
+// import { Link } from 'react-router-dom';
+// import axios from 'axios';
 
 export default class Search extends Component {
-    state = {
-        input: '',
-        
-    }
+  state = {
+    input: "",
+  };
 
-    onChangeHandler = event => {
-        // console.log(event.target.value);
+  onChangeHandler = (event) => {
+    // console.log(event.target.value);
 
-        let { name, value } = event.target;
-        
-        // console.log(name, value);
+    let { name, value } = event.target;
 
-        this.setState({
-            [name]: value
-        }, () => console.log("state in onChangeHandler: ", this.state))
-    }
+    // console.log(name, value);
 
-    onSubmitHandler = event => {
-        event.preventDefault();
+    this.setState(
+      {
+        [name]: value,
+      }
+      // () => console.log("state in onChangeHandler: ", this.state)
+    );
+  };
 
-        console.log(this.props)
-        
-        // console.log("state in onSubmitHandler", this.state);
+  onSubmitHandler = (event) => {
+    event.preventDefault();
 
-        this.props.submitSearch(this.state)
+    // console.log(this.props)
 
-        this.setState({
-            input: '',
-        })
-    }
+    // console.log("state in onSubmitHandler", this.state);
 
-    render() {
-        return (
-            <div>
-                <form onSubmit={this.onSubmitHandler}>
-                    <input
-                    name="input" 
-                    type="text"
-                    value={this.state.input}
-                    placeholder="Type in a recipe or ingredient"
-                    onChange={this.onChangeHandler}
-                    />
-                        <button href="/search-results">search</button>
-                </form>
-            </div>
-        )
-    }
+    this.props.submitSearch(this.state.input);
+
+    this.setState({
+      input: "",
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.onSubmitHandler}>
+          <input
+            name="input"
+            type="text"
+            value={this.state.input}
+            placeholder="Type in a recipe or ingredient"
+            onChange={this.onChangeHandler}
+          />
+          <button href="/search-results">search</button>
+        </form>
+      </div>
+    );
+  }
 }
