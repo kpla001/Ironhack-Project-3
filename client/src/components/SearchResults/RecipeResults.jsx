@@ -28,6 +28,16 @@ export default function RecipeResults({ results }) {
                 {`${result.readyInMinutes} minutes`}
               </div>
               <div className="recipeDescription">
+                <b>Appropriate for:{' '}</b>
+                <ul>
+                {result.dishTypes.map(( (dishType, i) => (
+                  <li key={i}>
+                    {dishType}
+                  </li>
+                )))}
+                </ul>
+              </div>
+              <div className="recipeDescription">
                 <b>Cuisines:{' '}</b>
                 <ul >
                 {result.cuisines.map(( (cuisine, i) => (
