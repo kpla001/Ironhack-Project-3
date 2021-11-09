@@ -42,7 +42,7 @@ export default class Home extends Component {
         </div>
         <div className="bottompage">
           Random Recipes
-          {this.state.randomRecipes}
+          {/* {this.state.randomRecipes} */}
         </div>
       </div>
     );
