@@ -3,7 +3,8 @@ import "./Profile.css";
 import service from "../../services/service";
 import Ingredients from "../Ingredients/Ingredients";
 import Recipe from "../Recipe/Recipe";
-import Cookbooks from "../Cookbooks/Cookbooks";
+// import Cookbooks from "../Cookbooks/Cookbooks";
+import UserCookbooks from "../UserCookBook/userCookbooks";
 
 export default class Profile extends Component {
   state = {
@@ -31,9 +32,12 @@ export default class Profile extends Component {
   render() {
     return (
       <div>
+        <main className="container">
+          <UserCookbooks />
+        </main>
         <Ingredients ingredients={this.state.ingredients} />
         <Recipe recipes={this.state.recipes} />
-        <Cookbooks cookbooks={this.state.cookbooks} />
+        {/* <Cookbooks cookbooks={this.state.cookbooks} /> */}
       </div>
     );
   }
