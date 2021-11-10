@@ -13,8 +13,8 @@ export default function RecipeResults({ results }) {
     <div className="recipeResults" >
       {results.map(( result => (
         <div key={result.id} className="resultCard">
-          <Link to={`recipe-details/${result.id}`} className="recipeTitle">
-            {result.title}
+          <Link to={`recipe-details/${result.id}`} className="recipeTitle" style={{fontSize: 20}}>
+            <b>{result.title}</b>
           </Link>
             <div className="recipeDetails">
               <img src={`${result.image}`} alt='icon' className="recipeImage"/>

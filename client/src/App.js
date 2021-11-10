@@ -7,6 +7,7 @@ import LogIn from "./pages/LogIn";
 import ProtectedPage from "./pages/ProtectedPage";
 import Signup from "./pages/Signup";
 import SearchPage from "./pages/SearchPage";
+import DetailsPage from "./pages/DetailsPage";
 import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
 import { getLoggedIn, logout } from "./services/auth";
@@ -119,6 +120,12 @@ class App extends React.Component {
             path={PATHS.SEARCHPAGE}
             authenticate={this.authenticate}
             component={SearchPage}
+          />
+          <NormalRoute
+            exact
+            path={PATHS.DETAILSPAGE}
+            authenticate={this.authenticate}
+            component={DetailsPage}
           />
         </Switch>
       </div>
