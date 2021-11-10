@@ -28,6 +28,7 @@ const Pagination = ({ itemsCount, pageSize, currentPage, onPageChange }) => {
   );
 };
 
+// type checking for props ///
 Pagination.propTypes = {
   itemsCount: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
@@ -36,3 +37,5 @@ Pagination.propTypes = {
 };
 
 export default Pagination;
+
+// check for prop types in react documentation

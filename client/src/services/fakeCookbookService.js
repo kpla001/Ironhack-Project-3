@@ -1,11 +1,11 @@
-import * as genresAPI from "./fakeGenreService";
+import * as recipesAPI from "./fakeGenreService";
 
 const cookbooks = [
   {
     _id: "5b21ca3eeb7f6fbccd471815",
     title: "Holiday",
-    recipe: { _id: "5b21ca3eeb7f6fbccd471818", name: "Pecan Pie" },
-    numberInStock: 1,
+    recipe: { _id: "5b21ca3eeb7f6fbccd471818", name: "Cookbook" },
+    numberInStock: 6,
     dailyRentalRate: 2.5,
     publishDate: "2018-01-03T19:04:28.809Z",
     liked: true,
@@ -13,58 +13,58 @@ const cookbooks = [
   {
     _id: "5b21ca3eeb7f6fbccd471816",
     title: "Grilling",
-    recipe: { _id: "5b21ca3eeb7f6fbccd471818", name: "BBQ Wings" },
+    recipe: { _id: "5b21ca3eeb7f6fbccd471818", name: "Cookbooks" },
     numberInStock: 5,
     dailyRentalRate: 2.5,
   },
   {
     _id: "5b21ca3eeb7f6fbccd471817",
     title: "Italian",
-    recipe: { _id: "5b21ca3eeb7f6fbccd471820", name: "Fettucini Alfredo" },
+    recipe: { _id: "5b21ca3eeb7f6fbccd471820", name: "Favorites" },
     numberInStock: 8,
     dailyRentalRate: 3.5,
   },
   {
     _id: "5b21ca3eeb7f6fbccd471819",
     title: "Cuban",
-    recipe: { _id: "5b21ca3eeb7f6fbccd471814", name: "Pan Con Biste" },
+    recipe: { _id: "5b21ca3eeb7f6fbccd471814", name: "Recipes" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181a",
     title: "Mexican",
-    recipe: { _id: "5b21ca3eeb7f6fbccd471814", name: "Quesadillas" },
+    recipe: { _id: "5b21ca3eeb7f6fbccd471814", name: "Recipes" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181b",
     title: "Bake",
-    recipe: { _id: "5b21ca3eeb7f6fbccd471814", name: "Banana Bread" },
+    recipe: { _id: "5b21ca3eeb7f6fbccd471814", name: "Recipes" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181e",
-    title: "Canibus",
-    recipe: { _id: "5b21ca3eeb7f6fbccd471820", name: "Hemp Seed Acai" },
+    title: "Cannabis",
+    recipe: { _id: "5b21ca3eeb7f6fbccd471820", name: "Favorites" },
     numberInStock: 7,
-    dailyRentalRate: 4.5,
+    dailyRentalRate: 3.5,
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181f",
     title: "Vegan",
-    recipe: { _id: "5b21ca3eeb7f6fbccd471820", name: "Impossible Burger" },
+    recipe: { _id: "5b21ca3eeb7f6fbccd471820", name: "Favorites" },
     numberInStock: 4,
-    dailyRentalRate: 3.5,
+    dailyRentalRate: 4.5,
   },
   {
     _id: "5b21ca3eeb7f6fbccd471821",
     title: "Fried Only",
-    recipe: { _id: "5b21ca3eeb7f6fbccd471818", name: "Deep Fried Turkey" },
+    recipe: { _id: "5b21ca3eeb7f6fbccd471818", name: "Cookbooks" },
     numberInStock: 7,
-    dailyRentalRate: 3.5,
+    dailyRentalRate: 4.5,
   },
 ];
 
@@ -79,7 +79,7 @@ export function getCookbook(id) {
 export function saveCookbook(book) {
   let bookInDb = cookbooks.find((m) => m._id === book._id) || {};
   bookInDb.name = book.name;
-  bookInDb.recipe = genresAPI.genres.find((g) => g._id === book.genreId);
+  bookInDb.recipe = recipesAPI.recipes.find((g) => g._id === book.genreId);
   bookInDb.numberInStock = book.numberInStock;
   bookInDb.dailyRentalRate = book.dailyRentalRate;
 
