@@ -1,5 +1,5 @@
 import React from "react";
-
+//props listed below //
 const ListGroup = ({
   items,
   textProperty,
@@ -24,9 +24,13 @@ const ListGroup = ({
   );
 };
 
+//Here are the default props from list group ///
+
 ListGroup.defaultProps = {
   textProperty: "name",
   valueProperty: "_id",
 };
 
 export default ListGroup;
+
+// Customizable List Group

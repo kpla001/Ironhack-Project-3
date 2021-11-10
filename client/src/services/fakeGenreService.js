@@ -1,9 +1,9 @@
-export const genres = [
-  { _id: "5b21ca3eeb7f6fbccd471818", name: "Action" },
-  { _id: "5b21ca3eeb7f6fbccd471814", name: "Comedy" },
-  { _id: "5b21ca3eeb7f6fbccd471820", name: "Thriller" },
+export const recipes = [
+  { _id: "5b21ca3eeb7f6fbccd471818", name: "Cookbook" },
+  { _id: "5b21ca3eeb7f6fbccd471814", name: "Recipes" },
+  { _id: "5b21ca3eeb7f6fbccd471820", name: "Favorites" },
 ];
 
-export function getGenres() {
-  return genres.filter((g) => g);
+export function getRecipes() {
+  return recipes.filter((g) => g);
 }
