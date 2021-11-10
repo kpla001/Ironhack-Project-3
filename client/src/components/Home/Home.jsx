@@ -41,8 +41,26 @@ export default class Home extends Component {
           </div>
         </div>
         <div className="bottompage">
-          Random Recipes
-          {this.state.randomRecipes}
+          {this.state.randomRecipes.map((randomRecipe, i) => (
+            <div key={i} className="randomCard">
+              {console.log(randomRecipe)}
+              <div>
+                <img
+                  src={`${randomRecipe.image}`}
+                  alt="Random Img"
+                  width="300px"
+                  className="randomPic"
+                ></img>
+              </div>
+              <div>
+                <Link to={`recipe-details/${randomRecipe.id}`}>
+                  {`${randomRecipe.title}`}
+                </Link>
+              </div>
+              <div>Preparation time: {randomRecipe.readyInMinutes} minutes</div>
+              <div>Servings: {randomRecipe.servings}</div>
+            </div>
+          ))}
         </div>
       </div>
     );

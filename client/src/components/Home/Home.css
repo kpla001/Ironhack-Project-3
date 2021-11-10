@@ -35,6 +35,26 @@ div.aside {
   width: 50vw;
 }
 .bottompage {
-  margin-top: 100px;
+  margin-top: 80px;
   height: 25vw;
+  display: flex;
+  align-content: space-between;
+}
+
+.randomCard {
+  display: block;
+  align-items: center;
+  place-self: center;
+  width: 20%;
+  height: 350px;
+  border: 1px solid rgba(0, 0, 0, 0.418);
+  border-radius: 15px;
+  padding-bottom: 15px;
+  margin: 8px 0 8px 0;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.493);
+  font-family: inherit;
+  font-weight: inherit;
+}
+.randomPic {
+  padding-top: 20px;
 }
