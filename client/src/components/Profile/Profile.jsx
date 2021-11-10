@@ -4,7 +4,7 @@ import service from "../../services/service";
 import Ingredients from "../Ingredients/Ingredients";
 import Recipe from "../Recipe/Recipe";
 // import Cookbooks from "../Cookbooks/Cookbooks";
-import UserCookbooks from "../UserCookBook/movies";
+import UserCookbooks from "../UserCookBook/userCookbooks";
 
 export default class Profile extends Component {
   state = {
