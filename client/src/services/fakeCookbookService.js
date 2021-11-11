@@ -1,4 +1,4 @@
-import * as recipesAPI from "./fakeGenreService";
+import * as recipesAPI from "./fakeRecipeService";
 
 const cookbooks = [
   {
