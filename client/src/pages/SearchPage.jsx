@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import "../App.css";
 import Search from "../components/Search/Search";
 import RecipeResults from "../components/SearchResults/RecipeResults";
+import LoadingComponent from "../components/Loading/index"
 import apiService from "../services/apiService";
+
 
 class SearchPage extends Component {
   state = {
     searchResults: null,
     recipeResults: [],
+    isLoading: true,
     // ingredientResults: [],
   };
 
@@ -38,6 +41,7 @@ class SearchPage extends Component {
       this.setState({
         recipeResults: results.data.results,
         searchResults: input,
+        isLoading: false,
       });
     } catch (err) {
       // console.log(err)
@@ -51,6 +55,7 @@ class SearchPage extends Component {
         <br />
         <Search submitSearch={this.searchHandler} />
         <br />
+        {this.state.isLoading === true && this.state.searchResults ? <LoadingComponent /> : null}
         {!!this.state.searchResults && (
           <div>
             <h2>Results for search "{`${this.state.searchResults}`}":</h2>
