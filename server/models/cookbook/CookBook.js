@@ -6,10 +6,6 @@ const cookBookSchema = new Schema({
     require: true,
   },
 
-  spoonifyId: {
-    type: String,
-  },
-
   author: {
     type: Schema.Types.ObjectId,
     ref: "User",

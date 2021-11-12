@@ -20,10 +20,11 @@ export default class DetailsPage extends Component {
     }
 
     saveRecipeToDb(recipe){
-        const theRecipe = {
+        // console.log("look here--------------", recipe)
+        const recipeData = {
             ...recipe,
             name: recipe.title,
-            spoonifyId: recipe.id,
+            _id: recipe.id,
             ingredients: recipe.extendedIngredients.map((ingredient) => {
                 return { 
                     name: ingredient.name,
@@ -44,30 +45,13 @@ export default class DetailsPage extends Component {
             vegetarian: recipe.vegetarian,
 
         }
-        // const {
-        //     analyzedInstructions,
-        //     cuisines,
-        //     dairyFree,
-        //     diets,
-        //     dishTypes,
-        //     extendedIngredients,
-        //     glutenFree,
-        //     spoonifyId: id,
-        //     image,
-        //     nutrition,
-        //     readyInMinutes,
-        //     servings,
-        //     title,
-        //     vegan,
-        //     vegetarian,
-        // } = recipe;
-        console.log({theRecipe});
-        service.postRecipeToDb(theRecipe)
+        console.log({recipeData});
+        service.postRecipeToDb(recipeData)
 
     }
 
     render() {
-        console.log(this.state?.recipe)
+        // console.log(this.state?.recipe)
         // console.log("props:",this.props)
         return (
             <div>
