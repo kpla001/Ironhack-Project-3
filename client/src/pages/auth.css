@@ -21,6 +21,8 @@ form.signup__form {
   margin: 0 auto;
 }
 
-.spaceTop {
-  height: 8em;
+.landingPage {
+  background-image: url(../images/brooke-lark-jUPOXXRNdcA-unsplash.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
 }

@@ -5,7 +5,7 @@ import "./auth.css";
 export default class HomePage extends Component {
   render() {
     return (
-      <div>
+      <div className="landingPage">
         <div className="spaceTop"></div>
         <Home />
       </div>
