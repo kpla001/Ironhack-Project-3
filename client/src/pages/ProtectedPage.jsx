@@ -1,10 +1,10 @@
 import React from "react";
 import Profile from "../components/Profile/Profile";
 
-const ProtectedPage = () => {
+const ProtectedPage = ({ user }) => {
   return (
     <div>
-      <Profile />
+      <Profile cookbooks={user.Cookbook} />
     </div>
   );
 };
