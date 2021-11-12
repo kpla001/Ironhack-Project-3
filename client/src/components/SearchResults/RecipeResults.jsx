@@ -13,21 +13,25 @@ export default function RecipeResults({ results }) {
     <div className="recipeResults" >
       {results.map(( result => (
         <div key={result.id} className="resultCard">
-          <Link to={`recipe-details/${result.id}`} className="recipeTitle">
-            {result.title}
+          <Link to={`recipe-details/${result.id}`} className="recipeTitle" style={{fontSize: 20}}>
+            <b>{result.title}</b>
           </Link>
-            <div className="recipeDetails">
+            <div>
               <img src={`${result.image}`} alt='icon' className="recipeImage"/>
             </div>
-              <div className="recipeDescriptionLeft">
+              <div className="recipeDescription">
                 <b>Total Steps:<span> </span></b>
                 {result.analyzedInstructions[0]?.steps.length}
               </div>
-              <div className="recipeDescriptionLeft">
+              <div className="recipeDescription">
                 <b>Ready in:<span> </span></b>
                 {`${result.readyInMinutes} minutes`}
               </div>
-              <div className="recipeDescriptionRight">
+              <div className="recipeDescription">
+                <b>Servings:<span> </span></b>
+                {result.servings}
+              </div>
+              <div className="recipeDescription">
                 <b>Appropriate for:</b>
                 <ul>
                 {result.dishTypes.map(( (dishType, i) => (
@@ -36,10 +40,6 @@ export default function RecipeResults({ results }) {
                   </li>
                 )))}
                 </ul>
-              </div>
-              <div className="recipeDescriptionRight">
-                <b>Servings:<span> </span></b>
-                {result.servings}
               </div>
         </div>
       )))}

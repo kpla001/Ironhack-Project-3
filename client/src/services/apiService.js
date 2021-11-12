@@ -18,6 +18,12 @@ const apiService = {
         `/recipes/random?number=5&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`
       )
       .then((response) => response),
+
+  getRecipeDetailsFromApi: (input) =>
+    instance
+    .get(
+      `/recipes/${input.match.params.id}/information?includeNutrition=true&apiKey=${process.env.REACT_APP_API_KEY}`
+    ).then((response) => response),
 };
 
 export default apiService;

@@ -9,7 +9,7 @@
   display: block;
   align-items: center;
   place-self: center;
-  width: 60%;
+  width: 60vw;
   height: auto;
   border: 1px solid rgba(0, 0, 0, 0.418);
   border-radius: 15px;
@@ -20,32 +20,39 @@
 
 .recipeTitle {
   text-decoration: none;
-  font: 12pt;
+  font: 20pt;
 }
 
 .recipeImage {
   height: 17vh;
   max-width: 200px;
   float: left;
-  margin: 10px 25px 10px 25px;
+  margin: 0 25px 5px 25px;
   border-radius: 5px;
   place-self: center;
+  align-self: center;
 }
-.recipeDescriptionLeft {
+.recipeDescription {
   float: left;
   place-self: center;
-  margin: 1px 1px 5vw 0;
-  margin-top: 5%;
+  align-self: center;
+  margin: 0 2em 0 2em;
+  /* margin-top: 5%; */
   font-size: 12pt;
-  width: 15%;
+  width: auto;
   height: auto;
   text-align: left;
+}
+@media only screen and (min-width: 600px) {
+  .recipeDescription {
+    margin: 2em 3em 0 2em;
+  }
 }
 .recipeDescriptionRight {
   float: right;
   place-self: center;
   margin: 1px 3vw 1px 0;
-  margin-top: 5%;
+  /* margin-top: 5%; */
   font-size: 12pt;
   width: 15%;
   height: auto;
