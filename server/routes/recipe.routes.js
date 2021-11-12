@@ -16,8 +16,10 @@ router.get(
 );
 
 router.post("/", (req, res) => {
+  // console.log("Recipe----------: ", req.body)
   Recipe.create(req.body)
     .then((recipeToDb) => {
+      console.log("Recipe:",recipeToDb)
       res.status(200).json({ recipe: recipeToDb });
     })
     .catch((err) => res.json({ errorMessage: err }));

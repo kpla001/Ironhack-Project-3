@@ -2,7 +2,6 @@ const router = require("express").Router();
 const CookBook = require("../models/cookbook/CookBook");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
-const Cookbook = require("../models/cookbook/CookBook");
 // const Recipe = require("../models/Recipe.model");
 
 router.get(

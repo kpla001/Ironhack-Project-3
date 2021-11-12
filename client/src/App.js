@@ -88,19 +88,25 @@ class App extends React.Component {
       <div className="App">
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
-          <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
+          <NormalRoute 
+          exact path={PATHS.HOMEPAGE} 
+          component={HomePage} 
+          user={this.state.user}
+          />
 
           <NormalRoute
             exact
             path={PATHS.SIGNUPPAGE}
             authenticate={this.authenticate}
             component={Signup}
+            user={this.state.user}
           />
           <NormalRoute
             exact
             path={PATHS.LOGINPAGE}
             authenticate={this.authenticate}
             component={LogIn}
+            user={this.state.user}
           />
           <ProtectedRoute
             exact
@@ -120,12 +126,14 @@ class App extends React.Component {
             path={PATHS.SEARCHPAGE}
             authenticate={this.authenticate}
             component={SearchPage}
+            user={this.state.user}
           />
           <NormalRoute
             exact
             path={PATHS.DETAILSPAGE}
             authenticate={this.authenticate}
             component={DetailsPage}
+            user={this.state.user}
           />
         </Switch>
       </div>

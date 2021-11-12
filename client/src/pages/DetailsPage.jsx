@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import RecipeDetails from "../components/RecipeDetails/RecipeDetails";
 import apiService from "../services/apiService";
-import axios from 'axios';
+import service from "../services/service";
 
 export default class DetailsPage extends Component {
     state={
@@ -19,12 +19,55 @@ export default class DetailsPage extends Component {
 
     }
 
+    saveRecipeToDb(recipe){
+        const theRecipe = {
+            ...recipe,
+            name: recipe.title,
+            spoonifyId: recipe.id,
+            ingredients: recipe.extendedIngredients,
+            directions: recipe.analyzedInstructions,
+            image: recipe.image,
+            calories: recipe.nutrition.nutrients[0].amount,
+            cuisines: recipe.cuisines,
+            dairyFree: recipe.dairyFree,
+            dishTypes: recipe.dishTypes,
+            glutenFree: recipe.glutenFree,
+            readyInMinutes: recipe.readyInMinutes,
+            servings: recipe.servings,
+            vegan: recipe.vegan,
+            vegetarian: recipe.vegetarian,
+
+        }
+        // const {
+        //     analyzedInstructions,
+        //     cuisines,
+        //     dairyFree,
+        //     diets,
+        //     dishTypes,
+        //     extendedIngredients,
+        //     glutenFree,
+        //     spoonifyId: id,
+        //     image,
+        //     nutrition,
+        //     readyInMinutes,
+        //     servings,
+        //     title,
+        //     vegan,
+        //     vegetarian,
+        // } = recipe;
+        console.log({theRecipe});
+        service.postRecipeToDb(theRecipe)
+
+    }
+
     render() {
-        // console.log(this.state?.recipe)
+        console.log(this.state?.recipe)
+        // console.log("props:",this.props)
         return (
             <div>
                 <br/>
                 <RecipeDetails recipe={this.state.recipe} />
+                {this.props.user && <button onClick={() => this.saveRecipeToDb(this.state.recipe)}>Save Recipe</button>}
             </div>
         )
     }
