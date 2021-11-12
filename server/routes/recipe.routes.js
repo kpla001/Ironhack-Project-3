@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Recipe = require("../models/recipe/Recipe");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
+const Ingredient = require("../models/ingredient/Ingredient");
 
 router.get(
   "/",
@@ -22,6 +23,7 @@ router.post("/", (req, res) => {
   //3) if 2. is true, then save the recipe and push the ingredient id into ingredients array
   //2a) if ingredient does NOT exist in the DB, save the new ingredient in the ingredients collection, get the id of the newly created ingredient, and proceed to step 3a, which is:
   //3a) Create a new recipe and push the id of the newly created ingredient into ingredients array
+  req.body.extendedIngredients
   Recipe.create(req.body)
     .then((recipeToDb) => {
       console.log("Recipe:",recipeToDb)
