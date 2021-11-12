@@ -20,16 +20,14 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="landingPage">
         <div className="toppage">
           <div className="landing">
             <h1>Welcome to Recipez!</h1>
             <h3>Come Find Your Flavor</h3>
-            <Link to="/search">
-              <button className="search_button" link="/search">
-                Search for Recipes!
-              </button>
-            </Link>
+            <button className="search_button" link="/search">
+              <Link to="/search">Search for Recipes!</Link>
+            </button>
           </div>
           <div className="aside">
             Sunt incididunt adipisicing duis ipsum est est esse eu mollit anim
@@ -52,7 +50,7 @@ export default class Home extends Component {
                   className="randomPic"
                 ></img>
               </div>
-              <div>
+              <div className="randomTitle">
                 <Link to={`recipe-details/${randomRecipe.id}`}>
                   {`${randomRecipe.title}`}
                 </Link>
