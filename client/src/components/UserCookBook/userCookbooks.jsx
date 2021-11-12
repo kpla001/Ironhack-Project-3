@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import Like from "../common/like";
+import UserTable from "./userTable";
 import ListGroup from "../common/listGroup";
-import _ from "lodash";
 import Pagination from "../common/pagination";
 import { getCookbooks } from "../../services/fakeCookbookService.js";
 import { getRecipes } from "../../services/fakeRecipeService";
 import { paginate } from "../../utils/paginate";
-// import MoviesTable from "./moviesTable";
+import _ from "lodash";
 
 class UserCookbooks extends React.Component {
   state = {
@@ -14,10 +13,15 @@ class UserCookbooks extends React.Component {
     recipes: [],
     currentPage: 1,
     pageSize: 4,
+    // sortColumn: { path: "title,", order: "asc" },
   };
 
   componentDidMount() {
     this.setState({ cookbooks: getCookbooks(), recipes: getRecipes() });
+
+    // const recipes = [{ _id: "", name: "All My Resepez" }, ...getRecipes()];
+
+    // this.setState({ cookbooks: getCookbooks(), recipes });
   }
 
   handleDelete = (book) => {
@@ -40,23 +44,32 @@ class UserCookbooks extends React.Component {
   };
 
   handleRecipeSelect = (recipe) => {
-    this.setState({ selectedRecipe: recipe });
+    this.setState({ selectedRecipe: recipe, currentPage: 1 });
   };
+
+  // handleSort = (path) => {
+  //   console.log(path);
+  //   this.setState({ sortColum: { path, order: "asc" } });
+  // };
 
   render() {
     const { length: count } = this.state.cookbooks;
     const {
       pageSize,
       currentPage,
+      // sortColumn,
       selectedRecipe,
       cookbooks: allCookbooks,
     } = this.state; // add allCookbooks
 
     if (count === 0) return <p>Add some good stuff!</p>;
 
-    const filtered = selectedRecipe
-      ? allCookbooks.filter((m) => m.recipe._id === selectedRecipe._id)
-      : allCookbooks;
+    const filtered =
+      selectedRecipe && selectedRecipe._id
+        ? allCookbooks.filter((m) => m.recipe._id === selectedRecipe._id)
+        : allCookbooks;
+
+    // const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
     const cookbooks = paginate(filtered, currentPage, pageSize);
 
@@ -70,44 +83,14 @@ class UserCookbooks extends React.Component {
           />
         </div>
         <div className="col">
-          <p>Showing {filtered.length} books in the database.</p>
+          <p>Showing {filtered.length} items saved by user.</p>
 
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Name</th>
-                <th>Ingredients</th>
-                <th>Favorite</th>
-                <th />
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              {cookbooks.map((book) => (
-                <tr key={book._id}>
-                  <td>{book.title}</td>
-                  <td>{book.recipe.name}</td>
-                  <td>{book.numberInStock}</td>
-                  <td>{book.dailyRentalRate}</td>
-                  <td>
-                    <Like
-                      liked={book.liked}
-                      onClick={() => this.handleLike(book)}
-                    />
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => this.handleDelete(book)}
-                      className="btn btn-danger btn-sm"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <UserTable
+            cookbooks={cookbooks}
+            onLike={this.handleLike}
+            onDelete={this.handleDelete}
+            onSort={this.handleSort} /// work in progress
+          />
         </div>
 
         <Pagination

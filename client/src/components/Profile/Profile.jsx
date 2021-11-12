@@ -10,7 +10,7 @@ export default class Profile extends Component {
   state = {
     ingredients: [],
     recipes: [],
-    cookbooks: [{ id: 1 }],
+    cookbooks: [],
   };
 
   componentDidMount() {
@@ -27,6 +27,8 @@ export default class Profile extends Component {
     service.getCookbookList().then((data) => {
       this.setState({ cookbooks: data.cookbooks });
     });
+
+    console.log(this.props.cookbooks); ////////////////
   }
 
   render() {
