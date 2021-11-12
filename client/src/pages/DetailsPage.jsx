@@ -24,7 +24,13 @@ export default class DetailsPage extends Component {
             ...recipe,
             name: recipe.title,
             spoonifyId: recipe.id,
-            ingredients: recipe.extendedIngredients,
+            ingredients: recipe.extendedIngredients.map((ingredient) => {
+                return { 
+                    name: ingredient.name,
+                    _id: `${ingredient.id ? ingredient.id : Date.now()}`,
+                    image: ingredient.image,
+                }
+            }),
             directions: recipe.analyzedInstructions,
             image: recipe.image,
             calories: recipe.nutrition.nutrients[0].amount,

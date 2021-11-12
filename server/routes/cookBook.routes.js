@@ -9,8 +9,8 @@ router.get(
   // isLoggedin,
   (req, res) => {
     CookBook.find()
-      // .populate("author")
-      // .populate("recipes")
+      .populate("author")
+      .populate("recipes")
       .then((cookbooksFromDb) => {
         console.log(cookbooksFromDb);
         res.status(200).json({ cookbooks: cookbooksFromDb });
