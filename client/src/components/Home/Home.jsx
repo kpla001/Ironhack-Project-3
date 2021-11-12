@@ -25,9 +25,11 @@ export default class Home extends Component {
           <div className="landing">
             <h1>Welcome to Recipez!</h1>
             <h3>Come Find Your Flavor</h3>
-            <button className="search_button" link="/search">
-              <Link to="/search">Search for Recipes!</Link>
-            </button>
+            <Link to="/search">
+              <button className="search_button" link="/search">
+                Search for Recipes!
+              </button>
+            </Link>
           </div>
           <div className="aside">
             Sunt incididunt adipisicing duis ipsum est est esse eu mollit anim
@@ -41,7 +43,6 @@ export default class Home extends Component {
         <div className="bottompage">
           {this.state.randomRecipes.map((randomRecipe, i) => (
             <div key={i} className="randomCard">
-              {console.log(randomRecipe)}
               <div>
                 <img
                   src={`${randomRecipe.image}`}
