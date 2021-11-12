@@ -3,7 +3,15 @@ const { Schema, model } = require("mongoose");
 const recipeSchema = new Schema({
   name: { type: String },
   spoonifyId: { type: String },
-  ingredients: [{ type: Schema.Types.ObjectId, ref: "Ingredient" }],
+  ingredients: [
+    { 
+    type: Schema.Types.ObjectId, ref: "Ingredient"
+    },
+    {
+    _id: { type: String },
+    name: { type: String },
+    image: { type: String },
+    }],
   author: { type: Schema.Types.ObjectId, ref: "User" },
   image: { type: String },
   calories: { type: Number },
