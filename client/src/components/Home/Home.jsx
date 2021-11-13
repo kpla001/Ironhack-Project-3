@@ -20,7 +20,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="landingPage">
         <div className="toppage">
           <div className="landing">
             <h1>Welcome to Recipez!</h1>
@@ -43,7 +43,6 @@ export default class Home extends Component {
         <div className="bottompage">
           {this.state.randomRecipes.map((randomRecipe, i) => (
             <div key={i} className="randomCard">
-              {console.log(randomRecipe)}
               <div>
                 <img
                   src={`${randomRecipe.image}`}
@@ -52,7 +51,7 @@ export default class Home extends Component {
                   className="randomPic"
                 ></img>
               </div>
-              <div>
+              <div className="randomTitle">
                 <Link to={`recipe-details/${randomRecipe.id}`}>
                   {`${randomRecipe.title}`}
                 </Link>

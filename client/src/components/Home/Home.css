@@ -11,6 +11,8 @@ button.search_button {
   transition: all 0.2s ease-in-out;
   position: sticky;
   top: 0;
+  width: 30%;
+  align-self: center;
 }
 button.search_button:hover {
   transform: scale(1.05);
@@ -26,6 +28,7 @@ div.landing {
   flex-direction: column;
   align-content: flex-start;
   width: 50vw;
+  padding-top: 15em;
 }
 .toppage {
   display: flex;
@@ -33,6 +36,7 @@ div.landing {
 
 div.aside {
   width: 50vw;
+  padding-top: 15em;
 }
 .bottompage {
   margin-top: 80px;
@@ -54,7 +58,14 @@ div.aside {
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.493);
   font-family: inherit;
   font-weight: inherit;
+  background-color: #e3f2ff;
 }
+
+.randomTitle {
+  font-family: inherit;
+  font-weight: inherit;
+}
+
 .randomPic {
   padding-top: 20px;
 }

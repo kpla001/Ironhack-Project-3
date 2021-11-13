@@ -38,7 +38,7 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <div>
+      <div className="signUp">
         <h1>Sign Up</h1>
         <form onSubmit={this.handleFormSubmission} className="auth__form">
           <label htmlFor="input-username">Username</label>

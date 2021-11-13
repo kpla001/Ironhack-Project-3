@@ -2,7 +2,6 @@ const router = require("express").Router();
 const CookBook = require("../models/cookbook/CookBook");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
-const Cookbook = require("../models/cookbook/CookBook");
 // const Recipe = require("../models/Recipe.model");
 
 router.get(
@@ -10,8 +9,8 @@ router.get(
   // isLoggedin,
   (req, res) => {
     CookBook.find()
-      // .populate("author")
-      // .populate("recipes")
+      .populate("author")
+      .populate("recipes")
       .then((cookbooksFromDb) => {
         console.log(cookbooksFromDb);
         res.status(200).json({ cookbooks: cookbooksFromDb });

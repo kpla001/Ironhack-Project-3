@@ -2,7 +2,7 @@ import React from 'react';
 import './RecipeDetails.css';
 
 export default function RecipeDetails({ recipe }) {
-    console.log("recipe",recipe)
+    // console.log("recipe",recipe)
     return (
         <div className="recipeDetails">
                 <h1>{recipe?.title}</h1>

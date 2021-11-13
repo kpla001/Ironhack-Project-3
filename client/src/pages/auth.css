@@ -21,6 +21,20 @@ form.signup__form {
   margin: 0 auto;
 }
 
-.spaceTop {
-  height: 8em;
+.landingPage {
+  background-image: url(../images/mariana-medvedeva-FjryWdaqGEc-unsplash.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.searchPage {
+  background-image: url(../images/mariana-medvedeva-FjryWdaqGEc-unsplash.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.signup {
+  background-image: url(../images/mariana-medvedeva-FjryWdaqGEc-unsplash.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
