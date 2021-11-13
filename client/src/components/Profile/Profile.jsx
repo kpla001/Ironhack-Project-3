@@ -30,15 +30,23 @@ export default class Profile extends Component {
 
     console.log(this.props.cookbooks); ////////////////
   }
+  //<Ingredients ingredients={this.state.ingredients} />
+  //<Recipe recipes={this.state.recipes} />
+
+  saveCookBookToDb(cookbook) {
+    console.log(cookbook);
+  }
 
   render() {
     return (
       <div>
         <main className="container">
           <UserCookbooks />
+          <button onClick={this.saveCookBookToDb(this.state.cookbook)}>
+            {console.log(this.state)}
+            Make a Cookbook
+          </button>
         </main>
-        <Ingredients ingredients={this.state.ingredients} />
-        <Recipe recipes={this.state.recipes} />
         {/* <Cookbooks cookbooks={this.state.cookbooks} /> */}
       </div>
     );
