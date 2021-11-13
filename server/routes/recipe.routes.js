@@ -20,33 +20,41 @@ router.get(
 router.post("/", (req, res, next) => {
   // console.log("Recipe----------: ", req.body)
   let ingredientIdArr = [];
-  //1) Check if I have ingredient in database
-  //2) if ingredient exists in database, then take id of ingredient
-  //3) if 2. is true, then save the recipe and push the ingredient id into ingredients array
-  //2a) if ingredient does NOT exist in the DB, save the new ingredient in the ingredients collection, get the id of the newly created ingredient, and proceed to step 3a, which is:
-  //3a) Create a new recipe and push the id of the newly created ingredient into ingredients array
+ 
   req.body.ingredients.forEach((ingredient, i) => {
-    Ingredient.findOne({ name: ingredient.name }).then((ingredientFromDb) => {
-
+    Ingredient.findOne({ name: ingredient.name })
+    .then((ingredientFromDb) => {
+      // console.log("1st part===============",ingredientFromDb);
       if (ingredientFromDb !== null) {
-
-      }
-      Ingredient.create(ingredient)
-      .then(ingredientFromDb => {
         ingredientIdArr.push(ingredientFromDb._id)
-        // next();
-      })
-      .catch(err => console.log(err));
-    })
-    
-    if(i === req.body.ingredients.length - 1) {
-          checkRecipe();
+
+        if(ingredientIdArr.length === req.body.ingredients.length) {
+          checkRecipe()
         }
-  }
-  //if condition goes here
-  )
-  function checkRecipe(){
-      console.log(ingredientIdArr.length,"====", req.body.ingredients.length);
+      } else {
+        Ingredient.create(ingredient)
+        .then(ingredientFromDb => {
+          console.log("2nd part -----------------------", ingredientFromDb._id)
+          ingredientIdArr.push(ingredientFromDb._id);
+
+          if(ingredientIdArr.length === req.body.ingredients.length) {
+            checkRecipe()
+          }
+          // next();
+        })
+        .catch(err => console.log(err));
+      }
+    })
+    .catch(err => console.log(err));
+
+    // if(i === ingredientIdArr.length - 1) {
+    //   console.log("i: ", i, "<------> req.body.ingredients.length - 1: ", req.body.ingredients.length - 1, "ingredientIdArr.length", ingredientIdArr.length)
+    //       checkRecipe();
+    // }
+  })
+  function checkRecipe() {
+    console.log("check recipe called!!!!!")
+      // console.log(ingredientIdArr.length,"====", req.body.ingredients.length);
       Recipe.findOne({ spoonacularId: req.body.spoonacularId })
       .then((recipeFromDb) => {
         console.log("Recipe from DB:", recipeFromDb);
@@ -54,16 +62,17 @@ router.post("/", (req, res, next) => {
         if (recipeFromDb !== null){
           res.json(recipeFromDb)
         } else {
+          console.log("ingredientIdArr: ", ingredientIdArr)
           Recipe.create({ ...req.body, ingredients: ingredientIdArr})
             .then((recipeToDb) => {
-              console.log("Recipe:",recipeToDb)
+              // console.log("Recipe:",recipeToDb)
               res.status(200).json({ recipe: recipeToDb });
             })
             .catch(err => console.log(err));
             // .catch((err) => res.json({ errorMessage: err }));
         }
       }).catch(err => console.log(err));
-    }
+  }
 });
 
 router.get("/:id", (req, res) => {
