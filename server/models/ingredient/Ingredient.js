@@ -2,10 +2,8 @@ const { Schema, model } = require("mongoose");
 
 const ingredientSchema = new Schema({
     
-    _id: { 
-        type: String 
-    },
-    
+    spoonacularId: Number,
+
     name: {
         type: String,
         // required: true,
