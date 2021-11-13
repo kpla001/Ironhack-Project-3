@@ -2,13 +2,9 @@ const { Schema, model } = require("mongoose");
 
 const recipeSchema = new Schema({
   name: { type: String },
-  _id: { type: String },
+  spoonacularId: { type: String },
   ingredients: [
-    {
-    _id: { type: String },
-    name: { type: String },
-    image: { type: String },
-    }
+    {type: Schema.Types.ObjectId, ref: "Ingredient" }
   ],
   author: { type: Schema.Types.ObjectId, ref: "User" },
   image: { type: String },

@@ -22,13 +22,13 @@ export default class DetailsPage extends Component {
     saveRecipeToDb(recipe){
         // console.log("look here--------------", recipe)
         const recipeData = {
-            ...recipe,
+            // ...recipe,
             name: recipe.title,
-            _id: recipe.id,
+            spoonacularId: recipe.id,
             ingredients: recipe.extendedIngredients.map((ingredient) => {
                 return { 
                     name: ingredient.name,
-                    _id: `${ingredient.id ? ingredient.id : Date.now()}`,
+                    spoonacularId: `${ingredient.id ? ingredient.id : Date.now()}`,
                     image: ingredient.image,
                 }
             }),

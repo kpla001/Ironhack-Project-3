@@ -4,6 +4,7 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Ingredient = require("../models/ingredient/Ingredient");
 
+
 router.get(
   "/",
   //  isLoggedIn,
@@ -16,20 +17,53 @@ router.get(
   }
 );
 
-router.post("/", (req, res) => {
-  console.log("Recipe----------: ", req.body)
+router.post("/", (req, res, next) => {
+  // console.log("Recipe----------: ", req.body)
+  let ingredientIdArr = [];
   //1) Check if I have ingredient in database
   //2) if ingredient exists in database, then take id of ingredient
   //3) if 2. is true, then save the recipe and push the ingredient id into ingredients array
   //2a) if ingredient does NOT exist in the DB, save the new ingredient in the ingredients collection, get the id of the newly created ingredient, and proceed to step 3a, which is:
   //3a) Create a new recipe and push the id of the newly created ingredient into ingredients array
-  req.body.extendedIngredients
-  Recipe.create(req.body)
-    .then((recipeToDb) => {
-      console.log("Recipe:",recipeToDb)
-      res.status(200).json({ recipe: recipeToDb });
+  req.body.ingredients.forEach((ingredient, i) => {
+    Ingredient.findOne({ name: ingredient.name }).then((ingredientFromDb) => {
+
+      if (ingredientFromDb !== null) {
+
+      }
+      Ingredient.create(ingredient)
+      .then(ingredientFromDb => {
+        ingredientIdArr.push(ingredientFromDb._id)
+        // next();
+      })
+      .catch(err => console.log(err));
     })
-    .catch((err) => res.json({ errorMessage: err }));
+    
+    if(i === req.body.ingredients.length - 1) {
+          checkRecipe();
+        }
+  }
+  //if condition goes here
+  )
+  function checkRecipe(){
+      console.log(ingredientIdArr.length,"====", req.body.ingredients.length);
+      Recipe.findOne({ spoonacularId: req.body.spoonacularId })
+      .then((recipeFromDb) => {
+        console.log("Recipe from DB:", recipeFromDb);
+        // '!!' returns a truthy or falsy value based on contents of variable
+        if (recipeFromDb !== null){
+          res.json(recipeFromDb)
+        } else {
+          Recipe.create({ ...req.body, ingredients: ingredientIdArr})
+            .then((recipeToDb) => {
+              console.log("Recipe:",recipeToDb)
+              res.status(200).json({ recipe: recipeToDb });
+            })
+            .catch(err => console.log(err));
+            // .catch((err) => res.json({ errorMessage: err }));
+        }
+      }).catch(err => console.log(err));
+    }
 });
 
 router.get("/:id", (req, res) => {
