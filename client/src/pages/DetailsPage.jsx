@@ -1,24 +1,44 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import RecipeDetails from "../components/RecipeDetails/RecipeDetails";
 import apiService from "../services/apiService";
+<<<<<<< HEAD
+import axios from "axios";
+=======
 import service from "../services/service";
+>>>>>>> 80e1c11584f38015cc98bbee9a5e68eb4c2d85db
 
 export default class DetailsPage extends Component {
-    state={
-        recipe: null
-    }
+  state = {
+    recipe: null,
+    currentPage: 1,
+    pageSize: 4,
+  };
 
-    componentDidMount(){
-        apiService.getRecipeDetailsFromApi(this.props).then(recipeFromApi => {
-            // console.log(recipeFromApi.data)
-            this.setState({
-                recipe: recipeFromApi.data,
-            })
-        })
+  componentDidMount() {
+    apiService.getRecipeDetailsFromApi(this.props).then((recipeFromApi) => {
+      // console.log(recipeFromApi.data)
+      this.setState({
+        recipe: recipeFromApi.data,
+      });
+    });
+  }
 
-    }
+  handleRecipeSelect = (recipe) => {
+    this.setState({ selectedRecipe: recipe, currentPage: 1 });
+  };
 
+<<<<<<< HEAD
+  render() {
+    // console.log(this.state?.recipe)
+    return (
+      <div>
+        <br />
+        <RecipeDetails recipe={this.state.recipe} />
+      </div>
+    );
+  }
+=======
     saveRecipeToDb(recipe){
         // console.log("look here--------------", recipe)
         const recipeData = {
@@ -61,4 +81,5 @@ export default class DetailsPage extends Component {
             </div>
         )
     }
+>>>>>>> 80e1c11584f38015cc98bbee9a5e68eb4c2d85db
 }

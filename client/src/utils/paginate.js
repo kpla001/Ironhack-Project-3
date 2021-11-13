@@ -7,3 +7,4 @@ export function paginate(items, pageNumber, pageSize) {
 
 //_.slice(items, startIndex)
 // TESTING PAGINATION ///
+//Lodash wrapper
