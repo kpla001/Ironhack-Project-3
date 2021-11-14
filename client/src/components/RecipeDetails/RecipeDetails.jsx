@@ -6,7 +6,11 @@ export default function RecipeDetails({ recipe }) {
     return (
         <div className="recipeDetails">
                 <h1>{recipe?.title}</h1>
-                <img src={recipe?.image} alt='icon' className="recipeDetailsImage"/>
+                <img 
+                src={recipe?.image} 
+                alt='icon' 
+                className="recipeDetailsImage"
+                />
                 <br/>
             <div className="recipeDetailsCard">
             <div className="recipeDetailsIngredients">
