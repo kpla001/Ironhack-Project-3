@@ -13,12 +13,14 @@ export default class DetailsPage extends Component {
   };
 
   componentDidMount() {
-    apiService.getRecipeDetailsFromApi(this.props).then((recipeFromApi) => {
+    apiService.getRecipeDetailsFromApi(this.props)
+    .then((recipeFromApi) => {
       // console.log(recipeFromApi.data)
       this.setState({
         recipe: recipeFromApi.data,
       });
-    });
+    })
+    .catch((error) => {console.error(error)});
   }
 
   handleRecipeSelect = (recipe) => {
@@ -51,7 +53,14 @@ export default class DetailsPage extends Component {
       vegetarian: recipe.vegetarian,
     };
     console.log({ recipeData });
-    service.postRecipeToDb(recipeData);
+    service.postRecipeToDb(recipeData)
+    // .then((data) => {
+    //   return (
+    //     <div className="savedBanner">
+    //       {`${data.name} saved to profile`}
+    //     </div>
+    //   )
+    // });
   }
 
   render() {
@@ -63,7 +72,7 @@ export default class DetailsPage extends Component {
         <RecipeDetails recipe={this.state.recipe} />
         {this.props.user && (
           <button onClick={() => this.saveRecipeToDb(this.state.recipe)}>
-            Save Recipe
+            {<b>Save Recipe</b>}
           </button>
         )}
       </div>

@@ -39,7 +39,8 @@ router.post("/", (req, res, next) => {
         // .populate('cookbooks')
         .then(updatedUserWithCookBook => {
           console.log("Line 41 ----------------", updatedUserWithCookBook)
-          User.findById(updatedUserWithCookBook._id).populate({ path: "cookbooks", model: "CookBook" }).then(populatedObject => {
+          User.findById(updatedUserWithCookBook._id).populate({ path: "cookbooks", model: "CookBook" })
+          .then(populatedObject => {
             res.status(200).json({ cookbooks: populatedObject });
           })
         })
