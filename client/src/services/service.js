@@ -13,7 +13,8 @@ const service = {
   getCookbookList: () =>
     instance.get("/cookbooks").then((response) => response.data),
 
-  getUserCookBooks: () => instance.get("").then((response) => response.data),
+  getUserCookBooksById: (userId) =>
+    instance.get(`/users/${userId}`).then((response) => response.data),
   /// POST Routes ///
   postRecipeToDb: (recipe) => instance.post("/recipes", recipe),
 };

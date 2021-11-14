@@ -38,10 +38,11 @@ export default class Profile extends Component {
   }
 
   render() {
+    // console.log(this.props.user);
     return (
       <div>
         <main className="container">
-          <UserCookbooks />
+          <UserCookbooks user={this.props.user} />
           <button onClick={this.saveCookBookToDb(this.state.cookbook)}>
             {console.log(this.state)}
             Make a Cookbook
