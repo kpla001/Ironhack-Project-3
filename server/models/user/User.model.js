@@ -8,7 +8,7 @@ const userSchema = new Schema(
       // unique: true -> Ideally, should be unique, but its up to you
     },
     password: String,
-    cookbook: [{ type: Schema.Types.ObjectId, ref: "Cookbook" }],
+    cookbooks: [{ type: Schema.Types.ObjectId, ref: "CookBook" }],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
@@ -16,6 +16,8 @@ const userSchema = new Schema(
   }
 );
 
+
+userSchema.plugin(require("mongoose-autopopulate"));
 const User = model("User", userSchema);
 
 module.exports = User;

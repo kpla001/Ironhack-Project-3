@@ -23,6 +23,8 @@ const cookBookSchema = new Schema({
   description: String,
 });
 
-const Cookbook = model("CookBook", cookBookSchema);
+cookBookSchema.plugin(require("mongoose-autopopulate"));
 
-module.exports = Cookbook;
+const CookBook = model("CookBook", cookBookSchema);
+
+module.exports = CookBook;

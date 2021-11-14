@@ -1,11 +1,10 @@
 const router = require("express").Router();
-const CookBook = require("../models/cookbook/CookBook");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
-const Ingredient = require("../models/ingredient/Ingredient");
+const CookBook = require("../models/cookbook/CookBook");
+const User = require("../models/user/User.model");
 const Recipe = require("../models/recipe/Recipe");
-const Cookbook = require("../models/cookbook/CookBook");
-// const Recipe = require("../models/Recipe.model");
+const mongoose = require('mongoose');
 
 router.get(
   "/",
@@ -26,54 +25,39 @@ router.get(
 );
 
 router.post("/", (req, res, next) => {
-  let cookbookIdArr = [];
-
-  req.body.cookbook.forEach((cookbook, i) => {
-    Cookbook.findOne({ name: cookbook.name }).then((cookbookFromDb) => {
-      if (cookbookFromDb !== null) {
-      }
-      Cookbook.create(cookbook)
-        .then((cookbookFromDb) => {
-          cookbookIdArr.push(cookbookFromDb._id);
+  // console.log("Req Body: ", req.body)
+  CookBook.create(req.body)
+    .then((cookbookFromDb) => {
+      console.log("Line 32 ----------------", cookbookFromDb);
+      CookBook.findByIdAndUpdate(cookbookFromDb._id,
+        cookbookFromDb._id ? null : { $push: { recipes: req.body.recipes } } , {new:true},
+      )
+      .then(updatedCookBookWithRecipes => {
+        console.log("Line 36 ----------------", updatedCookBookWithRecipes)
+        const preparedAuthorId = mongoose.Types.ObjectId(req.body.author);
+        User.findByIdAndUpdate(preparedAuthorId , { $push: { cookbooks: updatedCookBookWithRecipes._id} } , {new: true})
+        // .populate('cookbooks')
+        .then(updatedUserWithCookBook => {
+          console.log("Line 41 ----------------", updatedUserWithCookBook)
+          User.findById(updatedUserWithCookBook._id).populate({ path: "cookbooks", model: "CookBook" }).then(populatedObject => {
+            res.status(200).json({ cookbooks: populatedObject });
+          })
         })
-        .catch((err) => console.log(err));
-    });
-    if (i === req.body.cookbook.length - 1) {
-      checkCookbook();
-    }
-  });
-
-  function checkCookbook() {
-    Cookbook.findOne({ spoonacularId: req.body.spoonacularId }).then(
-      (cookbookFromDb) => {
-        if (cookbookFromDb !== null) {
-          res.json(cookbookFromDb);
-        } else {
-          Cookbook.create({ ...req.body, cookbook: cookbookIdArr })
-            .then((cookbookToDb) => {
-              res.status(200).json({ cookbook: cookbookToDb });
-            })
-            .catch((err) => {
-              console.error(err);
-            });
-        }
-      }
-    );
-  }
-
-  Cookbook.create(req.body)
-    .then((cookbookToDb) => res.status(200).json({ cookbook: cookbookToDb }))
+      })
+    
+      .catch((err) => res.json({ errorMessage: err }));
+    })
     .catch((err) => res.json({ errorMessage: err }));
 });
 
 router.get("/:id", (req, res, next) => {
-  Cookbook.findById(req.params.id)
+  CookBook.findById(req.params.id)
     .then((cookbookToDb) => res.status(200).json({ cookbook: cookbookToDb }))
     .catch((err) => res.json({ errorMessage: err }));
 });
 
 router.post("/:id", (req, res, next) => {
-  Cookbook.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  CookBook.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((cookbookToUpdate) =>
       res.status(200).json({ cookbook: cookbookToUpdate })
     )
@@ -81,7 +65,7 @@ router.post("/:id", (req, res, next) => {
 });
 
 router.delete("/:id", (req, res, next) => {
-  Cookbook.findByIdAndDelete(req.params.id)
+  CookBook.findByIdAndDelete(req.params.id)
     .then(() => res.status(200).json({ success: true }))
     .catch((err) => res.json({ errorMessage: err }));
 });
