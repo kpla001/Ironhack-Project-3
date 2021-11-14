@@ -64,6 +64,7 @@ router.post("/", (req, res, next) => {
         } else {
           console.log("ingredientIdArr: ", ingredientIdArr)
           Recipe.create({ ...req.body, ingredients: ingredientIdArr})
+            .populate('ingredients')
             .then((recipeToDb) => {
               // console.log("Recipe:",recipeToDb)
               res.status(200).json({ recipe: recipeToDb });

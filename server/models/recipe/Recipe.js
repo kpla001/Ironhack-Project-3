@@ -22,4 +22,6 @@ const recipeSchema = new Schema({
 
 });
 
+recipeSchema.plugin(require("mongoose-autopopulate"));
+
 module.exports = model("Recipe", recipeSchema);
