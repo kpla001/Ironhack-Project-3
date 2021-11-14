@@ -7,8 +7,8 @@ const Pagination = ({ itemsCount, pageSize, currentPage, onPageChange }) => {
   console.log(currentPage);
 
   if (pagesCount === 1) return null;
-  // console.log(pagesCount);
-  const pages = _.range(1, pagesCount + 1);
+  console.log(pagesCount);
+  const pages = _.range(1, pagesCount + 1); //adding +1 makes sure last page is included
 
   return (
     <nav>
