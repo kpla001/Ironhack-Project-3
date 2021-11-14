@@ -41,7 +41,7 @@ router.post("/", (req, res, next) => {
           if(ingredientIdArr.length === req.body.ingredients.length) {
             checkRecipe()
           }
-          // next();
+          
         })
         .catch(err => console.log(err));
       }
@@ -68,7 +68,7 @@ router.post("/", (req, res, next) => {
           Recipe.create({ ...req.body, ingredients: ingredientIdArr})
             .then((recipeToDb) => {
               // console.log("Recipe:",recipeToDb)
-              Recipe.findById(recipeToDb._id).populate({ path: "ingredients", model: "Ingredient" })
+              Recipe.findById(preparedRecipeId).populate({ path: "ingredients", model: "Ingredient" })
               .then(populatedObject => {
                 res.status(200).json({ recipe: populatedObject });
               })

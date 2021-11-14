@@ -7,6 +7,7 @@ import service from "../services/service";
 
 export default class DetailsPage extends Component {
   state = {
+    user: this.props.user,
     recipe: null,
     currentPage: 1,
     pageSize: 4,
@@ -27,7 +28,7 @@ export default class DetailsPage extends Component {
     this.setState({ selectedRecipe: recipe, currentPage: 1 });
   };
 
-  saveRecipeToDb(recipe) {
+  saveRecipe(recipe) {
     // console.log("look here--------------", recipe)
     const recipeData = {
       // ...recipe,
@@ -52,8 +53,52 @@ export default class DetailsPage extends Component {
       vegan: recipe.vegan,
       vegetarian: recipe.vegetarian,
     };
+
     console.log({ recipeData });
-    service.postRecipeToDb(recipeData)
+    
+    
+    service.saveRecipe(recipeData)
+    // .then((data) => {
+    //   return (
+    //     <div className="savedBanner">
+    //       {`${data.name} saved to profile`}
+    //     </div>
+    //   )
+    // });
+  }
+
+  saveRecipeToCookBook(recipe) {
+    // console.log("look here--------------", recipe)
+    const recipeData = {
+      // ...recipe,
+      name: recipe.title,
+      spoonacularId: recipe.id,
+      ingredients: recipe.extendedIngredients.map((ingredient) => {
+        return {
+          name: ingredient.name,
+          spoonacularId: `${ingredient.id ? ingredient.id : Date.now()}`,
+          image: ingredient.image,
+        };
+      }),
+      directions: recipe.analyzedInstructions,
+      image: recipe.image,
+      calories: recipe.nutrition.nutrients[0].amount,
+      cuisines: recipe.cuisines,
+      dairyFree: recipe.dairyFree,
+      dishTypes: recipe.dishTypes,
+      glutenFree: recipe.glutenFree,
+      readyInMinutes: recipe.readyInMinutes,
+      servings: recipe.servings,
+      vegan: recipe.vegan,
+      vegetarian: recipe.vegetarian,
+    };
+
+    // console.log({ recipeData });
+
+
+    
+    
+    service.saveRecipeToCookBook(recipeData)
     // .then((data) => {
     //   return (
     //     <div className="savedBanner">
@@ -66,13 +111,19 @@ export default class DetailsPage extends Component {
   render() {
     // console.log(this.state?.recipe)
     // console.log("props:",this.props)
+    console.log(this.state.user)
     return (
       <div className="detailsPage">
         <br />
         <RecipeDetails recipe={this.state.recipe} />
         {this.props.user && (
-          <button onClick={() => this.saveRecipeToDb(this.state.recipe)}>
+          <button onClick={() => this.saveRecipe(this.state.recipe)}>
             {<b>Save Recipe</b>}
+          </button>
+        )}
+        {this.props.user && (
+          <button onClick={() => this.saveRecipeToCookBook(this.state.recipe)}>
+            {<b>Save Recipe to CookBook</b>}
           </button>
         )}
       </div>
