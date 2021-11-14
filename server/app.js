@@ -21,6 +21,7 @@ app.use("/api", allRoutes);
 app.use("/api/cookbooks", require("./routes/cookBook.routes.js"));
 app.use("/api/ingredients", require("./routes/ingredient.routes.js"));
 app.use("/api/recipes", require("./routes/recipe.routes.js"));
+app.use("/api/users", require("./routes/user.routes.js"));
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
