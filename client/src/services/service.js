@@ -12,10 +12,10 @@ const service = {
     instance.get("/recipes").then((response) => response.data),
   getCookbookList: () =>
     instance.get("/cookbooks").then((response) => response.data),
+
+  getUserCookBooks: () => instance.get("").then((response) => response.data),
   /// POST Routes ///
   postRecipeToDb: (recipe) => instance.post("/recipes", recipe),
-  
-  
 };
 
 export default service;

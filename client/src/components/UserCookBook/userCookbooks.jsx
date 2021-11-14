@@ -2,22 +2,27 @@ import React, { Component } from "react";
 import UserTable from "./userTable";
 import ListGroup from "../common/listGroup";
 import Pagination from "../common/pagination";
-import { getCookbooks } from "../../services/fakeCookbookService.js";
-import { getRecipes } from "../../services/fakeRecipeService";
+// import { getCookbooks } from "../../services/fakeCookbookService.js";
+// import { getRecipes } from "../../services/fakeRecipeService";
+import service from "../../services/service";
 import { paginate } from "../../utils/paginate";
 import _ from "lodash";
 
 class UserCookbooks extends React.Component {
   state = {
+    ingredients: [],
     cookbooks: [],
     recipes: [],
-    currentPage: 1,
-    pageSize: 4,
+
+    // currentPage: 1,
+    // pageSize: 4,
     // sortColumn: { path: "title,", order: "asc" },
   };
 
   componentDidMount() {
-    this.setState({ cookbooks: getCookbooks(), recipes: getRecipes() });
+    service.getCookbookList().then((data) => {
+      this.setState({ cookbooks: data.cookbooks });
+    });
 
     // const recipes = [{ _id: "", name: "All My Resepez" }, ...getRecipes()];
 
