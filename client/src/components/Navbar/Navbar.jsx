@@ -8,7 +8,7 @@ import logo from "../../images/recipezLogo.png";
 const Navbar = (props) => {
   return (
     <nav>
-      <Link to={PATHS.HOMEPAGE} className="nav__projectName">
+      <Link to={PATHS.HOMEPAGE} className="nav__projectName authLink">
         <img 
         src={logo} 
         alt="logo" 
@@ -22,6 +22,7 @@ const Navbar = (props) => {
           borderLeft: "10px solid ",
           borderTop: "10px solid ",
           borderBottom: "10px solid ",
+          transform: "none",
         }}
         />
       </Link>

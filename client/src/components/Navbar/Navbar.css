@@ -10,12 +10,11 @@ nav {
 }
 
 .nav__projectName {
-  color: #e4f9ff;
   text-decoration: none;
 }
 
 .authLink {
-  color: #ffffff;
+  color: #ffffffc7;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
