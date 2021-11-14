@@ -28,8 +28,20 @@ router.get("/:id", (req, res) => {
     })
     .catch((err) => {
         // console.log(err);
-        res.json({ errorMessage: err });
+        res.status(500).json({ errorMessage: err });
     });
+})
+
+router.get("/:userId/:cookbookId", (req, res) => {
+    User.findById(req.params.userId)
+    .populate('cookbooks')
+    .then(userData => {
+    // console.log("🚀 ~ file: user.routes.js ~ line 39 ~ router.get ~ userData ", userData.cookbooks )
+        res.status(200).json({ cookbooks: userData.cookbooks });
+    })
+    .catch((err) => {
+        res.status(500).json({ errorMessage: err });
+    })
 })
 
 
