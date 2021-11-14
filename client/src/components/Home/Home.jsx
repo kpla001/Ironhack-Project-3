@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import RandomRecipe from "../RandomRecipe/RandomRecipe";
 import apiService from "../../services/apiService";
 
 export default class Home extends Component {
