@@ -51,14 +51,14 @@ div.aside {
   place-self: center;
   width: 20%;
   height: 350px;
-  border: 1px solid rgba(0, 0, 0, 0.418);
+  /* border: 1px solid rgba(0, 0, 0, 0.418); */
   border-radius: 15px;
   padding-bottom: 15px;
   margin: 8px 0 8px 0;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.493);
   font-family: inherit;
   font-weight: inherit;
-  background-color: #e3f2ff;
+  background-color: rgba(255, 255, 255, 0.801);
 }
 
 .randomTitle {

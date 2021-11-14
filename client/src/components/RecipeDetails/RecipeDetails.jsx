@@ -5,7 +5,9 @@ export default function RecipeDetails({ recipe }) {
     // console.log("recipe",recipe)
     return (
         <div className="recipeDetails">
-                <h1>{recipe?.title}</h1>
+                <h1 className="recipeHeader">
+                    {<b>{recipe?.title}</b>}
+                </h1>
                 <img 
                 src={recipe?.image} 
                 alt='icon' 

@@ -1,6 +1,22 @@
 .recipeDetails {
   display: grid;
+  background-image: inherit;
+  background-size: cover;
+  background-repeat: no-repeat;
   /* justify-content: center; */
+}
+
+.recipeHeader {
+  color: #6ca429;
+  background-color: rgb(255, 255, 255);
+  width: 37vw;
+  border-radius: 15px;
+  padding: 0.5rem 0 1rem 0;
+  border: 10px solid beige;
+  text-align: center;
+  justify-self: center;
+  margin: 0;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.356);
 }
 
 .recipeDetailsCard {
@@ -18,13 +34,14 @@
 }
 
 .recipeDetailsImage {
-  border-right: 150px solid rgba(255, 255, 255, 0.534);
-  border-left: 150px solid rgba(255, 255, 255, 0.534);
-  border-top: 35px solid rgba(255, 255, 255, 0.534);
-  border-bottom: 35px solid rgba(255, 255, 255, 0.534);
-  border-radius: 40px;
+  border-right: 50px solid rgba(255, 255, 255, 0.397);
+  border-left: 50px solid rgba(255, 255, 255, 0.397);
+  border-top: 30px solid rgba(255, 255, 255, 0.397);
+  border-bottom: 50px solid rgba(255, 255, 255, 0.397);
+  border-radius: 20px;
   max-width: 60vw;
   place-self: center;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.356);
 }
 
 .recipeDetailsIngredients {
