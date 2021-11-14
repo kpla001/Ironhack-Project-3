@@ -27,7 +27,7 @@ class App extends React.Component {
     if (!accessToken) {
       return this.setState({
         isLoading: false,
-      });
+      });    
     }
     getLoggedIn(accessToken).then((res) => {
       if (!res.status) {
@@ -83,7 +83,7 @@ class App extends React.Component {
     if (this.state.isLoading) {
       return <LoadingComponent />;
     }
-
+    console.log(this.state.user)
     return (
       <div className="App">
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />

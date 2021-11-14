@@ -8,14 +8,23 @@ import logo from "../../images/recipezLogo.png";
 const Navbar = (props) => {
   return (
     <nav>
-      <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-        <img src={logo} alt="logo" 
+      <Link to={PATHS.HOMEPAGE} className="nav__projectName authLink">
+        <img 
+        src={logo} 
+        alt="logo" 
         style={{
-          width: `${1072 / 5}px`, 
-          height: `${465 / 5}px`, 
-          backgroundColor: "beige", 
+          width: `${1072 / 6}px`, 
+          height: `${465 / 6}px`, 
+          backgroundColor: "#fff",
+          border: "10px solid #dededeb6", 
           borderRadius: "50%",
-        }}></img>
+          borderRight: "12px solid ",
+          borderLeft: "10px solid ",
+          borderTop: "10px solid ",
+          borderBottom: "10px solid ",
+          transform: "none",
+        }}
+        />
       </Link>
 
       <div className="nav__authLinks">
