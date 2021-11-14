@@ -17,11 +17,11 @@ const Navbar = (props) => {
           height: `${465 / 6}px`, 
           backgroundColor: "#fff",
           border: "10px solid #dededeb6", 
-          borderRadius: "50%",
-          borderRight: "12px solid ",
-          borderLeft: "10px solid ",
-          borderTop: "10px solid ",
-          borderBottom: "10px solid ",
+          borderRadius: "100%",
+          borderRight: "12px solid #dededeb6",
+          borderLeft: "10px solid #dededeb6",
+          borderTop: "10px solid #dededeb6",
+          borderBottom: "10px solid #dededeb6",
           transform: "none",
         }}
         />
