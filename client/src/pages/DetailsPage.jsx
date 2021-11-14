@@ -24,46 +24,48 @@ export default class DetailsPage extends Component {
     this.setState({ selectedRecipe: recipe, currentPage: 1 });
   };
 
-    saveRecipeToDb(recipe){
-        // console.log("look here--------------", recipe)
-        const recipeData = {
-            // ...recipe,
-            name: recipe.title,
-            spoonacularId: recipe.id,
-            ingredients: recipe.extendedIngredients.map((ingredient) => {
-                return { 
-                    name: ingredient.name,
-                    spoonacularId: `${ingredient.id ? ingredient.id : Date.now()}`,
-                    image: ingredient.image,
-                }
-            }),
-            directions: recipe.analyzedInstructions,
-            image: recipe.image,
-            calories: recipe.nutrition.nutrients[0].amount,
-            cuisines: recipe.cuisines,
-            dairyFree: recipe.dairyFree,
-            dishTypes: recipe.dishTypes,
-            glutenFree: recipe.glutenFree,
-            readyInMinutes: recipe.readyInMinutes,
-            servings: recipe.servings,
-            vegan: recipe.vegan,
-            vegetarian: recipe.vegetarian,
+  saveRecipeToDb(recipe) {
+    // console.log("look here--------------", recipe)
+    const recipeData = {
+      // ...recipe,
+      name: recipe.title,
+      spoonacularId: recipe.id,
+      ingredients: recipe.extendedIngredients.map((ingredient) => {
+        return {
+          name: ingredient.name,
+          spoonacularId: `${ingredient.id ? ingredient.id : Date.now()}`,
+          image: ingredient.image,
+        };
+      }),
+      directions: recipe.analyzedInstructions,
+      image: recipe.image,
+      calories: recipe.nutrition.nutrients[0].amount,
+      cuisines: recipe.cuisines,
+      dairyFree: recipe.dairyFree,
+      dishTypes: recipe.dishTypes,
+      glutenFree: recipe.glutenFree,
+      readyInMinutes: recipe.readyInMinutes,
+      servings: recipe.servings,
+      vegan: recipe.vegan,
+      vegetarian: recipe.vegetarian,
+    };
+    console.log({ recipeData });
+    service.postRecipeToDb(recipeData);
+  }
 
-        }
-        console.log({recipeData});
-        service.postRecipeToDb(recipeData)
-
-    }
-
-    render() {
-        // console.log(this.state?.recipe)
-        // console.log("props:",this.props)
-        return (
-            <div>
-                <br/>
-                <RecipeDetails recipe={this.state.recipe} />
-                {this.props.user && <button onClick={() => this.saveRecipeToDb(this.state.recipe)}>Save Recipe</button>}
-            </div>
-        )
-    }
+  render() {
+    // console.log(this.state?.recipe)
+    // console.log("props:",this.props)
+    return (
+      <div>
+        <br />
+        <RecipeDetails recipe={this.state.recipe} />
+        {this.props.user && (
+          <button onClick={() => this.saveRecipeToDb(this.state.recipe)}>
+            Save Recipe
+          </button>
+        )}
+      </div>
+    );
+  }
 }
