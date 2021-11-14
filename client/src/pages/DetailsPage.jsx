@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./auth.css";
 import { Link } from "react-router-dom";
 import RecipeDetails from "../components/RecipeDetails/RecipeDetails";
 import apiService from "../services/apiService";
@@ -57,7 +58,7 @@ export default class DetailsPage extends Component {
     // console.log(this.state?.recipe)
     // console.log("props:",this.props)
     return (
-      <div>
+      <div className="detailsPage">
         <br />
         <RecipeDetails recipe={this.state.recipe} />
         {this.props.user && (
