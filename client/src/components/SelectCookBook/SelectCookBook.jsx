@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import SelectCookBookForm from "./SelectCookBookForm";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './SelectCookBook.css';
-import service from '../../services/service'
+import service from '../../services/service';
 
 export default function ChooseCookBook({ user, saveRecipe, recipe }) {
     const [show, setShow] = useState(false);
@@ -23,7 +24,7 @@ export default function ChooseCookBook({ user, saveRecipe, recipe }) {
 
 
 
-
+    // console.log(userCookBookData)
     return (
         <>
             <Button variant="primary" onClick={() => { handleShow(); getCookBookData(user._id)} }>
@@ -38,16 +39,7 @@ export default function ChooseCookBook({ user, saveRecipe, recipe }) {
             </Modal.Header>
 
             <Modal.Body>
-            <select id="cookBooks" name="cookBookList">
-                {!!userCookBookData && userCookBookData.map((cookBook) => (
-                    <option 
-                    key={cookBook?._id} 
-                    value={cookBook?._id}
-                    >
-                        {`${cookBook?.title}`}
-                    </option> 
-                ))}
-            </select>
+                <SelectCookBookForm userCookBookData={userCookBookData} />
             </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
