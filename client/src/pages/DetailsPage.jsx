@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./auth.css";
 import { Link } from "react-router-dom";
 import RecipeDetails from "../components/RecipeDetails/RecipeDetails";
+import SelectCookBook from "../components/SelectCookBook/SelectCookBook";
 import apiService from "../services/apiService";
 import service from "../services/service";
 
@@ -28,46 +29,7 @@ export default class DetailsPage extends Component {
     this.setState({ selectedRecipe: recipe, currentPage: 1 });
   };
 
-  saveRecipe(recipe) {
-    // console.log("look here--------------", recipe)
-    const recipeData = {
-      // ...recipe,
-      name: recipe.title,
-      spoonacularId: recipe.id,
-      ingredients: recipe.extendedIngredients.map((ingredient) => {
-        return {
-          name: ingredient.name,
-          spoonacularId: `${ingredient.id ? ingredient.id : Date.now()}`,
-          image: ingredient.image,
-        };
-      }),
-      directions: recipe.analyzedInstructions,
-      image: recipe.image,
-      calories: recipe.nutrition.nutrients[0].amount,
-      cuisines: recipe.cuisines,
-      dairyFree: recipe.dairyFree,
-      dishTypes: recipe.dishTypes,
-      glutenFree: recipe.glutenFree,
-      readyInMinutes: recipe.readyInMinutes,
-      servings: recipe.servings,
-      vegan: recipe.vegan,
-      vegetarian: recipe.vegetarian,
-    };
-
-    console.log({ recipeData });
-    
-    
-    service.saveRecipe(recipeData)
-    // .then((data) => {
-    //   return (
-    //     <div className="savedBanner">
-    //       {`${data.name} saved to profile`}
-    //     </div>
-    //   )
-    // });
-  }
-
-  saveRecipeToCookBook(recipe, cookbookId) {
+  saveRecipe(recipe, cookbookId) {
     // console.log("look here--------------", recipe)
     const recipeData = {
       // ...recipe,
@@ -94,14 +56,31 @@ export default class DetailsPage extends Component {
     };
 
     // console.log({ recipeData });
+    
+    
+    service.saveRecipe(recipeData)
 
+    this.saveRecipeToCookBook(recipeData, cookbookId)
+
+    // .then((data) => {
+    //   return (
+    //     <div className="savedBanner">
+    //       {`${data.name} saved to profile`}
+    //     </div>
+    //   )
+    // });
+  }
+
+  saveRecipeToCookBook(recipe, cookbookId) {
+    // console.log("look here--------------", recipe)
+    const recipeData = recipe;
     const userData = this.state.user;
-    const { _id } = userData;
+    const userId = userData._id;
 
-    // console.log(_id, cookbooks);
+  
     
     
-    service.saveRecipeToCookBook(recipeData, _id, cookbookId);
+    service.saveRecipeToCookBook(recipeData, userId, cookbookId);
 
     // .then((data) => {
     //   return (
@@ -115,16 +94,17 @@ export default class DetailsPage extends Component {
   render() {
     // console.log(this.state?.recipe)
     // console.log("props:",this.props)
-    console.log(this.state.user)
+    // console.log(this.state.user)
     return (
       <div className="detailsPage">
         <br />
         <RecipeDetails recipe={this.state.recipe} />
-        {this.props.user && (
+        <SelectCookBook userCookbooks={this.state.user.cookbooks}/>
+        {/* {this.props.user && (
           <button onClick={() => this.saveRecipe(this.state.recipe)}>
             {<b>Save Recipe</b>}
           </button>
-        )}
+        )} */}
         {this.props.user && (
           <button onClick={() => this.saveRecipeToCookBook(this.state.recipe)}>
             {<b>Save Recipe to CookBook</b>}
