@@ -67,7 +67,7 @@ export default class DetailsPage extends Component {
     // });
   }
 
-  saveRecipeToCookBook(recipe) {
+  saveRecipeToCookBook(recipe, cookbookId) {
     // console.log("look here--------------", recipe)
     const recipeData = {
       // ...recipe,
@@ -95,10 +95,14 @@ export default class DetailsPage extends Component {
 
     // console.log({ recipeData });
 
+    const userData = this.state.user;
+    const { _id } = userData;
 
+    // console.log(_id, cookbooks);
     
     
-    service.saveRecipeToCookBook(recipeData)
+    service.saveRecipeToCookBook(recipeData, _id, cookbookId);
+
     // .then((data) => {
     //   return (
     //     <div className="savedBanner">

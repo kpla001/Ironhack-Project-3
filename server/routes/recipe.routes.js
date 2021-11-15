@@ -68,7 +68,8 @@ router.post("/", (req, res, next) => {
           Recipe.create({ ...req.body, ingredients: ingredientIdArr})
             .then((recipeToDb) => {
               // console.log("Recipe:",recipeToDb)
-              Recipe.findById(preparedRecipeId).populate({ path: "ingredients", model: "Ingredient" })
+              Recipe.findById(preparedRecipeId)
+              .populate({ path: "ingredients", model: "Ingredient" })
               .then(populatedObject => {
                 res.status(200).json({ recipe: populatedObject });
               })
