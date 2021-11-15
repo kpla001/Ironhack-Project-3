@@ -20,11 +20,12 @@ router.get("/", (req, res) => {
     });
 })
 
-router.get("/:id", (req, res) => {
-    User.findById(req.params.id)
+router.get("/:userId", (req, res) => {
+    const preparedUserId = mongoose.Types.ObjectId(req.params.userId);
+    User.findById(preparedUserId)
     .populate('cookbooks')
     .then(userData => {
-        // console.log(userData)
+        // console.log("userData----------", userData)
         res.status(200).json({ user: userData });
     })
     .catch((err) => {

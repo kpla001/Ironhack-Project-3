@@ -99,7 +99,15 @@ export default class DetailsPage extends Component {
       <div className="detailsPage">
         <br />
         <RecipeDetails recipe={this.state.recipe} />
-        <SelectCookBook userCookbooks={this.state.user.cookbooks}/>
+
+        {this.props.user && (
+          <SelectCookBook 
+          user={this.state.user} 
+          saveRecipe={this.saveRecipe} 
+          recipe={this.state.recipe}
+          />
+        )}
+
         {/* {this.props.user && (
           <button onClick={() => this.saveRecipe(this.state.recipe)}>
             {<b>Save Recipe</b>}
