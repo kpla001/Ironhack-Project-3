@@ -67,10 +67,10 @@ router.post("/:userId/:cookbookId", (req, res) => {
             .then(updatedCookBook => {
                 res.status(200).json({ updatedCookBook })
             })
-            
+            .catch((err) => res.status(500).json({ errorMessage: err }))
         })
         .catch((err) => res.status(500).json({ errorMessage: err }))
-       
+
     })
     .catch((err) => res.status(500).json({ errorMessage: err }))
 })
