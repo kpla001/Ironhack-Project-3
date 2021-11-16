@@ -7,9 +7,9 @@ import service from '../../services/service';
 
 export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
     const [show, setShow] = useState(false);
-    const [userCookBookData, setUserCookBookData] = useState(null);
+    const [userCookBookData, setUserCookBookData] = useState(user.cookbooks);
 
-    const [selectedCookBook, setSelectedCookBook] = useState(null);
+    const [selectedCookBook, setSelectedCookBook] = useState(user.cookbooks[0]);
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -26,9 +26,9 @@ export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
         setSelectedCookBook(selection)
     }
 
-
-
+    // console.log(user)
     // console.log(selectedCookBook)
+    // setInterval(() => console.log(userCookBookData), 2000)
     return (
         <>
             <Button variant="primary" onClick={() => { handleShow(); getCookBookData(user._id)} }>
