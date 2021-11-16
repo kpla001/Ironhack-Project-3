@@ -5,8 +5,13 @@ export default class SelectCookBookForm extends Component {
         value: this.props.userCookBookData ? this?.props.userCookBookData[0]._id : null,
     }
 
+    componentDidMount(){
+        this.selectionHandler()
+    }
+
+
     onChangeHandler = (event) => {
-        let { name, value } = event.target;
+        let { value } = event.target;
 
         this.setState(
             { 
@@ -14,15 +19,17 @@ export default class SelectCookBookForm extends Component {
             }
             
         );
+
+        this.selectionHandler()
     }
 
-    // selectionHandler = (input) => {
-
-    // }
+    selectionHandler = () => {
+        this.props.selectionHandler(this.state.value)
+    }
 
 
     render() {
-        console.log(this.state.value)
+        console.log(this.props.userCookBookData)
         return (
         <>
             <select id="cookBooks" name="cookBookList" onChange={this.onChangeHandler} value={this.state.value}>

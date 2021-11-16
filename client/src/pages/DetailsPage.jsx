@@ -10,6 +10,8 @@ export default class DetailsPage extends Component {
   state = {
     user: this.props.user,
     recipe: null,
+    selectedRecipe: null,
+    selectedCookBookId: null,
     currentPage: 1,
     pageSize: 4,
   };
@@ -29,7 +31,11 @@ export default class DetailsPage extends Component {
     this.setState({ selectedRecipe: recipe, currentPage: 1 });
   };
 
-  saveRecipe(recipe, cookbookId) {
+  handleCookBookSelect = (cookBookId) => {
+    this.setState({ selectedCookBookId: cookBookId })
+  }
+
+  saveRecipe(recipe, cookbookId, user) {
     // console.log("look here--------------", recipe)
     const recipeData = {
       // ...recipe,
@@ -60,7 +66,7 @@ export default class DetailsPage extends Component {
     
     service.saveRecipe(recipeData)
 
-    this.saveRecipeToCookBook(recipeData, cookbookId)
+    // this.saveRecipeToCookBook(recipeData, cookbookId)
 
     // .then((data) => {
     //   return (
@@ -71,16 +77,13 @@ export default class DetailsPage extends Component {
     // });
   }
 
-  saveRecipeToCookBook(recipe, cookbookId) {
-    // console.log("look here--------------", recipe)
+  saveRecipeToCookBook(recipe, cookBookId, user) {
+    // console.log("look here--------------", {recipe}, {cookBookId}, {user})
+    
     const recipeData = recipe;
-    const userData = this.state.user;
+    const userData = user;
     const userId = userData._id;
-
-  
-    
-    
-    service.saveRecipeToCookBook(recipeData, userId, cookbookId);
+    service.saveRecipeToCookBook(recipeData, userId, cookBookId);
 
     // .then((data) => {
     //   return (
@@ -94,7 +97,7 @@ export default class DetailsPage extends Component {
   render() {
     // console.log(this.state?.recipe)
     // console.log("props:",this.props)
-    // console.log(this.state.user)
+    // console.log(this.props.user)
     return (
       <div className="detailsPage">
         <br />
@@ -103,8 +106,9 @@ export default class DetailsPage extends Component {
         {this.props.user && (
           <SelectCookBook 
           user={this.state.user} 
-          saveRecipe={this.saveRecipe} 
+          saveRecipeToCookBook={this.saveRecipeToCookBook} 
           recipe={this.state.recipe}
+          cookBookSelectionHandler={this.handleCookBookSelect}
           />
         )}
 
@@ -114,8 +118,8 @@ export default class DetailsPage extends Component {
           </button>
         )} */}
         {this.props.user && (
-          <button onClick={() => this.saveRecipeToCookBook(this.state.recipe)}>
-            {<b>Save Recipe to CookBook</b>}
+          <button onClick={() => this.saveRecipe(this.state.recipe)}>
+            {<b>Save Recipe</b>}
           </button>
         )}
       </div>
