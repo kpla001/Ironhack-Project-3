@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 
 export default class SelectCookBookForm extends Component {
     state = {
-        value: '',
+        value: this.props.userCookBookData && this.props.userCookBookData[0]._id,
     }
 
-    componentDidMount(){
-        this.setState({value: this.props.userCookBookData && this.props.userCookBookData[0]._id,})
-    }
+
 
 
     onChangeHandler = (event) => {
@@ -20,16 +18,16 @@ export default class SelectCookBookForm extends Component {
             
         );
 
-        this.selectionHandler()
+        this.selectionHandler(value)
     }
 
-    selectionHandler = () => {
-        this.props.selectionHandler(this.state.value)
+    selectionHandler = (value) => {
+        this.props.selectionHandler(value)
     }
 
 
     render() {
-        console.log(this.state.value)
+        // console.log(this.props.userCookBookData)
         return (
         <>
             <select id="cookBooks" name="cookBookList" onChange={this.onChangeHandler} value={this.state.value}>

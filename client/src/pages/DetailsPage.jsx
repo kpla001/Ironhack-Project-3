@@ -65,15 +65,12 @@ export default class DetailsPage extends Component {
     
     service.saveRecipe(recipeData)
     .then((createdRecipe) => {
-      const recipeDestructureForCookBook ={
+      const recipeDestructureForCookBook = {
         recipes: createdRecipe.data._id
       }
-      setTimeout(() => {service.saveRecipeToCookBook(recipeDestructureForCookBook, cookBookId)}, 2000)
-      
-      // .then(() => {
-      //   service.saveRecipeToUserCookBook(createdRecipe.data._id, user._id, cookBookId)
-      // })
-    }).catch(err => console.log(err))
+      service.saveRecipeToCookBook(recipeDestructureForCookBook, cookBookId)
+    })
+    .catch(err => console.log(err))
 
 
     // .then((data) => {
@@ -88,7 +85,7 @@ export default class DetailsPage extends Component {
   render() {
     // console.log(this.state?.recipe)
     // console.log("props:",this.props)
-    // console.log(this.props.user)
+    // console.log(this.state.user)
     return (
       <div className="detailsPage">
         <br />
