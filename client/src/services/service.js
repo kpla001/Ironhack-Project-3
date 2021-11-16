@@ -30,7 +30,10 @@ const service = {
   saveRecipe: (recipe) => 
     instance.post("/recipes", recipe),
 
-  saveRecipeToCookBook: (recipe, userId, cookbookId) => 
+  saveRecipeToCookBook: (recipe, cookbookId) =>
+  instance.post(`/cookbooks/${cookbookId}`, recipe),
+
+  saveRecipeToUserCookBook: (recipe, userId, cookbookId) => 
     instance.post(`/users/${userId}/${cookbookId}`, recipe),
 };
 

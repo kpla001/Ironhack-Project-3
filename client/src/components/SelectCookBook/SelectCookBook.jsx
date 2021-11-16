@@ -32,7 +32,7 @@ export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
     return (
         <>
             <Button variant="primary" onClick={() => { handleShow(); getCookBookData(user._id)} }>
-                Modal
+                <b>Save Recipe to CookBook</b>
             </Button>
     
             <Modal show={show} onHide={handleClose}>

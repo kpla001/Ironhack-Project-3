@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 
 export default class SelectCookBookForm extends Component {
     state = {
-        value: this.props.userCookBookData ? this?.props.userCookBookData[0]._id : null,
+        value: '',
     }
 
     componentDidMount(){
-        this.selectionHandler()
+        this.setState({value: this.props.userCookBookData && this.props.userCookBookData[0]._id,})
     }
 
 
@@ -29,7 +29,7 @@ export default class SelectCookBookForm extends Component {
 
 
     render() {
-        console.log(this.props.userCookBookData)
+        console.log(this.state.value)
         return (
         <>
             <select id="cookBooks" name="cookBookList" onChange={this.onChangeHandler} value={this.state.value}>

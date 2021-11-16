@@ -29,7 +29,7 @@ router.post("/", (req, res, next) => {
   CookBook.create(req.body)
     .then((cookbookFromDb) => {
       console.log("Line 32 ----------------", cookbookFromDb);
-
+      
       CookBook.findByIdAndUpdate(
         cookbookFromDb._id,
         cookbookFromDb._id ? null : { $push: { recipes: req.body.recipes } },
@@ -70,6 +70,7 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/:id", (req, res, next) => {
+  console.log(req.body)
   CookBook.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((cookbookToUpdate) =>
       res.status(200).json({ cookbook: cookbookToUpdate })
