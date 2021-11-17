@@ -18,18 +18,21 @@ class UserTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {cookbooks.map((book) => (
-            <tr key={book._id}>
-              <td>{book.title}</td>
-              <td>{book.recipe.name}</td>
-              <td>{book.numberInStock}</td>
-              <td>{book.dailyRentalRate}</td>
+          {cookbooks.map((cookbooks) => (
+            <tr key={cookbooks._id}>
+              <td>{cookbooks.title}</td>
+              <td>{cookbooks.recipe.name}</td>
+              <td>{cookbooks.numberInStock}</td>
+              <td>{cookbooks.dailyRentalRate}</td>
               <td>
-                <Like liked={book.liked} onClick={() => onLike(book)} />
+                <Like
+                  liked={cookbooks.liked}
+                  onClick={() => onLike(cookbooks)}
+                />
               </td>
               <td>
                 <button
-                  onClick={() => onDelete(book)}
+                  onClick={() => onDelete(cookbooks)}
                   className="btn btn-danger btn-sm"
                 >
                   Delete
