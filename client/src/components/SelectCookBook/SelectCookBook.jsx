@@ -55,7 +55,7 @@ export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    {userCookBookData?.length===0 && <Button 
+                    {userCookBookData?.length!==0 && <Button 
                     variant="primary" 
                     onClick={() => { saveRecipeToCookBook(recipe, selectedCookBook, user); handleClose();  } }
                     >
