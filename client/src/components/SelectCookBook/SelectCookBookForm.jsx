@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class SelectCookBookForm extends Component {
     state = {
-        value: this.props.userCookBookData && this.props.userCookBookData[0]._id,
+        value: this?.props?.userCookBookData && this?.props?.userCookBookData[0]?._id,
     }
 
 
