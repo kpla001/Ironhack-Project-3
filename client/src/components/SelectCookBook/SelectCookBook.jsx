@@ -31,7 +31,7 @@ export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
     // setInterval(() => console.log(userCookBookData), 2000)
     return (
         <>
-            <Button variant="primary" onClick={() => { handleShow(); getCookBookData(user._id)} }>
+            <Button variant="primary" style={{backgroundColor: "#299640"}} onClick={() => { handleShow(); getCookBookData(user._id)} }>
                 <b>Save Recipe to CookBook</b>
             </Button>
     
@@ -55,12 +55,12 @@ export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button 
+                    {userCookBookData?.length===0 && <Button 
                     variant="primary" 
                     onClick={() => { saveRecipeToCookBook(recipe, selectedCookBook, user); handleClose();  } }
                     >
                         Save Changes
-                    </Button>
+                    </Button>}
                 </Modal.Footer>
             </Modal>
         </>
