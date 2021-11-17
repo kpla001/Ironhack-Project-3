@@ -21,7 +21,7 @@ class UserTable extends React.Component {
           {cookbooks.map((cookbooks) => (
             <tr key={cookbooks._id}>
               <td>{cookbooks.title}</td>
-              <td>{cookbooks.recipe.name}</td>
+              <td>{cookbooks.recipe}</td>
               <td>{cookbooks.numberInStock}</td>
               <td>{cookbooks.dailyRentalRate}</td>
               <td>
