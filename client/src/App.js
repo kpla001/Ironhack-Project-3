@@ -122,8 +122,7 @@ class App extends React.Component {
           /> */}
 
           <NormalRoute
-            exact
-            path={PATHS.SEARCHPAGE}
+            exact path={PATHS.SEARCHPAGE || PATHS.SEARCHPAGE_QUERYPARAMS}
             authenticate={this.authenticate}
             component={SearchPage}
             user={this.state.user}
