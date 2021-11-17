@@ -3,9 +3,10 @@ import "./Profile.css";
 import service from "../../services/service";
 import Ingredients from "../Ingredients/Ingredients";
 import Recipe from "../Recipe/Recipe";
-// import Cookbooks from "../Cookbooks/Cookbooks";
+import Cookbooks from "../Cookbooks/Cookbooks";
 import UserCookbooks from "../UserCookBook/userCookbooks";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default class Profile extends Component {
   state = {
@@ -34,7 +35,13 @@ export default class Profile extends Component {
   //<Ingredients ingredients={this.state.ingredients} />
   //<Recipe recipes={this.state.recipes} />
 
-  saveCookBookToDb(cookbook) {}
+  saveCookBookToDb = (cookbook) => {
+    console.log(this);
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/cookbooks`, {
+      title: "this.props.user.username",
+      author: this.props.user._id,
+    });
+  };
 
   render() {
     // console.log(this.props.user);
@@ -48,9 +55,7 @@ export default class Profile extends Component {
             Cookbooks:
             <Link to="/">{this.props.cookbooks}</Link>
             <br></br>
-            <button onClick={this.saveCookBookToDb(this.state.cookbook)}>
-              Make a Cookbook
-            </button>
+            <button onClick={this.saveCookBookToDb}>Make a Cookbook</button>
           </div>
         </main>
         {/* <Cookbooks cookbooks={this.state.cookbooks} /> */}
