@@ -4,7 +4,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 const CookBook = require("../models/cookbook/CookBook");
 const User = require("../models/user/User.model");
 const Recipe = require("../models/recipe/Recipe");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 router.get(
   "/",
@@ -29,23 +29,36 @@ router.post("/", (req, res, next) => {
   CookBook.create(req.body)
     .then((cookbookFromDb) => {
       console.log("Line 32 ----------------", cookbookFromDb);
-      CookBook.findByIdAndUpdate(cookbookFromDb._id,
-        cookbookFromDb._id ? null : { $push: { recipes: req.body.recipes } } , {new:true},
+
+      CookBook.findByIdAndUpdate(
+        cookbookFromDb._id,
+        cookbookFromDb._id ? null : { $push: { recipes: req.body.recipes } },
+        { new: true }
       )
-      .then(updatedCookBookWithRecipes => {
-        console.log("Line 36 ----------------", updatedCookBookWithRecipes)
-        const preparedAuthorId = mongoose.Types.ObjectId(req.body.author);
-        User.findByIdAndUpdate(preparedAuthorId , { $push: { cookbooks: updatedCookBookWithRecipes._id} } , {new: true})
-        // .populate('cookbooks')
-        .then(updatedUserWithCookBook => {
-          console.log("Line 41 ----------------", updatedUserWithCookBook)
-          User.findById(updatedUserWithCookBook._id).populate({ path: "cookbooks", model: "CookBook" }).then(populatedObject => {
-            res.status(200).json({ cookbooks: populatedObject });
-          })
+        .then((updatedCookBookWithRecipes) => {
+          console.log("Line 36 ----------------", updatedCookBookWithRecipes);
+
+          const preparedAuthorId = mongoose.Types.ObjectId(req.body.author);
+          User.findByIdAndUpdate(
+            preparedAuthorId,
+            { $push: { cookbooks: updatedCookBookWithRecipes._id } },
+            { new: true }
+          )
+            // .populate('cookbooks')
+            .then((updatedUserWithCookBook) => {
+              console.log("Line 41 ----------------", updatedUserWithCookBook);
+
+              User.findById(updatedUserWithCookBook._id)
+                .populate({ path: "cookbooks", model: "CookBook" })
+                .then((populatedObject) => {
+                  res
+                    .status(200)
+                    .json({ cookbooks: populatedObject.cookbooks });
+                });
+            });
         })
-      })
-    
-      .catch((err) => res.json({ errorMessage: err }));
+
+        .catch((err) => res.json({ errorMessage: err }));
     })
     .catch((err) => res.json({ errorMessage: err }));
 });
@@ -57,6 +70,7 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/:id", (req, res, next) => {
+  console.log(req.body);
   CookBook.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((cookbookToUpdate) =>
       res.status(200).json({ cookbook: cookbookToUpdate })

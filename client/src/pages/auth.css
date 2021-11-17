@@ -33,6 +33,41 @@ form.signup__form {
   background-repeat: no-repeat;
 }
 
+.detailsPage {
+  background-image: url(../images/mariana-medvedeva-FjryWdaqGEc-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.detailsPage button {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 1.5rem;
+  text-decoration: bold;
+  padding: 0.8em 1.4em;
+  margin-left: 1em;
+  background-color: #299640;
+  box-shadow: 0 0 5px 0 aliceblue;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #e3f2ff;
+  transition: all 0.2s ease-in-out;
+  margin: 2vh 0 10vh 0;
+}
+
+.detailsPage button:hover {
+  transform: scale(1.05);
+  background-color: #6faf7d;
+}
+
+/* .savedBanner {
+  width: 100vw;
+  background: #fff;
+  position: relative;
+  bottom: 0;
+} */
+
 .signup {
   background-image: url(../images/mariana-medvedeva-FjryWdaqGEc-unsplash.jpg);
   background-size: cover;

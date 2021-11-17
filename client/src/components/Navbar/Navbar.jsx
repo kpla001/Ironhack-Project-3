@@ -16,12 +16,12 @@ const Navbar = (props) => {
           width: `${1072 / 6}px`, 
           height: `${465 / 6}px`, 
           backgroundColor: "#fff",
-          border: "10px solid #dededeb6", 
+          paddingLeft: "0.5em",
+          border: "14px", 
+          borderColor: "rgba(221, 221, 221, 0.753)",
           borderRadius: "50%",
-          borderRight: "12px solid ",
-          borderLeft: "10px solid ",
-          borderTop: "10px solid ",
-          borderBottom: "10px solid ",
+          borderStyle: "ridge groove groove ridge",
+          margin: "0.1em 2em 0.1em 2em",
           transform: "none",
         }}
         />
@@ -40,7 +40,7 @@ const Navbar = (props) => {
             <Link to={PATHS.PROTECTEDPAGE} className="authLink">
               Profile
             </Link>
-            <button className="nav-logoutbtn" onClick={props.handleLogout}>
+            <button className="authLink nav-logoutbtn" onClick={props.handleLogout}>
               Logout
             </button>
           </>
@@ -49,7 +49,7 @@ const Navbar = (props) => {
             <Link to={PATHS.SIGNUPPAGE} className="authLink">
               Signup
             </Link>
-            <Link to={PATHS.LOGINPAGE} className="authLink">
+            <Link to={PATHS.LOGINPAGE} className="authLink nav-loginbtn">
               Log In
             </Link>
           </>

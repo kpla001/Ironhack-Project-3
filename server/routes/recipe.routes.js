@@ -3,6 +3,7 @@ const Recipe = require("../models/recipe/Recipe");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Ingredient = require("../models/ingredient/Ingredient");
+const mongoose = require('mongoose');
 
 
 router.get(
@@ -34,13 +35,13 @@ router.post("/", (req, res, next) => {
       } else {
         Ingredient.create(ingredient)
         .then(ingredientFromDb => {
-          console.log("2nd part -----------------------", ingredientFromDb._id)
+          // console.log("2nd part -----------------------", ingredientFromDb._id)
           ingredientIdArr.push(ingredientFromDb._id);
 
           if(ingredientIdArr.length === req.body.ingredients.length) {
             checkRecipe()
           }
-          // next();
+          
         })
         .catch(err => console.log(err));
       }
@@ -53,26 +54,30 @@ router.post("/", (req, res, next) => {
     // }
   })
   function checkRecipe() {
-    console.log("check recipe called!!!!!")
+    // console.log("check recipe called!!!!!")
       // console.log(ingredientIdArr.length,"====", req.body.ingredients.length);
       Recipe.findOne({ spoonacularId: req.body.spoonacularId })
       .then((recipeFromDb) => {
-        console.log("Recipe from DB:", recipeFromDb);
+        // console.log("Recipe from DB:", recipeFromDb);
         // '!!' returns a truthy or falsy value based on contents of variable
         if (recipeFromDb !== null){
           res.json(recipeFromDb)
         } else {
-          console.log("ingredientIdArr: ", ingredientIdArr)
+          const preparedRecipeId = mongoose.Types.ObjectId(req.body.spoonacularId)
+          // console.log("ingredientIdArr: ", ingredientIdArr)
           Recipe.create({ ...req.body, ingredients: ingredientIdArr})
-            .populate('ingredients')
             .then((recipeToDb) => {
               // console.log("Recipe:",recipeToDb)
-              res.status(200).json({ recipe: recipeToDb });
+              Recipe.findById(preparedRecipeId)
+              .populate({ path: "ingredients", model: "Ingredient" })
+              .then(populatedObject => {
+                res.status(200).json({ recipe: populatedObject });
+              })
+              .catch((err) => res.json({ errorMessage: err }));
             })
-            .catch(err => console.log(err));
-            // .catch((err) => res.json({ errorMessage: err }));
+            .catch((err) => res.json({ errorMessage: err }));
         }
-      }).catch(err => console.log(err));
+    }) .catch((err) => res.json({ errorMessage: err }));
   }
 });
 

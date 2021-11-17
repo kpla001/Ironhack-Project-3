@@ -5,7 +5,9 @@ export default function RecipeDetails({ recipe }) {
     // console.log("recipe",recipe)
     return (
         <div className="recipeDetails">
-                <h1>{recipe?.title}</h1>
+                <h1 className="recipeHeader">
+                    {<b>{recipe?.title}</b>}
+                </h1>
                 <img 
                 src={recipe?.image} 
                 alt='icon' 
@@ -16,8 +18,8 @@ export default function RecipeDetails({ recipe }) {
             <div className="recipeDetailsIngredients">
                 <h3 style={{textAlign: 'left'}}>Ingredients:</h3>
                 <ul>
-                    {recipe?.extendedIngredients.map(( ingredient => (
-                        <div className="recipeDetailsIngredients">
+                    {recipe?.extendedIngredients.map(( (ingredient, i) => (
+                        <div key={i}className="recipeDetailsIngredients">
                             <li 
                             key={ingredient.id} 
                             style={{textAlign: 'left',}}
