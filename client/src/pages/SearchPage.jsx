@@ -23,17 +23,7 @@ class SearchPage extends Component {
     // })
   }
 
-  //   searchHandler = (input) => this.setState({
-  //     searchResults: input
-  //   },
-  // )
 
-  //   searchRecipes = () => apiService.getRecipesFromApi(this.state.searchResults.input).then((results) => {
-  //     console.log(results.data.results);
-  //     this.setState({
-  //         recipeResults: results.data.results,
-  //     })
-  //   })
 
   searchHandler = async (input) => {
     try {
