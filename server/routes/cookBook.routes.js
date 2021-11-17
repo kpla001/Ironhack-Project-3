@@ -29,14 +29,24 @@ router.post("/", (req, res, next) => {
   CookBook.create(req.body)
     .then((cookbookFromDb) => {
       // console.log(cookbookFromDb.recipes);
-      if (cookbookFromDb.recipes.length < 1) {
-        CookBook.findByIdAndUpdate(
-          cookbookFromDb._id,
-          cookbookFromDb._id ? null : { $push: { recipes: req.body.recipes } },
-          { new: true }
-        ).then((updatedCookBookWithRecipes) => {
-          // console.log("Line 39 ----------------", updatedCookBookWithRecipes);
+        if (cookbookFromDb.recipes.length < 1) {
+            CookBook.findByIdAndUpdate(
+                cookbookFromDb._id,
+                cookbookFromDb._id ? null : { $push: { recipes: req.body.recipes } },
+                { new: true }
+            )
+                .then((updatedCookBookWithRecipes) => {
+                    // console.log("Line 39 ----------------", updatedCookBookWithRecipes);
 
+                    const preparedAuthorId = mongoose.Types.ObjectId(req.body.author);
+                    User.findByIdAndUpdate(
+                    preparedAuthorId,
+                    { $push: { cookbooks: updatedCookBookWithRecipes._id } },
+                    { new: true }
+                    )
+                    // .populate('cookbooks')
+                    .then((updatedUserWithCookBook) => {
+                        // console.log("Line 49 ----------------", updatedUserWithCookBook);
           const preparedAuthorId = mongoose.Types.ObjectId(req.body.author);
           User.findByIdAndUpdate(
             preparedAuthorId,

@@ -6,6 +6,7 @@ import RecipeResults from "../components/SearchResults/RecipeResults";
 import LoadingComponent from "../components/Loading/index";
 import apiService from "../services/apiService";
 
+
 class SearchPage extends Component {
   state = {
     searchResults: null,
@@ -41,6 +42,7 @@ class SearchPage extends Component {
   };
 
   render() {
+    console.log(this.props.location)
     return (
       <div className="searchPage">
         <br />
