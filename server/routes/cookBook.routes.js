@@ -26,7 +26,7 @@ router.get(
 
 router.post("/", (req, res, next) => {
   // console.log("Req Body: ", req.body)
-  CookBook.create(req.body)
+    CookBook.create(req.body)
     .then((cookbookFromDb) => {
       // console.log(cookbookFromDb.recipes);
         if (cookbookFromDb.recipes.length < 1) {
@@ -36,7 +36,7 @@ router.post("/", (req, res, next) => {
                 { new: true }
             )
                 .then((updatedCookBookWithRecipes) => {
-                    // console.log("Line 39 ----------------", updatedCookBookWithRecipes);
+                    console.log("Line 39 ----------------", updatedCookBookWithRecipes);
 
                     const preparedAuthorId = mongoose.Types.ObjectId(req.body.author);
                     User.findByIdAndUpdate(
@@ -46,48 +46,41 @@ router.post("/", (req, res, next) => {
                     )
                     // .populate('cookbooks')
                     .then((updatedUserWithCookBook) => {
-                        // console.log("Line 49 ----------------", updatedUserWithCookBook);
-          const preparedAuthorId = mongoose.Types.ObjectId(req.body.author);
-          User.findByIdAndUpdate(
-            preparedAuthorId,
-            { $push: { cookbooks: updatedCookBookWithRecipes._id } },
-            { new: true }
-          )
-            // .populate('cookbooks')
-            .then((updatedUserWithCookBook) => {
-              // console.log("Line 49 ----------------", updatedUserWithCookBook);
+                        console.log("Line 49 ----------------", updatedUserWithCookBook);
 
-              User.findById(updatedUserWithCookBook._id)
+                        User.findById(updatedUserWithCookBook._id)
+                        .populate({ path: "cookbooks", model: "CookBook" })
+                        .then((populatedObject) => {
+                            res
+                            .status(200)
+                            .json({ cookbooks: populatedObject.cookbooks });
+                        })
+                        .catch((err) => res.json({ errorMessage: err }));
+                    })
+                    .catch((err) => res.json({ errorMessage: err }));
+                })
+        } else{
+            const preparedAuthorId = mongoose.Types.ObjectId(req.body.author);
+            User.findByIdAndUpdate(
+                preparedAuthorId,
+                { $push: { cookbooks: cookbookFromDb._id} },
+                { new: true }
+            )
+            .then((cookbookFromDb) => {
+                console.log("Line 70 ----------------", cookbookFromDb);
+
+                User.findById(cookbookFromDb._id)
                 .populate({ path: "cookbooks", model: "CookBook" })
                 .then((populatedObject) => {
-                  res
+                    res
                     .status(200)
                     .json({ cookbooks: populatedObject.cookbooks });
-                })
-                .catch((err) => res.json({ errorMessage: err }));
+                });
             })
-            .catch((err) => res.json({ errorMessage: err }));
-        });
-      } else {
-        const preparedAuthorId = mongoose.Types.ObjectId(req.body.author);
-        User.findByIdAndUpdate(
-          preparedAuthorId,
-          { $push: { cookbooks: cookbookFromDb._id } },
-          { new: true }
-        )
-          .then((cookbookFromDb) => {
-            // console.log("Line 70 ----------------", cookbookFromDb);
-
-            User.findById(cookbookFromDb._id)
-              .populate({ path: "cookbooks", model: "CookBook" })
-              .then((populatedObject) => {
-                res.status(200).json({ cookbooks: populatedObject.cookbooks });
-              });
-          })
-          .catch((err) => res.json({ errorMessage: err }));
-      }
+            .catch((err) => res.json({ errorMessage: err }))
+        }
     })
-    .catch((err) => res.json({ errorMessage: err }));
+    .catch((err) => res.json({ errorMessage: err}))
 });
 
 router.get("/:id", (req, res, next) => {
