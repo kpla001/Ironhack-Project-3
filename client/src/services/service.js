@@ -7,33 +7,29 @@ const instance = axios.create({
 const service = {
   ///GET Routes///
   getIngredientsList: () =>
-    instance.get("/ingredients")
-    .then((response) => response.data),
+    instance.get("/ingredients").then((response) => response.data),
 
   getRecipeList: () =>
-    instance.get("/recipes")
-    .then((response) => response.data),
+    instance.get("/recipes").then((response) => response.data),
 
   getCookbookList: () =>
-    instance.get("/cookbooks")
-    .then((response) => response.data),
+    instance.get("/cookbooks").then((response) => response.data),
 
   getUserCookBooksById: (userId) =>
-    instance.get(`/users/${userId}`)
-    .then((response) => response.data),
+    instance.get(`/users/${userId}`).then((response) => response.data),
 
   findOneUserCookBook: (userId, cookbookId) =>
-    instance.get(`/users/${userId}/${cookbookId}`)
-    .then((response) => response.data),
+    instance
+      .get(`/users/${userId}/${cookbookId}`)
+      .then((response) => response.data),
 
   /// POST Routes ///
-  saveRecipe: (recipe) => 
-    instance.post("/recipes", recipe),
+  saveRecipe: (recipe) => instance.post("/recipes", recipe),
 
   saveRecipeToCookBook: (recipe, cookbookId) =>
-  instance.post(`/cookbooks/${cookbookId}`, recipe),
+    instance.post(`/cookbooks/${cookbookId}`, recipe),
 
-  saveRecipeToUserCookBook: (recipe, userId, cookbookId) => 
+  saveRecipeToUserCookBook: (recipe, userId, cookbookId) =>
     instance.post(`/users/${userId}/${cookbookId}`, recipe),
 };
 

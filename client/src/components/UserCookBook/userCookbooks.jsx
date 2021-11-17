@@ -60,7 +60,7 @@ class UserCookbooks extends React.Component {
   // };
 
   render() {
-    //console.log(this.state.cookbooks);
+    console.log(this.state.cookbooks);
     return <div>{this.state.cookbooks[0]?.title}</div>;
 
     // const { length: count } = this.state.cookbooks;
