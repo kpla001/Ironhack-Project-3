@@ -11,17 +11,22 @@ class SearchPage extends Component {
   state = {
     searchResults: null,
     recipeResults: [],
-    isLoading: true,
+    locationState: this.props.location.state,
+    isLoading: false,
     currentPage: 1,
-    pageSize: 20,
+    pageSize: 10,
 
     // ingredientResults: [],
   };
 
   componentDidMount() {
-    // this.setState({
-    //   searchResults: null,
-    // })
+      if (this.props.history.action === "POP") {
+        this.setState({
+          searchResults: this.state.locationState?.searchResults,
+          recipeResults: this.state.locationState?.recipeResults,
+        })
+      }
+    
   }
 
 
@@ -30,19 +35,36 @@ class SearchPage extends Component {
     try {
       // console.log(input)
       const results = await apiService.getRecipesFromApi(input);
-      console.log(results.data.results);
+
+      this.props.location.search = `${input}`;
+      // this.props.match.path = `/search?=${input}`;
+      // this.props.params.input = input;
+      
+      // console.log(results.data.results);
       this.setState({
-        recipeResults: results.data.results,
         searchResults: input,
-        isLoading: false,
+        recipeResults: results.data.results,
+        locationState: {
+          searchResults: input,
+          recipeResults: results.data.results,
+        }
       });
+
+      this.props.history.push(`/search?=${input}`, this.state.locationState);
     } catch (err) {
       // console.log(err)
     }
   };
 
+  paginationHandler(input) {
+
+  }
+
   render() {
-    console.log(this.props.location)
+    console.log(this.props)
+    // const search = this.props.location.search;
+    // const  name = new URLSearchParams(search).get(this.state.searchResults);
+
     return (
       <div className="searchPage">
         <br />
@@ -54,7 +76,13 @@ class SearchPage extends Component {
         {!!this.state.searchResults && (
           <div>
             <h2>Results for search "{`${this.state.searchResults}`}":</h2>
-            <RecipeResults results={this.state.recipeResults} />
+
+            <RecipeResults 
+            results={this.state?.recipeResults} 
+            currentPage={this.state?.currentPage}  
+            pageSize={this.state?.pageSize}
+            paginationHandler={this.paginationHandler}
+            />
           </div>
         )}
       </div>

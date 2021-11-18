@@ -35,7 +35,7 @@ export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
                 <b>Save Recipe to CookBook</b>
             </Button>
     
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} >
             <Modal.Header closeButton>
                 <Modal.Title>
                     {userCookBookData?.length!==0 && 'Choose a CookBook to add recipe:'}

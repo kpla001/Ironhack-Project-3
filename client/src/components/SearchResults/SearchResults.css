@@ -68,3 +68,8 @@
 .recipeDescriptionRight ul {
   margin-top: 1px;
 }
+
+#pagination {
+  position: absolute;
+  width: 100%;
+}

@@ -14,6 +14,7 @@ import { getLoggedIn, logout } from "./services/auth";
 import * as PATHS from "./utils/paths";
 import * as CONSTS from "./utils/consts";
 import * as USER_HELPERS from "./utils/userToken";
+import axios from "axios";
 
 class App extends React.Component {
   state = {
@@ -27,7 +28,7 @@ class App extends React.Component {
     if (!accessToken) {
       return this.setState({
         isLoading: false,
-      });    
+      });
     }
     getLoggedIn(accessToken).then((res) => {
       if (!res.status) {
@@ -83,15 +84,16 @@ class App extends React.Component {
     if (this.state.isLoading) {
       return <LoadingComponent />;
     }
-    console.log(this.state.user)
+    console.log(this.state.user);
     return (
       <div className="App">
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
-          <NormalRoute 
-          exact path={PATHS.HOMEPAGE} 
-          component={HomePage} 
-          user={this.state.user}
+          <NormalRoute
+            exact
+            path={PATHS.HOMEPAGE}
+            component={HomePage}
+            user={this.state.user}
           />
 
           <NormalRoute
@@ -122,8 +124,7 @@ class App extends React.Component {
           /> */}
 
           <NormalRoute
-            exact
-            path={PATHS.SEARCHPAGE}
+            exact path={PATHS.SEARCHPAGE || PATHS.SEARCHPAGE_QUERYPARAMS}
             authenticate={this.authenticate}
             component={SearchPage}
             user={this.state.user}
