@@ -22,7 +22,6 @@ const Navbar = (props) => {
           borderRadius: "50%",
           borderStyle: "ridge groove groove ridge",
           margin: "0.1em 2em 0.1em 2em",
-          transform: "none",
         }}
         />
       </Link>

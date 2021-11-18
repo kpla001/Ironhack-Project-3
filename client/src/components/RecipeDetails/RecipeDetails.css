@@ -12,10 +12,10 @@
   width: auto;
   border-radius: 15px;
   padding: 0.5rem 0.3rem 1rem 0.3rem;
-  border: 10px solid beige;
+  border: 15px solid beige;
   text-align: center;
   justify-self: center;
-  margin: 5vh 0 0 0;
+  margin: 5vh 0 3vh 0;
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.356);
 }
 
@@ -29,15 +29,15 @@
   border-radius: 15px;
   padding: 15px 0 15px 0;
   margin: 8px 0 8px 0;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.925);
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.829);
 }
 
 .recipeDetailsImage {
-  border-right: 50px solid rgba(255, 255, 255, 0.397);
-  border-left: 50px solid rgba(255, 255, 255, 0.397);
-  border-top: 30px solid rgba(255, 255, 255, 0.397);
-  border-bottom: 50px solid rgba(255, 255, 255, 0.397);
+  border-right: 50px solid rgba(255, 255, 255, 0.5);
+  border-left: 50px solid rgba(255, 255, 255, 0.5);
+  border-top: 50px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 50px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   max-width: 60vw;
   place-self: center;

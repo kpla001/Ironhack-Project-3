@@ -35,7 +35,7 @@ router.post("/", (req, res, next) => {
           cookbookFromDb._id ? null : { $push: { recipes: req.body.recipes } },
           { new: true }
         ).then((updatedCookBookWithRecipes) => {
-          // console.log("Line 39 ----------------", updatedCookBookWithRecipes);
+          console.log("Line 39 ----------------", updatedCookBookWithRecipes);
 
           const preparedAuthorId = mongoose.Types.ObjectId(req.body.author);
           User.findByIdAndUpdate(
@@ -45,7 +45,7 @@ router.post("/", (req, res, next) => {
           )
             // .populate('cookbooks')
             .then((updatedUserWithCookBook) => {
-              // console.log("Line 49 ----------------", updatedUserWithCookBook);
+              console.log("Line 49 ----------------", updatedUserWithCookBook);
 
               User.findById(updatedUserWithCookBook._id)
                 .populate({ path: "cookbooks", model: "CookBook" })
@@ -66,7 +66,7 @@ router.post("/", (req, res, next) => {
           { new: true }
         )
           .then((cookbookFromDb) => {
-            // console.log("Line 70 ----------------", cookbookFromDb);
+            console.log("Line 70 ----------------", cookbookFromDb);
 
             User.findById(cookbookFromDb._id)
               .populate({ path: "cookbooks", model: "CookBook" })
