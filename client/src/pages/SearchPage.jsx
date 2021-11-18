@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
-import Search from "../components/Search/Search";
 import SearchFunction from "../components/Search/SearchFunction";
 import RecipeResults from "../components/SearchResults/RecipeResults";
 import LoadingComponent from "../components/Loading/index";
