@@ -4,7 +4,10 @@ import "../App.css";
 import SearchFunction from "../components/Search/SearchFunction";
 import RecipeResults from "../components/SearchResults/RecipeResults";
 import LoadingComponent from "../components/Loading/index";
+import Pagination from "../components/common/pagination"
 import apiService from "../services/apiService";
+import { paginate } from "../utils/paginate";
+import _ from "lodash";
 
 
 class SearchPage extends Component {
@@ -63,14 +66,18 @@ class SearchPage extends Component {
     })
   }
 
-  paginationHandler(input) {
-
+  handlePageChange = (page) => {
+    this.setState({
+      currentPage: page,
+    })
   }
 
   render() {
     console.log(this.props)
     // const search = this.props.location.search;
     // const  name = new URLSearchParams(search).get(this.state.searchResults);
+
+    const paginatedRecipes = paginate(this.state?.recipeResults, this.state.currentPage, this.state.pageSize);
 
     return (
       <div className="searchPage">
@@ -89,8 +96,15 @@ class SearchPage extends Component {
             <h2>Results for search "{`${this.state.searchResults}`}":</h2>
 
             <RecipeResults 
-            results={this.state?.recipeResults} 
-            
+            results={paginatedRecipes}
+            />
+            <Pagination 
+            id="pagination"
+            className="pagination"
+            itemsCount={this.state?.recipeResults.length}
+            pageSize={this.state.pageSize}
+            currentPage={this.state.currentPage}
+            onPageChange={this.handlePageChange}
             />
           </div>
         )}

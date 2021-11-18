@@ -7,7 +7,7 @@ import logo from "../../images/recipezLogo.png";
 
 const Navbar = (props) => {
   return (
-    <nav>
+    <nav className="nav">
       <Link to={PATHS.HOMEPAGE} className="nav__projectName authLink">
         <img 
         src={logo} 
