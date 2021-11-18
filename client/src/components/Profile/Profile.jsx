@@ -38,7 +38,7 @@ export default class Profile extends Component {
   saveCookBookToDb = (cookbook) => {
     console.log(this);
     axios.post(`${process.env.REACT_APP_SERVER_URL}/cookbooks`, {
-      title: "this.props.user.username",
+      title: `${this.props.user.username}'s Cookbook`,
       author: this.props.user._id,
     });
   };

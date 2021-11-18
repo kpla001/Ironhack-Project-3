@@ -24,6 +24,7 @@ export default class Home extends Component {
           <div className="landing">
             <h1>Welcome to Recipez!</h1>
             <h3>Come Find Your Flavor</h3>
+            <br></br>
             <Link to="/search">
               <button className="search_button" link="/search">
                 Search for Recipes!
@@ -31,32 +32,48 @@ export default class Home extends Component {
             </Link>
           </div>
           <div className="aside">
-            Sunt incididunt adipisicing duis ipsum est est esse eu mollit anim
-            velit cillum. Exercitation ipsum officia pariatur ipsum pariatur. In
-            ullamco esse occaecat Lorem id culpa mollit culpa.
+            Our goal is to make finding your favorite recipes as easy as
+            possible, without any short stories or autobiographical novels or
+            <br></br>
+            <i>
+              "My aunt Sally used to make this recipe in the summers of the
+              1800's..."
+            </i>{" "}
+            to dig through. Here you can search from more than
+            <br></br>
+            330,000 recipes from across the web.
             <br></br>
             <br></br>
-            Here goes our statement info
+            We strive to be your number one source for all your cooking recipe
+            needs.
+            <br></br>
+            <br></br>
+            <br></br>
+            Please sign in or sign up to start creating your repository of
+            recipes!
           </div>
         </div>
         <div className="bottompage">
           {this.state.randomRecipes.map((randomRecipe, i) => (
             <div key={i} className="randomCard">
-              <div>
-                <img
-                  src={`${randomRecipe.image}`}
-                  alt="Random Img"
-                  width="300px"
-                  className="randomPic"
-                ></img>
-              </div>
-              <div className="randomTitle">
-                <Link to={`recipe-details/${randomRecipe.id}`}>
-                  {`${randomRecipe.title}`}
-                </Link>
-              </div>
-              <div>Preparation time: {randomRecipe.readyInMinutes} minutes</div>
-              <div>Servings: {randomRecipe.servings}</div>
+              <Link
+                to={`recipe-details/${randomRecipe.id}`}
+                className="randomDescription"
+              >
+                <div>
+                  <img
+                    src={`${randomRecipe.image}`}
+                    alt={`${randomRecipe.title}'s Img`}
+                    width="300px"
+                    className="randomPic"
+                  ></img>
+                </div>
+                <h4 className="randomTitle">{`${randomRecipe.title}`}</h4>
+                <h6 className="randomDescription">
+                  Preparation time: {randomRecipe.readyInMinutes} minutes
+                  <div>Servings: {randomRecipe.servings}</div>
+                </h6>
+              </Link>
             </div>
           ))}
         </div>
