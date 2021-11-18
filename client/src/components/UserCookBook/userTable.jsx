@@ -3,45 +3,28 @@ import Like from "../common/like";
 
 class UserTable extends React.Component {
   render() {
-    const { cookbooks, onDelete, onLike } = this.props;
-
+    const { cookbooks, handleDelete } = this.props;
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th></th>
-            <th>Ingredients</th>
-            <th>Favorite</th>
-            <th />
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          {cookbooks.map((cookbooks) => (
-            <tr key={cookbooks._id}>
-              <td>{cookbooks.title}</td>
-              <td>{cookbooks.recipe}</td>
-              <td>{cookbooks.numberInStock}</td>
-              <td>{cookbooks.dailyRentalRate}</td>
-              <td>
-                <Like
-                  liked={cookbooks.liked}
-                  onClick={() => onLike(cookbooks)}
-                />
-              </td>
-              <td>
-                <button
-                  onClick={() => onDelete(cookbooks)}
-                  className="btn btn-danger btn-sm"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div>
+        {cookbooks.map((cookbook, index) => (
+          <div key={cookbook._id} className="card" style={{ width: "18rem" }}>
+            <img src="..." className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">{cookbook.title}</h5>
+              <p className="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <button
+                onClick={() => handleDelete(cookbook)}
+                className="btn btn-danger btn-sm"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     );
   }
 }
