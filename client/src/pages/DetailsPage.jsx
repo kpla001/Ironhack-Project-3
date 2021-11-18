@@ -12,8 +12,6 @@ export default class DetailsPage extends Component {
     recipe: null,
     selectedRecipe: null,
     selectedCookBookId: null,
-    currentPage: 1,
-    pageSize: 4,
   };
 
   componentDidMount() {
