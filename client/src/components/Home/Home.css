@@ -28,7 +28,7 @@ div.landing {
   flex-direction: column;
   align-content: flex-start;
   width: 50vw;
-  padding-top: 15em;
+  padding-top: 10em;
 }
 .toppage {
   display: flex;
@@ -36,13 +36,14 @@ div.landing {
 
 div.aside {
   width: 50vw;
-  padding-top: 15em;
+  padding-top: 10em;
 }
 .bottompage {
   margin-top: 80px;
-  height: 25vw;
+  height: 20vw;
   display: flex;
   align-content: space-between;
+  text-decoration: none;
 }
 
 .randomCard {
@@ -53,19 +54,31 @@ div.aside {
   height: 350px;
   /* border: 1px solid rgba(0, 0, 0, 0.418); */
   border-radius: 15px;
-  padding-bottom: 15px;
-  margin: 8px 0 8px 0;
+  margin: 8px 4px -50px 4px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.493);
-  font-family: inherit;
-  font-weight: inherit;
-  background-color: rgba(255, 255, 255, 0.801);
+  background-color: #fff;
+  text-decoration: none;
+  font: 20pt;
+  padding-top: -10px;
+  transition: 1s;
 }
 
+.randomCard:hover {
+  transform: translate(0, -20px);
+}
 .randomTitle {
-  font-family: inherit;
-  font-weight: inherit;
+  text-decoration: none;
+  color: #0d6efd;
+}
+
+.randomDescription {
+  text-decoration: none;
+  color: #000000;
+  font: 20pt;
+  font-weight: bold;
 }
 
 .randomPic {
   padding-top: 20px;
+  padding-bottom: 20px;
 }
