@@ -1,7 +1,7 @@
 import React, { userEffect, useState} from 'react'
 import { Link, useLocation } from 'react-router-dom';
 
-export default function Search({ user, saveRecipeToCookBook, recipe, submitSearch}) {
+export default function Search({ submitSearch, isLoadingHandler }) {
     const [input, setInput] = useState("")
 
     const onChangeHandler = (event) => {
@@ -32,7 +32,7 @@ export default function Search({ user, saveRecipeToCookBook, recipe, submitSearc
                     placeholder="Type in a recipe or ingredient"
                     onChange={onChangeHandler}
                 />
-                <button href="/search-results">search</button>
+                <button type="submit" onClick={() => {isLoadingHandler(true) }} href="/search-results">search</button>
             </form>
         </div>
     )

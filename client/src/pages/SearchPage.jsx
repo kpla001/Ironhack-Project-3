@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import Search from "../components/Search/Search";
+import SearchFunction from "../components/Search/SearchFunction";
 import RecipeResults from "../components/SearchResults/RecipeResults";
 import LoadingComponent from "../components/Loading/index";
 import apiService from "../services/apiService";
@@ -44,6 +45,7 @@ class SearchPage extends Component {
       this.setState({
         searchResults: input,
         recipeResults: results.data.results,
+        isLoading: false,
         locationState: {
           searchResults: input,
           recipeResults: results.data.results,
@@ -55,6 +57,12 @@ class SearchPage extends Component {
       // console.log(err)
     }
   };
+
+  isLoadingHandler = (status) => {
+    this.setState({
+      isLoading: status,
+    })
+  }
 
   paginationHandler(input) {
 
@@ -68,20 +76,22 @@ class SearchPage extends Component {
     return (
       <div className="searchPage">
         <br />
-        <Search submitSearch={this.searchHandler} />
+
+        <SearchFunction 
+        submitSearch={this.searchHandler} 
+        isLoadingHandler={this.isLoadingHandler} 
+        />
+
         <br />
-        {this.state.isLoading === true && this.state.searchResults ? (
-          <LoadingComponent />
-        ) : null}
+
+        {this.state.isLoading === true && <LoadingComponent isLoading={this.state.isLoading}/>}
         {!!this.state.searchResults && (
           <div>
             <h2>Results for search "{`${this.state.searchResults}`}":</h2>
 
             <RecipeResults 
             results={this.state?.recipeResults} 
-            currentPage={this.state?.currentPage}  
-            pageSize={this.state?.pageSize}
-            paginationHandler={this.paginationHandler}
+            
             />
           </div>
         )}
