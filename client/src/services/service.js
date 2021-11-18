@@ -31,6 +31,9 @@ const service = {
 
   saveRecipeToUserCookBook: (recipe, userId, cookbookId) =>
     instance.post(`/users/${userId}/${cookbookId}`, recipe),
+
+  ///Delete Service Route //////////////////////////////////
+  deleteCookbook: (cookbookId) => instance.delete(`/cookbooks/${cookbookId}`),
 };
 
 export default service;
