@@ -14,7 +14,7 @@ class SearchPage extends Component {
     locationState: this.props.location.state,
     isLoading: false,
     currentPage: 1,
-    pageSize: 20,
+    pageSize: 10,
 
     // ingredientResults: [],
   };
@@ -56,6 +56,10 @@ class SearchPage extends Component {
     }
   };
 
+  paginationHandler(input) {
+
+  }
+
   render() {
     console.log(this.props)
     // const search = this.props.location.search;
@@ -72,7 +76,13 @@ class SearchPage extends Component {
         {!!this.state.searchResults && (
           <div>
             <h2>Results for search "{`${this.state.searchResults}`}":</h2>
-            <RecipeResults results={this.state.recipeResults} />
+
+            <RecipeResults 
+            results={this.state?.recipeResults} 
+            currentPage={this.state?.currentPage}  
+            pageSize={this.state?.pageSize}
+            paginationHandler={this.paginationHandler}
+            />
           </div>
         )}
       </div>

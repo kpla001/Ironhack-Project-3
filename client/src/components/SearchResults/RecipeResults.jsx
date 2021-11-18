@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './SearchResults.css';
+import Pagination from "../Pagination/Pagination";
 
 // {result.analyzedInstructions[0].steps.map(( step => (
 //     <div key={step.number} className="recipeSteps"> 
@@ -8,7 +9,7 @@ import './SearchResults.css';
 //     </div>
 // )))}
 
-export default function RecipeResults({ results }) {
+export default function RecipeResults({ results, currentPage, pageSize, paginationHandler }) {
   return (
     <div className="recipeResults" >
       {results.map(( result => (
@@ -43,6 +44,13 @@ export default function RecipeResults({ results }) {
               </div>
         </div>
       )))}
+      <Pagination
+      id="pagination"
+      dataArray={results}
+      currentPage={currentPage}
+      pageSize={pageSize}
+      paginationHandler={paginationHandler}
+      />
     </div>
   )
 }
