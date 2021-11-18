@@ -16,7 +16,7 @@ export default class HomePage extends Component {
               <b>Made By: Kyle Pla, Michael Rodiles, and Rodrigo Gonzalez</b>
             </div>
             <a href="https://github.com/kpla001/Ironhack-Project-3">
-              <img src={GitHub} alt="GitHub Logo" />
+              <i className="fab fa-github fa-2x"></i> 
             </a>
           </div>
       </>
