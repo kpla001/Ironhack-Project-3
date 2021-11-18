@@ -10,7 +10,7 @@
 
 .resultCard {
   display: block;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.925);
   align-items: center;
   place-self: center;
   width: 60vw;
