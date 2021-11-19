@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 
 router.use('/api/auth', authRoutes);
 
-router.use('api/cookbooks', cookBookRoutes);
+router.use('/api/cookbooks', cookBookRoutes);
 
 router.use('/api/recipes', recipeRoutes);
 
