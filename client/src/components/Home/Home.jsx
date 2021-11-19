@@ -10,12 +10,12 @@ export default class Home extends Component {
   };
 
   componentDidMount() {
-    apiService.getRandomRecipeFromApi().then((data) => {
-      //console.log(data.data.recipes);
-      this.setState({
-        randomRecipes: data.data.recipes,
-      });
-    });
+    // apiService.getRandomRecipeFromApi().then((data) => {
+    //   //console.log(data.data.recipes);
+    //   this.setState({
+    //     randomRecipes: data.data.recipes,
+    //   });
+    // });
   }
 
   render() {
