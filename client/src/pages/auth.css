@@ -72,7 +72,7 @@ form.signup__form {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  background: rgba(128, 128, 128, 0.541);
+  background: rgba(128, 128, 128, 0.678);
   height: 35px;
   color: rgba(255, 255, 255, 0.89);
   align-self: flex-end;
@@ -80,7 +80,6 @@ form.signup__form {
   bottom: 0;
   overflow: hidden;
   width: 100%;
-  margin: 3vh 0 0 0;
 }
 
 .credits {
