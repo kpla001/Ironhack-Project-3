@@ -9,12 +9,12 @@ router.get('/', (req, res, next) => {
   res.json('All good in here');
 });
 
-router.use('/auth', authRoutes);
+router.use('api/auth', authRoutes);
 
-router.use('/cookbooks', cookBookRoutes);
+router.use('api/cookbooks', cookBookRoutes);
 
-router.use('/recipes', recipeRoutes);
+router.use('api/recipes', recipeRoutes);
 
-router.use('/ingredients', ingredientRoutes);
+router.use('api/ingredients', ingredientRoutes);
 
 module.exports = router;
