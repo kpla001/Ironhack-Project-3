@@ -25,19 +25,19 @@ function successStatus(res) {
 
 // creates a basic url for every request in this file
 const authService = axios.create({
-  baseURL: `${process.env.REACT_APP_SERVER_URL}/auth`,
+  baseURL: `${process.env.REACT_APP_SERVER_URL}auth`,
 });
 
 export function login(credentials) {
   return authService
-    .post("/login", credentials)
+    .post("login", credentials)
     .then(successStatus)
     .catch(internalServerError);
 }
 
 export function getLoggedIn() {
   return authService
-    .get(`/session`, {
+    .get(`session`, {
       headers: {
         authorization: USER_HELPERS.getUserToken(),
       },
@@ -48,14 +48,14 @@ export function getLoggedIn() {
 
 export function signup(credentials) {
   return authService
-    .post("/signup", credentials)
+    .post("signup", credentials)
     .then(successStatus)
     .catch(internalServerError);
 }
 
 export function logout() {
   return authService
-    .delete("/logout", {
+    .delete("logout", {
       headers: {
         authorization: USER_HELPERS.getUserToken(),
       },
