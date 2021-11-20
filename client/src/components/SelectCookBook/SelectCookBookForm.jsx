@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class SelectCookBookForm extends Component {
     state = {
-        value: this?.props?.userCookBookData && this?.props?.userCookBookData[0]?._id,
+        cookBooks: this?.props?.userCookBookData,
     }
 
 
@@ -13,7 +13,7 @@ export default class SelectCookBookForm extends Component {
 
         this.setState(
             { 
-                value: value
+                cookBooks: value
             }
             
         );
@@ -27,11 +27,13 @@ export default class SelectCookBookForm extends Component {
 
 
     render() {
-        console.log("🚀 ~ file: SelectCookBookForm.jsx ~ line 31 ~ SelectCookBookForm ~ render ~ this.props", this.props)
-        console.log("🚀 ~ file: SelectCookBookForm.jsx ~ line 32 ~ SelectCookBookForm ~ render ~ this.state", this.state)
+        console.log(this.state)
+        console.log(this.props.userCookBookData)
+        console.log(this.state.cookBooks)
+        console.log(this.state.cookBooks[0])
         return (
         <>
-            <select id="cookBooks" name="cookBookList" onChange={this?.onChangeHandler} value={this.state?.value}>
+            <select id="cookBooks" name="cookBookList" onChange={this.onChangeHandler} value={this.state.cookBooks[0]}>
                 {!!this.props?.userCookBookData && this.props?.userCookBookData.map((cookBook, i) => (
                     <option 
                     key={i} 

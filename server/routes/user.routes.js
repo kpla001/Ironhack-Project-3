@@ -20,17 +20,20 @@ router.get("/", (req, res) => {
     });
 })
 
+// TODO: Change Routes to /user rather than userId 
 router.get("/:userId", (req, res) => {
     const preparedUserId = mongoose.Types.ObjectId(req.params.userId);
     User.findById(preparedUserId)
+    // User.findById(req.params.userId)
     .populate('cookbooks')
     .then(userData => {
+    console.log("🚀 ~ file: user.routes.js ~ line 30 ~ router.get ~ userData", userData)
         // console.log("userData----------", userData)
         res.status(200).json({ user: userData });
     })
     .catch((err) => {
         // console.log(err);
-        res.status(500).json({ errorMessage: err });
+        res.status(500).json({ errorMessage: `error retrieving user: ${req.params.userId}, ${err}` });
     });
 })
 
@@ -42,7 +45,7 @@ router.get("/:userId/:cookbookId", (req, res) => {
         res.status(200).json({ cookbooks: userData.cookbooks });
     })
     .catch((err) => {
-        res.status(500).json({ errorMessage: err });
+        res.status(500).json({ errorMessage: `error retrieving cookbooks by userId: ${req.params.userId}, ${err}` });
     })
 })
 

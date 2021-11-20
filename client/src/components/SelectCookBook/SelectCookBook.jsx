@@ -5,11 +5,11 @@ import Button from 'react-bootstrap/Button';
 import './SelectCookBook.css';
 import service from '../../services/service';
 
-export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
+export default function SelectCookBook({ user, saveRecipeToCookBook, recipe }) {
     const [show, setShow] = useState(false);
-    const [userCookBookData, setUserCookBookData] = useState(user?.cookbooks);
+    const [userCookBookData, setUserCookBookData] = useState(user.cookbooks);
 
-    const [selectedCookBook, setSelectedCookBook] = useState(user?.cookbooks[0]);
+    const [selectedCookBook, setSelectedCookBook] = useState(user.cookbooks[0]);
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -17,21 +17,27 @@ export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
     const getCookBookData = (userId) => {
         service.getUserCookBooksById(userId)
         .then(data => {
-            setUserCookBookData(data?.user?.cookbooks)
+            setUserCookBookData(data.user.cookbooks)
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(`error retrieving cookbooks: ${err}`))
     }
 
     const selectionHandler = (selection) => {
+        console.log("🚀 ~ file: SelectCookBook.jsx ~ line 26 ~ selectionHandler ~ selection", selection)
+        
         setSelectedCookBook(selection)
     }
 
-    console.log(user)
-    console.log(selectedCookBook)
+    const navigateToCookbookForm = async () => {
+        handleShow()
+        await getCookBookData(user._id)
+    }
+    // console.log(user)
+    // console.log(selectedCookBook)
     // setInterval(() => console.log(userCookBookData), 2000)
     return (
         <>
-            <Button variant="primary" style={{backgroundColor: "#299640"}} onClick={() => { handleShow(); getCookBookData(user._id)} }>
+            <Button variant="primary" style={{backgroundColor: "#299640"}} onClick={() => navigateToCookbookForm() }>
                 <b>Save Recipe to CookBook</b>
             </Button>
     
