@@ -32,7 +32,7 @@ export default function Search({ submitSearch, isLoadingHandler }) {
           placeholder="Type in a recipe or ingredient"
           onChange={onChangeHandler}
         />
-        <a> </a>
+        <br></br>
         <button
           type="submit"
           onClick={() => {
