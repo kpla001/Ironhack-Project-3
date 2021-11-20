@@ -184,6 +184,15 @@ form.signup__form {
 .credits {
   margin-left: 5vh;
 }
+.credits a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.89);
+}
+
+.credits a:hover {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.575);
+}
 
 .footnote a {
   text-decoration: none;
