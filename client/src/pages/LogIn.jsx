@@ -37,15 +37,16 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="login">
         <h1>Log In</h1>
+        <br></br>
         <form onSubmit={this.handleFormSubmission} className="signup__form">
           <label htmlFor="input-username">Username</label>
           <input
             id="input-username"
             type="text"
             name="username"
-            placeholder="username"
+            placeholder="Username"
             value={this.state.username}
             onChange={this.handleInputChange}
             required
