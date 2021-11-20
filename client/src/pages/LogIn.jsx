@@ -1,51 +1,52 @@
-import React, { Component } from "react";
-import { login } from "../services/auth";
-import "./Signup";
-import * as PATHS from "../utils/paths";
-import * as USER_HELPERS from "../utils/userToken";
+import React, { Component } from 'react'
+import { login } from '../services/auth'
+import './Signup'
+import * as PATHS from '../utils/paths'
+import * as USER_HELPERS from '../utils/userToken'
 
 export default class Login extends Component {
   state = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
     error: null,
-  };
+  }
 
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
+  handleInputChange = event => {
+    const { name, value } = event.target
     this.setState({
       [name]: value,
-    });
-  };
+    })
+  }
 
-  handleFormSubmission = (event) => {
-    event.preventDefault();
+  handleFormSubmission = event => {
+    event.preventDefault()
 
     const credentials = {
       username: this.state.username,
       password: this.state.password,
-    };
-    login(credentials).then((res) => {
+    }
+    login(credentials).then(res => {
       if (!res.status) {
         // handle not great request
       }
-      USER_HELPERS.setUserToken(res.data?.accessToken);
-      this.props.authenticate(res.data?.user);
-      this.props.history.push(PATHS.HOMEPAGE);
-    });
-  };
+      USER_HELPERS.setUserToken(res.data?.accessToken)
+      this.props.authenticate(res.data?.user)
+      this.props.history.push(PATHS.HOMEPAGE)
+    })
+  }
 
   render() {
     return (
-      <div>
+      <div className="login">
         <h1>Log In</h1>
+        <br></br>
         <form onSubmit={this.handleFormSubmission} className="signup__form">
           <label htmlFor="input-username">Username</label>
           <input
             id="input-username"
             type="text"
             name="username"
-            placeholder="username"
+            placeholder="Username"
             value={this.state.username}
             onChange={this.handleInputChange}
             required
@@ -75,6 +76,6 @@ export default class Login extends Component {
           </button>
         </form>
       </div>
-    );
+    )
   }
 }

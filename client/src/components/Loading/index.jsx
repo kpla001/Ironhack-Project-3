@@ -1,5 +1,5 @@
-import React from "react";
-import "./Loading.css";
+import React from 'react'
+import './Loading.css'
 
 const LoadingComponent = () => {
   return (
@@ -10,7 +10,7 @@ const LoadingComponent = () => {
         <div className="bounce3"></div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoadingComponent;
+export default LoadingComponent

@@ -1,52 +1,53 @@
-import React, { Component } from "react";
-import { signup } from "../services/auth";
-import "./auth.css";
-import * as PATHS from "../utils/paths";
-import * as USER_HELPERS from "../utils/userToken";
+import React, { Component } from 'react'
+import { signup } from '../services/auth'
+import './auth.css'
+import * as PATHS from '../utils/paths'
+import * as USER_HELPERS from '../utils/userToken'
 
 export default class Signup extends Component {
   state = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
     error: null,
-  };
+  }
 
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
+  handleInputChange = event => {
+    const { name, value } = event.target
     this.setState({
       [name]: value,
-    });
-  };
+    })
+  }
 
-  handleFormSubmission = (event) => {
-    event.preventDefault();
+  handleFormSubmission = event => {
+    event.preventDefault()
     const credentials = {
       username: this.state.username,
       password: this.state.password,
-    };
-    signup(credentials).then((res) => {
+    }
+    signup(credentials).then(res => {
       // successful signup
-      console.log(res);
+      console.log(res)
       if (!res.status) {
         // unsuccessful signup
       }
-      USER_HELPERS.setUserToken(res.data?.accessToken);
-      this.props.authenticate(res.data?.user);
-      this.props.history.push(PATHS.HOMEPAGE);
-    });
-  };
+      USER_HELPERS.setUserToken(res.data?.accessToken)
+      this.props.authenticate(res.data?.user)
+      this.props.history.push(PATHS.HOMEPAGE)
+    })
+  }
 
   render() {
     return (
       <div className="signUp">
         <h1>Sign Up</h1>
+        <br></br>
         <form onSubmit={this.handleFormSubmission} className="auth__form">
           <label htmlFor="input-username">Username</label>
           <input
             id="input-username"
             type="text"
             name="username"
-            placeholder="Text"
+            placeholder="Username"
             value={this.state.username}
             onChange={this.handleInputChange}
             required
@@ -76,6 +77,6 @@ export default class Signup extends Component {
           </button>
         </form>
       </div>
-    );
+    )
   }
 }

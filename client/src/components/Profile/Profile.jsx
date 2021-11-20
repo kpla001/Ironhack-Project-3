@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { Modal, Button, Form } from "react-bootstrap";
-import "./Profile.css";
-import service from "../../services/service";
-import Ingredients from "../Ingredients/Ingredients";
-import Recipe from "../Recipe/Recipe";
-import Cookbooks from "../Cookbooks/Cookbooks";
-import UserCookbooks from "../UserCookBook/userCookbooks";
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { Modal, Button, Form } from 'react-bootstrap'
+import './Profile.css'
+import service from '../../services/service'
+import Ingredients from '../Ingredients/Ingredients'
+import Recipe from '../Recipe/Recipe'
+import Cookbooks from '../Cookbooks/Cookbooks'
+import UserCookbooks from '../UserCookBook/userCookbooks'
 
 export default class Profile extends Component {
   state = {
@@ -15,34 +15,34 @@ export default class Profile extends Component {
     recipes: [],
     cookbooks: [],
     isOpenModal: false,
-    cookbookName: "",
-    description: "",
-  };
+    cookbookName: '',
+    description: '',
+  }
 
   componentDidMount() {
-    service.getUserCookBooksById(this.props.user._id).then((data) => {
+    service.getUserCookBooksById(this.props.user._id).then(data => {
       // console.log("This is our data ------------------------", data);
       // console.log("Props: ====================", this.props);
-      this.setState({ cookbooks: data.user.cookbooks });
-    });
+      this.setState({ cookbooks: data.user.cookbooks })
+    })
   }
 
   handleModal = () => {
     this.setState({ isOpenModal: !this.state.isOpenModal }, () => {
-      console.log(this.state);
-    });
-  };
+      console.log(this.state)
+    })
+  }
 
-  handleOnInputChange = (event) => {
-    const { name, value } = event.target;
-    console.log(event.target.name);
+  handleOnInputChange = event => {
+    const { name, value } = event.target
+    console.log(event.target.name)
 
-    this.setState({ [name]: value }, () => console.log(this.state));
-  };
+    this.setState({ [name]: value }, () => console.log(this.state))
+  }
 
   handleOnSubmit = () => {
-    const { cookbookName, description } = this.state;
-    const { _id } = this.props.user;
+    const { cookbookName, description } = this.state
+    const { _id } = this.props.user
 
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/cookbooks`, {
@@ -50,21 +50,19 @@ export default class Profile extends Component {
         author: _id,
         description: description,
       })
-      .then((response) => {
-        const { data } = response;
-        this.setState({ cookbooks: data.cookbooks });
+      .then(response => {
+        const { data } = response
+        this.setState({ cookbooks: data.cookbooks })
       })
-      .then(this.handleModal);
-  };
+      .then(this.handleModal)
+  }
 
-  handleDelete = (cookbook) => {
+  handleDelete = cookbook => {
     service.deleteCookbook(cookbook._id).then(() => {
-      const cookbooks = this.state.cookbooks.filter(
-        (b) => b._id !== cookbook._id
-      );
-      this.setState({ cookbooks: cookbooks });
-    });
-  };
+      const cookbooks = this.state.cookbooks.filter(b => b._id !== cookbook._id)
+      this.setState({ cookbooks: cookbooks })
+    })
+  }
 
   render() {
     // console.log(this.props.user);
@@ -72,15 +70,13 @@ export default class Profile extends Component {
     return (
       <div>
         <main className="container">
-          <h1 className="Welcome">
-            Welcome to Recipez, {this.props.user.username}
-          </h1>
+          <h1 className="Welcome">Welcome to Recipez, {this.props.user.username}</h1>
           <Button
             variant="primary"
             style={{
-              transition: "ease-in-out 0.5s",
-              backgroundColor: "#b5ce27",
-              cursor: "pointer",
+              transition: 'ease-in-out 0.5s',
+              backgroundColor: '#b5ce27',
+              cursor: 'pointer',
             }}
             onClick={this.handleModal}
           >
@@ -135,6 +131,6 @@ export default class Profile extends Component {
         </main>
         {/* <Cookbooks cookbooks={this.state.cookbooks} /> */}
       </div>
-    );
+    )
   }
 }
