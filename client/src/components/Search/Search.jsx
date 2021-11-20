@@ -1,40 +1,40 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 // import axios from 'axios';
-import "./Search.css";
+import './Search.css'
 
 export default class Search extends Component {
   state = {
-    input: "",
-  };
+    input: '',
+  }
 
-  onChangeHandler = (event) => {
+  onChangeHandler = event => {
     // console.log(event.target.value);
 
-    let { name, value } = event.target;
+    let { name, value } = event.target
 
     // console.log(name, value);
 
     this.setState(
       {
         [name]: value,
-      }
+      },
       // () => console.log("state in onChangeHandler: ", this.state)
-    );
-  };
+    )
+  }
 
-  onSubmitHandler = (event) => {
-    event.preventDefault();
+  onSubmitHandler = event => {
+    event.preventDefault()
 
     // console.log(this.props)
 
     // console.log("state in onSubmitHandler", this.state);
 
-    this.props.submitSearch(this.state.input);
+    this.props.submitSearch(this.state.input)
 
     this.setState({
-      input: "",
-    });
-  };
+      input: '',
+    })
+  }
 
   render() {
     return (
@@ -50,6 +50,6 @@ export default class Search extends Component {
           <button href="/search-results">Search</button>
         </form>
       </div>
-    );
+    )
   }
 }

@@ -1,9 +1,9 @@
-const { Schema, model } = require("mongoose");
-const ObjectId = Schema.Types.ObjectId;
+const { Schema, model } = require('mongoose')
+const ObjectId = Schema.Types.ObjectId
 
 const sessionSchema = new Schema(
   {
-    user: { type: ObjectId, ref: "User" },
+    user: { type: ObjectId, ref: 'User' },
     createdAt: {
       type: Date,
       default: Date.now(),
@@ -13,9 +13,9 @@ const sessionSchema = new Schema(
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
-  }
-);
+  },
+)
 
-const Session = model("Session", sessionSchema);
+const Session = model('Session', sessionSchema)
 
-module.exports = Session;
+module.exports = Session
