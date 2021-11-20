@@ -1,0 +1,12 @@
+div.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 15px;
+  height: 100%;
+  position: relative;
+}
+
+div.card-body {
+  margin-bottom: 10px;
+}
