@@ -27,14 +27,13 @@ export default class SelectCookBookForm extends Component {
 
 
     render() {
-        console.log("🚀 ~ file: SelectCookBookForm.jsx ~ line 31 ~ SelectCookBookForm ~ render ~ this.props", this.props)
-        console.log("🚀 ~ file: SelectCookBookForm.jsx ~ line 32 ~ SelectCookBookForm ~ render ~ this.state", this.state)
+        // console.log(this.props.userCookBookData)
         return (
         <>
-            <select id="cookBooks" name="cookBookList" onChange={this?.onChangeHandler} value={this.state?.value}>
-                {!!this.props?.userCookBookData && this.props?.userCookBookData.map((cookBook, i) => (
+            <select id="cookBooks" name="cookBookList" onChange={this.onChangeHandler} value={this.state.value}>
+                {!!this.props.userCookBookData && this.props.userCookBookData.map((cookBook) => (
                     <option 
-                    key={i} 
+                    key={cookBook?._id} 
                     value={cookBook?._id}
                     >
                         {`${cookBook?.title}`}
