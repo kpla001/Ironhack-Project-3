@@ -31,7 +31,7 @@ export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
     // setInterval(() => console.log(userCookBookData), 2000)
     return (
         <>
-            <Button variant="primary" style={{backgroundColor: "#299640"}} onClick={() => { handleShow(); getCookBookData(user._id)} }>
+            <Button variant="primary" style={{backgroundColor: "#299640"}} onClick={() => { getCookBookData(user._id); handleShow()} }>
                 <b>Save Recipe to CookBook</b>
             </Button>
     
