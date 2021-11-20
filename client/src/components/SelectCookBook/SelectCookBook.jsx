@@ -38,20 +38,20 @@ export default function SelectCookBook({ user, saveRecipeToCookBook, recipe }) {
     }
     }
 
-    const handleSaveRecipe = async (recipe, selectedCookBook, user) => {
-    console.log("~ user", user)
-    console.log("~ selectedCookBook", selectedCookBook)
-    console.log("~ recipe", recipe)
+    // const handleSaveRecipe = async (recipe, selectedCookBook, user) => {
+    // console.log("~ user", user)
+    // console.log("~ selectedCookBook", selectedCookBook)
+    // console.log("~ recipe", recipe)
         
-        if (recipe){
-            try {
-            await saveRecipeToCookBook(recipe, selectedCookBook, user)
-            handleClose()
-        } catch (err) {
-            console.error(`Error saving recipe: ${err}`)
-        }
-    }
-    }
+    //     if (recipe){
+    //         try {
+    //         await saveRecipeToCookBook(recipe, selectedCookBook, user)
+    //         handleClose()
+    //     } catch (err) {
+    //         console.error(`Error saving recipe: ${err}`)
+    //     }
+    // }
+    // }
     // console.log(user)
     // console.log(selectedCookBook)
     // setInterval(() => console.log(userCookBookData), 2000)
@@ -83,7 +83,7 @@ export default function SelectCookBook({ user, saveRecipeToCookBook, recipe }) {
                     </Button>
                     {userCookBookData?.length!==0 && <Button 
                     variant="primary" 
-                    onClick={() => handleSaveRecipe(recipe, selectedCookBook, user)}
+                    onClick={() => {saveRecipeToCookBook(recipe, selectedCookBook, user); handleClose()}}
                     >
                         Save Changes
                     </Button>}
