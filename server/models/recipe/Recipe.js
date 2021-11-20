@@ -1,27 +1,24 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose')
 
 const recipeSchema = new Schema({
   name: { type: String },
   spoonacularId: { type: String },
-  ingredients: [
-    {type: Schema.Types.ObjectId, ref: "Ingredient" }
-  ],
-  author: { type: Schema.Types.ObjectId, ref: "User" },
+  ingredients: [{ type: Schema.Types.ObjectId, ref: 'Ingredient' }],
+  author: { type: Schema.Types.ObjectId, ref: 'User' },
   image: { type: String },
   calories: { type: Number },
   description: { type: String },
   directions: [Object],
   cuisines: [String],
-  dairyFree: { type: Boolean},
+  dairyFree: { type: Boolean },
   dishTypes: [String],
   glutenFree: { type: Boolean },
   readyInMinutes: { type: Number },
   servings: { type: Number },
   vegan: { type: Boolean },
   vegetarian: { type: Boolean },
+})
 
-});
+recipeSchema.plugin(require('mongoose-autopopulate'))
 
-recipeSchema.plugin(require("mongoose-autopopulate"));
-
-module.exports = model("Recipe", recipeSchema);
+module.exports = model('Recipe', recipeSchema)
