@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import "./auth.css";
-import { Link } from "react-router-dom";
-import RecipeDetails from "../components/RecipeDetails/RecipeDetails";
-import SelectCookBook from "../components/SelectCookBook/SelectCookBook";
-import apiService from "../services/apiService";
-import service from "../services/service";
+import React, { Component } from 'react'
+import './auth.css'
+import { Link } from 'react-router-dom'
+import RecipeDetails from '../components/RecipeDetails/RecipeDetails'
+import SelectCookBook from '../components/SelectCookBook/SelectCookBook'
+import apiService from '../services/apiService'
+import service from '../services/service'
 
 export default class DetailsPage extends Component {
   state = {
@@ -12,24 +12,27 @@ export default class DetailsPage extends Component {
     recipe: null,
     selectedRecipe: null,
     selectedCookBookId: null,
-  };
-
-  componentDidMount() {
-    apiService.getRecipeDetailsFromApi(this.props)
-    .then((recipeFromApi) => {
-      // console.log(recipeFromApi.data)
-      this.setState({
-        recipe: recipeFromApi.data,
-      });
-    })
-    .catch((error) => {console.error(error)});
   }
 
-  handleRecipeSelect = (recipe) => {
-    this.setState({ selectedRecipe: recipe, currentPage: 1 });
-  };
+  componentDidMount() {
+    apiService
+      .getRecipeDetailsFromApi(this.props)
+      .then(recipeFromApi => {
+        // console.log(recipeFromApi.data)
+        this.setState({
+          recipe: recipeFromApi.data,
+        })
+      })
+      .catch(error => {
+        console.error(error)
+      })
+  }
 
-  handleCookBookSelect = (cookBookId) => {
+  handleRecipeSelect = recipe => {
+    this.setState({ selectedRecipe: recipe, currentPage: 1 })
+  }
+
+  handleCookBookSelect = cookBookId => {
     this.setState({ selectedCookBookId: cookBookId })
   }
 
@@ -39,12 +42,12 @@ export default class DetailsPage extends Component {
       // ...recipe,
       name: recipe.title,
       spoonacularId: recipe.id,
-      ingredients: recipe.extendedIngredients.map((ingredient) => {
+      ingredients: recipe.extendedIngredients.map(ingredient => {
         return {
           name: ingredient.name,
           spoonacularId: `${ingredient.id ? ingredient.id : Date.now()}`,
           image: ingredient.image,
-        };
+        }
       }),
       directions: recipe.analyzedInstructions,
       image: recipe.image,
@@ -57,23 +60,22 @@ export default class DetailsPage extends Component {
       servings: recipe.servings,
       vegan: recipe.vegan,
       vegetarian: recipe.vegetarian,
-    };
+    }
 
-    
-    service.saveRecipe(recipeData)
-    .then(()=> {
-      service.saveRecipe(recipeData)
-            .then((createdRecipe) => {
-              const recipeDestructureForCookBook = {
-                recipes: createdRecipe.data._id
-              }
-              service.saveRecipeToCookBook(recipeDestructureForCookBook, cookBookId)
-            })
-            .catch(err => console.log(err))
-    })
-    .catch(err => console.log(err))
-      
-
+    service
+      .saveRecipe(recipeData)
+      .then(() => {
+        service
+          .saveRecipe(recipeData)
+          .then(createdRecipe => {
+            const recipeDestructureForCookBook = {
+              recipes: createdRecipe.data._id,
+            }
+            service.saveRecipeToCookBook(recipeDestructureForCookBook, cookBookId)
+          })
+          .catch(err => console.log(err))
+      })
+      .catch(err => console.log(err))
 
     // .then((data) => {
     //   return (
@@ -94,11 +96,11 @@ export default class DetailsPage extends Component {
         <RecipeDetails recipe={this.state.recipe} />
 
         {this.props.user && (
-          <SelectCookBook 
-          user={this.state.user} 
-          saveRecipeToCookBook={this.saveRecipe} 
-          recipe={this.state.recipe}
-          cookBookSelectionHandler={this.handleCookBookSelect}
+          <SelectCookBook
+            user={this.state.user}
+            saveRecipeToCookBook={this.saveRecipe}
+            recipe={this.state.recipe}
+            cookBookSelectionHandler={this.handleCookBookSelect}
           />
         )}
 
@@ -113,6 +115,6 @@ export default class DetailsPage extends Component {
           </button>
         )} */}
       </div>
-    );
+    )
   }
 }

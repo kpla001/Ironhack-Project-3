@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Input = ({ name, label, value, error, onChange }) => {
   return (
@@ -15,7 +15,7 @@ const Input = ({ name, label, value, error, onChange }) => {
       />
       {error && <div className="alert alert-danger">{error} </div>}
     </div>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

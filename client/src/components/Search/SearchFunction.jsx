@@ -1,26 +1,26 @@
-import React, { userEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { userEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function Search({ submitSearch, isLoadingHandler }) {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('')
 
-  const onChangeHandler = (event) => {
-    let { name, value } = event.target;
+  const onChangeHandler = event => {
+    let { name, value } = event.target
 
-    setInput(value);
-  };
+    setInput(value)
+  }
 
-  const onSubmitHandler = (event) => {
-    event.preventDefault();
+  const onSubmitHandler = event => {
+    event.preventDefault()
 
     // console.log(this.props)
 
     // console.log("state in onSubmitHandler", this.state);
 
-    submitSearch(input);
+    submitSearch(input)
 
-    setInput("");
-  };
+    setInput('')
+  }
 
   return (
     <div>
@@ -36,7 +36,7 @@ export default function Search({ submitSearch, isLoadingHandler }) {
         <button
           type="submit"
           onClick={() => {
-            isLoadingHandler(true);
+            isLoadingHandler(true)
           }}
           href="/search-results"
         >
@@ -44,5 +44,5 @@ export default function Search({ submitSearch, isLoadingHandler }) {
         </button>
       </form>
     </div>
-  );
+  )
 }
