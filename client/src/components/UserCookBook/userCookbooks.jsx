@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import UserTable from "./userTable";
 import ListGroup from "../common/listGroup";
 import Pagination from "../common/pagination";
-// import { getCookbooks } from "../../services/fakeCookbookService.js";
-// import { getRecipes } from "../../services/fakeRecipeService";
 import service from "../../services/service";
 import { paginate } from "../../utils/paginate";
 import _ from "lodash";
