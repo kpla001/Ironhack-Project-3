@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
-import Search from "../components/Search/Search";
+import SearchFunction from "../components/Search/SearchFunction";
 import RecipeResults from "../components/SearchResults/RecipeResults";
 import LoadingComponent from "../components/Loading/index";
+import Pagination from "../components/common/pagination"
 import apiService from "../services/apiService";
+import { paginate } from "../utils/paginate";
+import _ from "lodash";
 
 
 class SearchPage extends Component {
@@ -44,6 +47,7 @@ class SearchPage extends Component {
       this.setState({
         searchResults: input,
         recipeResults: results.data.results,
+        isLoading: false,
         locationState: {
           searchResults: input,
           recipeResults: results.data.results,
@@ -56,8 +60,16 @@ class SearchPage extends Component {
     }
   };
 
-  paginationHandler(input) {
+  isLoadingHandler = (status) => {
+    this.setState({
+      isLoading: status,
+    })
+  }
 
+  handlePageChange = (page) => {
+    this.setState({
+      currentPage: page,
+    })
   }
 
   render() {
@@ -65,23 +77,34 @@ class SearchPage extends Component {
     // const search = this.props.location.search;
     // const  name = new URLSearchParams(search).get(this.state.searchResults);
 
+    const paginatedRecipes = paginate(this.state?.recipeResults, this.state.currentPage, this.state.pageSize);
+
     return (
       <div className="searchPage">
         <br />
-        <Search submitSearch={this.searchHandler} />
+
+        <SearchFunction 
+        submitSearch={this.searchHandler} 
+        isLoadingHandler={this.isLoadingHandler} 
+        />
+
         <br />
-        {this.state.isLoading === true && this.state.searchResults ? (
-          <LoadingComponent />
-        ) : null}
+
+        {this.state.isLoading === true && <LoadingComponent isLoading={this.state.isLoading}/>}
         {!!this.state.searchResults && (
           <div>
             <h2>Results for search "{`${this.state.searchResults}`}":</h2>
 
             <RecipeResults 
-            results={this.state?.recipeResults} 
-            currentPage={this.state?.currentPage}  
-            pageSize={this.state?.pageSize}
-            paginationHandler={this.paginationHandler}
+            results={paginatedRecipes}
+            />
+            <Pagination 
+            id="pagination"
+            className="pagination"
+            itemsCount={this.state?.recipeResults.length}
+            pageSize={this.state.pageSize}
+            currentPage={this.state.currentPage}
+            onPageChange={this.handlePageChange}
             />
           </div>
         )}

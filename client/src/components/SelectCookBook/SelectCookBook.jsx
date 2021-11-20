@@ -7,9 +7,9 @@ import service from '../../services/service';
 
 export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
     const [show, setShow] = useState(false);
-    const [userCookBookData, setUserCookBookData] = useState(user.cookbooks);
+    const [userCookBookData, setUserCookBookData] = useState(user?.cookbooks);
 
-    const [selectedCookBook, setSelectedCookBook] = useState(user.cookbooks[0]);
+    const [selectedCookBook, setSelectedCookBook] = useState(user?.cookbooks[0]);
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -17,7 +17,7 @@ export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
     const getCookBookData = (userId) => {
         service.getUserCookBooksById(userId)
         .then(data => {
-            setUserCookBookData(data.user.cookbooks)
+            setUserCookBookData(data?.user?.cookbooks)
         })
         .catch(err => console.log(err))
     }

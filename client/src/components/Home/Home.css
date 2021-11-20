@@ -25,24 +25,44 @@ div {
 
 div.landing {
   display: flex;
+  background-color: rgba(255, 255, 255, 0.623);
+  border-top: 5px solid rgba(255, 255, 255, 0.74);
+  border-bottom: 5px solid rgba(255, 255, 255, 0.74);
   flex-direction: column;
   align-content: flex-start;
   width: 50vw;
-  padding-top: 15em;
+  padding: 2em 0 2em 0;
+  margin-top: 5em;
 }
 .toppage {
   display: flex;
 }
 
+.landing h1 {
+  margin-left: 6rem;
+  color: rgba(0, 0, 0, 0.623);
+}
+
+.landing h3 {
+  color: rgba(0, 0, 0, 0.623);
+}
+
 div.aside {
   width: 50vw;
-  padding-top: 15em;
+  padding: 3em 3em 2em 0;
+  margin: 5em 0 0 0;
+  border-top: 5px solid rgba(255, 255, 255, 0.74);
+  border-bottom: 5px solid rgba(255, 255, 255, 0.74);
+  color: rgba(0, 0, 0, 0.623);
+  background-color: rgba(255, 255, 255, 0.623);
 }
 .bottompage {
   margin-top: 80px;
-  height: 25vw;
+  padding-bottom: 10vh;
+  height: 20vw;
   display: flex;
   align-content: space-between;
+  text-decoration: none;
 }
 
 .randomCard {
@@ -53,19 +73,45 @@ div.aside {
   height: 350px;
   /* border: 1px solid rgba(0, 0, 0, 0.418); */
   border-radius: 15px;
-  padding-bottom: 15px;
-  margin: 8px 0 8px 0;
+  margin: 8px 4px -50px 4px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.493);
-  font-family: inherit;
-  font-weight: inherit;
-  background-color: rgba(255, 255, 255, 0.801);
+  background-color: rgba(255, 255, 255, 0.774);
+  text-decoration: none;
+  font: 20pt;
+  padding-top: -10px;
+  transition: 1s;
 }
 
+.randomCard:hover {
+  transform: translate(0, -20px);
+}
 .randomTitle {
-  font-family: inherit;
-  font-weight: inherit;
+  text-align: center;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #000000ab;
+  padding: 0.3rem 0 0.3rem 0;
+  background-color: rgba(255, 255, 255, 0.938);
+  border: 3px solid rgba(255, 255, 255, 0.788);
+  border-radius: 5px;
+}
+
+.randomDescription {
+  text-decoration: none;
+}
+
+.randomDescription p {
+  text-align: left;
+  text-decoration: none;
+  color: #000000ab;
+  font-size: 0.9rem;
+  margin-left: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 0.1rem;
 }
 
 .randomPic {
+  align-self: center;
   padding-top: 20px;
+  /* padding-bottom: 20px; */
 }

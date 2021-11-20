@@ -37,7 +37,7 @@ router.get("/session", (req, res) => {
 
 router.post("/signup", isLoggedOut, (req, res) => {
   const { username, password } = req.body;
-
+  console.log("Starting signup ", { username, password });
   if (!username) {
     return res
       .status(400)
@@ -64,6 +64,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
   // Search the database for a user with the username submitted in the form
   User.findOne({ username }).then((found) => {
+    console.log("Running User.findOne...... ", { username });
     // If the user is found, send the message username is taken
     if (found) {
       return res.status(400).json({ errorMessage: "Username already taken." });
@@ -74,6 +75,10 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .genSalt(saltRounds)
       .then((salt) => bcrypt.hash(password, salt))
       .then((hashedPassword) => {
+        console.log("Running bcrypt....", {
+          username,
+          password: hashedPassword,
+        });
         // Create a user and save it in the database
         return User.create({
           username,
@@ -81,6 +86,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         });
       })
       .then((user) => {
+        console.log("Inside then... ", { user });
         Session.create({
           user: user._id,
           createdAt: Date.now(),
@@ -89,6 +95,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         });
       })
       .catch((error) => {
+        console.log("BCRYPT ERROR: ", error);
         if (error instanceof mongoose.Error.ValidationError) {
           return res.status(400).json({ errorMessage: error.message });
         }

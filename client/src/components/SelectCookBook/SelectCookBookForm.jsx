@@ -31,9 +31,9 @@ export default class SelectCookBookForm extends Component {
         return (
         <>
             <select id="cookBooks" name="cookBookList" onChange={this.onChangeHandler} value={this.state.value}>
-                {!!this.props.userCookBookData && this.props.userCookBookData.map((cookBook) => (
+                {!!this.props?.userCookBookData && this.props?.userCookBookData.map((cookBook, i) => (
                     <option 
-                    key={cookBook?._id} 
+                    key={i} 
                     value={cookBook?._id}
                     >
                         {`${cookBook?.title}`}

@@ -27,12 +27,6 @@ form.signup__form {
   background-repeat: no-repeat;
 }
 
-.searchPage {
-  background-image: url(../images/mariana-medvedeva-FjryWdaqGEc-unsplash.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 .detailsPage {
   background-image: url(../images/mariana-medvedeva-FjryWdaqGEc-unsplash.jpg);
   background-size: cover;
@@ -72,4 +66,34 @@ form.signup__form {
   background-image: url(../images/mariana-medvedeva-FjryWdaqGEc-unsplash.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.footnote {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  background: rgba(128, 128, 128, 0.678);
+  height: 35px;
+  color: rgba(255, 255, 255, 0.89);
+  align-self: flex-end;
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.credits {
+  margin-left: 5vh;
+}
+
+.footnote a {
+  text-decoration: none;
+}
+
+.footnote i {
+  color: rgba(255, 255, 255, 0.89);
+  display: flex;
+  align-self: flex-end;
+  padding-top: 5px;
+  margin-right: 5vh;
 }

@@ -1,17 +1,17 @@
-nav {
+.nav {
   display: flex;
   padding: 0.3em;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: #4b8cec;
+  background: rgba(128, 128, 128, 0.541);
   font-weight: 600;
   font-size: 1.1rem;
 }
 
 .nav__projectName {
   text-decoration: none;
-  color: rgba(221, 221, 221, 0.753);
+  color: rgba(221, 221, 221, 0.87);
 }
 
 .nav__authLinks {
@@ -19,7 +19,7 @@ nav {
 }
 
 .authLink {
-  color: #ffffffc7;
+  color: #ffffffd5;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }

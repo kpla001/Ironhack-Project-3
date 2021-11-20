@@ -4,11 +4,14 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
+  background-image: url(../../images//mariana-medvedeva-FjryWdaqGEc-unsplash.jpg);
+  background-size: cover;
+  padding-bottom: 5vh;
 }
 
 .resultCard {
   display: block;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.925);
   align-items: center;
   place-self: center;
   width: 60vw;
@@ -69,7 +72,14 @@
   margin-top: 1px;
 }
 
-#pagination {
-  position: absolute;
-  width: 100%;
+/* Pagination Styles for bootsrap pagination */
+nav {
+  background-image: url(../../images/mariana-medvedeva-FjryWdaqGEc-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+nav ul {
+  justify-content: center;
+  background: rgba(128, 128, 128, 0.541);
 }

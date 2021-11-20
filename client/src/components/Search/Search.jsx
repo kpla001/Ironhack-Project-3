@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link, useLocation } from 'react-router-dom';
 // import axios from 'axios';
+import "./Search.css";
 
 export default class Search extends Component {
   state = {
