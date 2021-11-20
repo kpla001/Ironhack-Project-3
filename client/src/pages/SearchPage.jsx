@@ -92,8 +92,8 @@ class SearchPage extends Component {
 
         {this.state.isLoading === true && <LoadingComponent isLoading={this.state.isLoading} />}
         {!!this.state.searchResults && (
-          <div>
-            <h2>Results for search "{`${this.state.searchResults}`}":</h2>
+          <div className="resultsPage">
+            <h2 classname="resultsDescription">Results for search "{`${this.state.searchResults}`}":</h2>
 
             <RecipeResults results={paginatedRecipes} />
             <Pagination
