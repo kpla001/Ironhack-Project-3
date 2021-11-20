@@ -27,6 +27,7 @@ router.get("/:userId", (req, res) => {
     // User.findById(req.params.userId)
     .populate('cookbooks')
     .then(userData => {
+    console.log("🚀 ~ file: user.routes.js ~ line 30 ~ router.get ~ userData", userData)
         // console.log("userData----------", userData)
         res.status(200).json({ user: userData });
     })
