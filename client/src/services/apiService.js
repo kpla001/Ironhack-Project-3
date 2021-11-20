@@ -14,13 +14,13 @@ const apiService = {
 
   getRandomRecipeFromApi: input =>
     instance
-      .get(`/recipes/random?number=5&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`)
+      .get(`/recipes/random?number=5&apiKey=${process.env.REACT_APP_API_KEY5}`)
       .then(response => response),
 
   getRecipeDetailsFromApi: input =>
     instance
       .get(
-        `/recipes/${input.match.params.id}/information?includeNutrition=true&apiKey=${process.env.REACT_APP_API_KEY}`,
+        `/recipes/${input.match.params.id}/information?includeNutrition=true&apiKey=${process.env.REACT_APP_API_KEY6}`,
       )
       .then(response => response),
 }
