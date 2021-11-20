@@ -14,8 +14,7 @@ const apiService = {
 
   getRandomRecipeFromApi: input =>
     instance
-      .get(`/recipes/random?number=5&apiKey=${process.env.REACT_APP_INGREDIENT_API_KEY}`)
-      //////REPLACE ABOVE^ WITH INGREDIENT API KEY////
+      .get(`/recipes/random?number=5&apiKey=${process.env.REACT_APP_RECIPE_API_KEY}`)
       .then(response => response),
 
   getRecipeDetailsFromApi: input =>
