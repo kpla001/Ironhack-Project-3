@@ -7,7 +7,11 @@ class UserTable extends React.Component {
     return (
       <div>
         {cookbooks.map((cookbook, index) => (
-          <div key={cookbook._id} className="card" style={{ width: "18rem" }}>
+          <div
+            key={cookbook._id}
+            className="card"
+            style={{ width: "18rem", height: "18rem", marginBottom: "4rem" }}
+          >
             {/* <img src="..." className="card-img-top" alt="..." /> */}
             <div className="card-body">
               <h5 className="card-title">{cookbook.title}</h5>
@@ -16,15 +20,22 @@ class UserTable extends React.Component {
                 the bulk of the card's content.
               </p>
               <Link
-                style={{ textDecoration: "none" }}
+                style={{
+                  textDecoration: "none",
+                  color: "green",
+                  fontSize: "20px",
+                }}
                 to={`recipe-details/${cookbook.id}`}
               >
                 {`${cookbook.title}`}
               </Link>
               <br></br>
+              <br></br>
+              <br></br>
+
               <button
                 onClick={() => handleDelete(cookbook)}
-                className="btn btn-danger btn-sm"
+                className="btn btn-danger btn-sm "
               >
                 Delete
               </button>

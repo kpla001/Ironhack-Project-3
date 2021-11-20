@@ -77,7 +77,11 @@ export default class Profile extends Component {
           </h1>
           <Button
             variant="primary"
-            style={{ backgroundColor: "#299640" }}
+            style={{
+              transition: "ease-in-out 0.5s",
+              backgroundColor: "#b5ce27",
+              cursor: "pointer",
+            }}
             onClick={this.handleModal}
           >
             <b>Create New CookBook</b>
