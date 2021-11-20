@@ -69,6 +69,7 @@ form.signup__form {
   text-decoration: none;
   font: 20pt;
   border: 5px solid rgba(255, 255, 255, 0.74);
+  border-radius: 15px;
 }
 
 .signUp h1 {
@@ -111,6 +112,7 @@ form.signup__form {
   text-decoration: none;
   font: 20pt;
   border: 5px solid rgba(255, 255, 255, 0.74);
+  border-radius: 15px;
 }
 
 .login button {
@@ -142,6 +144,14 @@ form.signup__form {
 
 .searchPage form input {
   width: 15rem;
+}
+
+.searchPage input[type="text"]:focus {
+  border: 3px solid #299640;
+}
+
+.searchPage form {
+  margin-top: 5rem;
 }
 
 .searchPage form button {
@@ -183,6 +193,7 @@ form.signup__form {
 
 .credits {
   margin-left: 5vh;
+  text-decoration: none;
 }
 .credits a {
   text-decoration: none;
@@ -196,6 +207,7 @@ form.signup__form {
 
 .footnote a {
   text-decoration: none;
+  color: rgba(255, 255, 255, 0.89);
 }
 
 .footnote i {

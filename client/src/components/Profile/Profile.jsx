@@ -70,21 +70,28 @@ export default class Profile extends Component {
     return (
       <div>
         <main className="container">
-          <UserCookbooks cookbooks={this.state.cookbooks} handleDelete={this.handleDelete} />
-          <h1>Welcome, {this.props.user.username}</h1>
-          <div className="userCookbooks">
-            Cookbooks:
-            <br></br>
-            <button onClick={this.saveCookBookToDb}>Make a Cookbook</button>
-          </div>
-
+          <h1 className="Welcome">Welcome to Recipez, {this.props.user.username}</h1>
           <Button
             variant="primary"
-            style={{ backgroundColor: '#299640' }}
+            style={{
+              transition: 'ease-in-out 0.5s',
+              backgroundColor: '#b5ce27',
+              cursor: 'pointer',
+            }}
             onClick={this.handleModal}
           >
             <b>Create New CookBook</b>
           </Button>
+          <UserCookbooks
+            className="UserCookbooks"
+            cookbooks={this.state.cookbooks}
+            handleDelete={this.handleDelete}
+          />
+
+          <div className="userCookbooks">
+            <br></br>
+            {/* <button onClick={this.saveCookBookToDb}>Make a Cookbook</button> */}
+          </div>
 
           <Modal show={this.state.isOpenModal} onHide={this.handleModal}>
             <Modal.Header closeButton>
