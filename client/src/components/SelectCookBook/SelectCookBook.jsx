@@ -26,8 +26,8 @@ export default function ChooseCookBook({ user, saveRecipeToCookBook, recipe }) {
         setSelectedCookBook(selection)
     }
 
-    // console.log(user)
-    // console.log(selectedCookBook)
+    console.log(user)
+    console.log(selectedCookBook)
     // setInterval(() => console.log(userCookBookData), 2000)
     return (
         <>
