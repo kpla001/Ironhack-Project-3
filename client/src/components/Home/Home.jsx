@@ -50,20 +50,21 @@ export default class Home extends Component {
             </Link>
           </div>
           <div className="aside">
-            Our goal is to make finding your favorite recipes as easy as possible, without any short
-            stories or autobiographical novels or
-            <br></br>
-            <i>"My aunt Sally used to make this recipe in the summers of the 1800's..."</i> to dig
-            through. Here you can search from more than
-            <br></br>
-            330,000 recipes from across the web.
-            <br></br>
-            <br></br>
+            Our goal is to make finding your favorite recipes as quick and easy as possible,
+            <br/>
+            without any short stories or autobiographical novels or...
+            <br/><br/>
+            <i>"My great-great Aunt Sally used to cook this dish back in the summers of the 1800's..."</i> to read through. 
+            <br/>
+            <br/>
+            Here you can search from more than 330,000 recipes from across the web.
+            <br/>
+            <br/>
+            <h2>
             We strive to be your number one source for all your cooking recipe needs.
-            <br></br>
-            <br></br>
-            <br></br>
-            Please sign in or sign up to start creating your repository of recipes!
+            </h2>
+            <br/>
+            <h6>Sign up and save all of your favorite recipes into CookBooks!</h6>
           </div>
         </div>
         <div className="bottompage">
