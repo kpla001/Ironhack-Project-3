@@ -29,17 +29,28 @@ export default function SelectCookBook({ user, saveRecipeToCookBook, recipe }) {
     }
 
     const navigateToCookbookForm = async () => {
+        try {
+
         handleShow()
         await getCookBookData(user._id)
+    } catch (err) {
+        console.error(`Error navigating to cookbookForm: ${err}`)
+    }
     }
 
     const handleSaveRecipe = async (recipe, selectedCookBook, user) => {
-        try {
+    console.log("~ user", user)
+    console.log("~ selectedCookBook", selectedCookBook)
+    console.log("~ recipe", recipe)
+        
+        if (recipe){
+            try {
             await saveRecipeToCookBook(recipe, selectedCookBook, user)
             handleClose()
         } catch (err) {
             console.error(`Error saving recipe: ${err}`)
         }
+    }
     }
     // console.log(user)
     // console.log(selectedCookBook)
@@ -72,7 +83,7 @@ export default function SelectCookBook({ user, saveRecipeToCookBook, recipe }) {
                     </Button>
                     {userCookBookData?.length!==0 && <Button 
                     variant="primary" 
-                    onClick={handleSaveRecipe(recipe, selectedCookBook, user)}
+                    onClick={() => handleSaveRecipe(recipe, selectedCookBook, user)}
                     >
                         Save Changes
                     </Button>}
