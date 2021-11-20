@@ -80,6 +80,8 @@ router.post('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   CookBook.findById(req.params.id)
+  console
+    .log(req.params.id)
     .then(cookbookToDb => res.status(200).json({ cookbook: cookbookToDb }))
     .catch(err => res.json({ errorMessage: err }))
 })

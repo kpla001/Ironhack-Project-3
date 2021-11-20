@@ -14,21 +14,18 @@ class UserTable extends React.Component {
           >
             {/* <img src="..." className="card-img-top" alt="..." /> */}
             <div className="card-body">
-              <h5 className="card-title">{cookbook.title}</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up the bulk of the
-                card's content.
-              </p>
               <Link
                 style={{
                   textDecoration: 'none',
                   color: 'green',
                   fontSize: '20px',
                 }}
-                to={`recipe-details/${cookbook.id}`}
+                to={`cookbook/${cookbook._id}`}
               >
-                {`${cookbook.title}`}
+                <h5 className="card-title">{cookbook.title}</h5>
               </Link>
+              <br></br>
+              <p className="card-text">{cookbook.description}</p>
               <br></br>
               <br></br>
               <br></br>

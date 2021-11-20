@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar'
 import HomePage from './pages/HomePage'
 import LogIn from './pages/LogIn'
 import ProtectedPage from './pages/ProtectedPage'
+import CookbookDetails from './pages/CookbookDetails'
 import Signup from './pages/Signup'
 import SearchPage from './pages/SearchPage'
 import DetailsPage from './pages/DetailsPage'
@@ -130,6 +131,13 @@ class App extends React.Component {
             path={PATHS.DETAILSPAGE}
             authenticate={this.authenticate}
             component={DetailsPage}
+            user={this.state.user}
+          />
+          <NormalRoute
+            exact
+            path={PATHS.COOKBOOKDETAILS}
+            authenticate={this.authenticate}
+            component={CookbookDetails}
             user={this.state.user}
           />
         </Switch>
