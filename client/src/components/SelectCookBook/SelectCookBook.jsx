@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import SelectCookBookForm from "./SelectCookBookForm";
-import Modal from 'react-bootstrap/Modal';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import './SelectCookBook.css';
+import Modal from 'react-bootstrap/Modal';
 import service from '../../services/service';
+import './SelectCookBook.css';
+import SelectCookBookForm from "./SelectCookBookForm";
 
 export default function SelectCookBook({ user, saveRecipeToCookBook, recipe }) {
     const [show, setShow] = useState(false);
@@ -31,6 +31,15 @@ export default function SelectCookBook({ user, saveRecipeToCookBook, recipe }) {
     const navigateToCookbookForm = async () => {
         handleShow()
         await getCookBookData(user._id)
+    }
+
+    const handleSaveRecipe = async (recipe, selectedCookBook, user) => {
+        try {
+            await saveRecipeToCookBook(recipe, selectedCookBook, user)
+            handleClose()
+        } catch (err) {
+            console.error(`Error saving recipe: ${err}`)
+        }
     }
     // console.log(user)
     // console.log(selectedCookBook)
@@ -63,7 +72,7 @@ export default function SelectCookBook({ user, saveRecipeToCookBook, recipe }) {
                     </Button>
                     {userCookBookData?.length!==0 && <Button 
                     variant="primary" 
-                    onClick={() => { saveRecipeToCookBook(recipe, selectedCookBook, user); handleClose();  } }
+                    onClick={handleSaveRecipe(recipe, selectedCookBook, user)}
                     >
                         Save Changes
                     </Button>}
