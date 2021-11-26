@@ -6,7 +6,10 @@ export default function RecipeDetails({ recipe }) {
   return (
     <div className="recipeDetails">
       <h1 className="recipeHeader">{<b>{recipe?.title}</b>}</h1>
-      <img src={recipe?.image} alt="icon" className="recipeDetailsImage" />
+      <div className="recipeImageBackground">
+        <img src={recipe?.image} alt="icon" className="recipeDetailsImage" />
+      </div>
+      <h1 className="recipeHeader"></h1>
       <br />
       <div className="recipeDetailsCard">
         <div className="recipeDetailsIngredients">
@@ -15,7 +18,7 @@ export default function RecipeDetails({ recipe }) {
             {recipe?.extendedIngredients.map((ingredient, i) => (
               <div key={i} className="recipeDetailsIngredients">
                 <li key={ingredient.id} style={{ textAlign: 'left' }}>
-                  {ingredient.original}
+                  {`🧈 ${ingredient.original}`}
                 </li>
               </div>
             ))}

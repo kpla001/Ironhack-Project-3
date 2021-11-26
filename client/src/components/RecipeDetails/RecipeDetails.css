@@ -7,16 +7,14 @@
 }
 
 .recipeHeader {
-  color: #6ca429;
-  background-color: rgb(255, 255, 255);
-  width: auto;
-  border-radius: 15px;
+  color: #00000083;
+  background-color: rgba(255, 255, 255, 0.938);
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.788);
   padding: 0.5rem 0.3rem 1rem 0.3rem;
-  border: 15px solid beige;
+  margin-bottom: -0.5rem;
   text-align: center;
   justify-self: center;
-  margin: 5vh 0 3vh 0;
-  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.356);
 }
 
 .recipeDetailsCard {
@@ -33,20 +31,22 @@
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.829);
 }
 
+.recipeImageBackground {
+  padding: 2vh 0 2vh 0;
+  background-color: rgba(255, 255, 255, 0.432);
+}
+
 .recipeDetailsImage {
-  border-right: 50px solid rgba(255, 255, 255, 0.5);
-  border-left: 50px solid rgba(255, 255, 255, 0.5);
-  border-top: 50px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 50px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
+  border-radius: 5px;
   max-width: 60vw;
   place-self: center;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.356);
+  /* box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.356); */
 }
 
 .recipeDetailsIngredients {
   width: 50%;
   margin: 0 0 0 8rem;
+  color: #000000a2;
   /* float: left; */
 }
 
@@ -54,8 +54,13 @@
   padding: 0;
 }
 
+.recipeDetailsIngredients li {
+  list-style: none;
+}
+
 .recipeDetailsInstructions {
   width: 40%;
+  color: #000000b6;
   /* float: left; */
   /* place-self: center; */
   margin: 0 8rem 0 0;
