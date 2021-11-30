@@ -21,7 +21,7 @@ export default class SelectCookBookForm extends Component {
   }
 
   render() {
-    console.log(this.state.selectedCookBook)
+    // console.log(this.state.selectedCookBook)
 
     return (
       <>

@@ -73,20 +73,21 @@ export default class Profile extends Component {
         <main className="container">
           <div className="greetingContainer">
             <div className="greetingCard">
-            <h4 className="greeting">Welcome to 
+            <h3 className="greeting">Welcome to 
               <img 
               src={logo} 
               alt='icon' 
               className='recipezLogo'
               />
               ,&nbsp;{this.props.user.username} 
-            </h4>
+            </h3>
             <br/>
             <Button
               variant="primary"
               style={{
                 transition: 'ease-in-out 0.5s',
                 cursor: 'pointer',
+                borderRadius: '10px',
               }}
               onClick={this.handleModal}
             >
@@ -138,9 +139,9 @@ export default class Profile extends Component {
               </Button>
               <Button onClick={this.handleOnSubmit}>Save Changes</Button>
             </Modal.Footer>
+            
           </Modal>
         </main>
-        {/* <Cookbooks cookbooks={this.state.cookbooks} /> */}
       </div>
     )
   }
