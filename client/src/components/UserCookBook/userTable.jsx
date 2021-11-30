@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import './userTable.css'
 
 class UserTable extends React.Component {
   render() {
@@ -9,11 +10,11 @@ class UserTable extends React.Component {
         {cookbooks.map((cookbook, index) => (
           <div
             key={cookbook._id}
-            className="card"
-            style={{ width: '18rem', height: '18rem', marginBottom: '4rem' }}
+            className="cookBookCard"
+            style={{ width: '18rem', height: '18rem', marginBottom: '1rem' }}
           >
-            {/* <img src="..." className="card-img-top" alt="..." /> */}
-            <div className="card-body">
+            
+            <div className="cookBookCardBody">
               <Link
                 style={{
                   textDecoration: 'none',
@@ -22,15 +23,15 @@ class UserTable extends React.Component {
                 }}
                 to={`cookbook/${cookbook._id}`}
               >
-                <h5 className="card-title">{cookbook.title}</h5>
+                <h3 className="cookBookCardTitle">{cookbook.title}</h3>
               </Link>
               <br></br>
-              <p className="card-text">{cookbook.description}</p>
+              <p className="cookBookCardText">{cookbook.description}</p>
               <br></br>
               <br></br>
               <br></br>
 
-              <button onClick={() => handleDelete(cookbook)} className="btn btn-danger btn-sm ">
+              <button onClick={() => handleDelete(cookbook)} className="btn btn-danger btn-sm deleteButton">
                 Delete
               </button>
             </div>

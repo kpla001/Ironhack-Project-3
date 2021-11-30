@@ -21,14 +21,20 @@ main.container {
 }
 
 .greetingContainer {
-  display: block;
   width: 100%;
-  place-self: center;
-}
-.greeting {
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .greetingCard {
-  place-self: center;
+  width: 60vh;
+  padding: 2vh 4vw 2vh 4vw;
+  border-radius: 15px;
+  background: #fff;
+}
+
+.greeting {
+  font-weight: 350;
+  color: #6ca429;
 }

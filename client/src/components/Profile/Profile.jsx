@@ -81,6 +81,7 @@ export default class Profile extends Component {
               />
               ,&nbsp;{this.props.user.username} 
             </h4>
+            <br/>
             <Button
               variant="primary"
               style={{
