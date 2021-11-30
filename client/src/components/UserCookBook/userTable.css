@@ -33,5 +33,5 @@ div.cookBookCardBody {
   bottom: 1rem;
   border-radius: 10px;
   place-self: center;
-  /* margin: 0 0 1rem 0; */
+  font-weight: bold;
 }

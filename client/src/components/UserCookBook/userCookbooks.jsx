@@ -31,6 +31,7 @@ class UserCookbooks extends React.Component {
       <div className="row">
         <UserTable cookbooks={paginatedCookbooks} handleDelete={handleDelete} />
         <Pagination
+          className="pagination"
           itemsCount={cookbooks.length}
           pageSize={pageSize}
           currentPage={currentPage}
