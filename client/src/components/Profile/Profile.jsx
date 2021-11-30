@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Modal, Button, Form } from 'react-bootstrap'
 import './Profile.css'
+import logo from '../../images/recipezLogo.png'
 import service from '../../services/service'
 import Ingredients from '../Ingredients/Ingredients'
 import Recipe from '../Recipe/Recipe'
@@ -68,32 +69,41 @@ export default class Profile extends Component {
     // console.log(this.props.user);
     //------------------------------------Line 49 link needs title{this.props.cookbooks.title}
     return (
-      <div>
+      <div className="profileComponent">
         <main className="container">
-          <h1 className="Welcome">Welcome to Recipez, {this.props.user.username}</h1>
-          <Button
-            variant="primary"
-            style={{
-              transition: 'ease-in-out 0.5s',
-              backgroundColor: '#b5ce27',
-              cursor: 'pointer',
-            }}
-            onClick={this.handleModal}
-          >
-            <b>Create New CookBook</b>
-          </Button>
+          <div className="greetingContainer">
+            <div className="greetingCard">
+            <h4 className="greeting">Welcome to 
+              <img 
+              src={logo} 
+              alt='icon' 
+              className='recipezLogo'
+              />
+              ,&nbsp;{this.props.user.username} 
+            </h4>
+            <Button
+              variant="primary"
+              style={{
+                transition: 'ease-in-out 0.5s',
+                cursor: 'pointer',
+              }}
+              onClick={this.handleModal}
+            >
+              <b>Create New CookBook</b>
+            </Button>
+            </div>
+          </div>
           <UserCookbooks
             className="UserCookbooks"
             cookbooks={this.state.cookbooks}
             handleDelete={this.handleDelete}
           />
-
           <div className="userCookbooks">
-            <br></br>
-            {/* <button onClick={this.saveCookBookToDb}>Make a Cookbook</button> */}
+            <br/>
           </div>
 
           <Modal show={this.state.isOpenModal} onHide={this.handleModal}>
+
             <Modal.Header closeButton>
               <Modal.Title>Create a CookBook</Modal.Title>
             </Modal.Header>
@@ -120,11 +130,11 @@ export default class Profile extends Component {
                 </Form.Group>
               </Form>
             </Modal.Body>
+
             <Modal.Footer>
               <Button variant="secondary" onClick={this.handleModal}>
                 Close
               </Button>
-
               <Button onClick={this.handleOnSubmit}>Save Changes</Button>
             </Modal.Footer>
           </Modal>
