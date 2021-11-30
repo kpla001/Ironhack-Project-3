@@ -1,4 +1,13 @@
-div.card-body {
+div.cookBookCard {
+  width: 18rem;
+  height: 18rem;
+  margin: 0 0 1rem 0;
+  background: #fff;
+  border: 8px outset rgba(255, 255, 255, 0.76);
+  border-radius: 15px;
+}
+
+div.cookBookCardBody {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,6 +16,22 @@ div.card-body {
   position: relative;
 }
 
-div.card-body {
-  margin-bottom: 10px;
+.cookBookCardTitle {
+  margin: 2rem 0 0 0;
+  color: #6ca429;
+  font-weight: bold;
+}
+
+.cookBookCardText {
+  text-align: left;
+  margin: 0 1.8rem 0 1.8rem;
+}
+
+.deleteButton {
+  width: 10rem;
+  position: relative;
+  bottom: 1rem;
+  border-radius: 10px;
+  place-self: center;
+  /* margin: 0 0 1rem 0; */
 }

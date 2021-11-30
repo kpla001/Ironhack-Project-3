@@ -1,19 +1,40 @@
-/* .landing {
-  margin-left: 6rem;
-  color: rgba(0, 0, 0, 0.623);
-} */
+.profilePage {
+  background-image: url(../../images/mariana-medvedeva-FjryWdaqGEc-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
-.Welcome {
-  width: 50vw;
-  margin-left: 100px;
-  margin: 2 4 2 3;
-  border-top: 6px solid rgba(255, 255, 255, 0.74);
-  border-bottom: 6px solid rgba(255, 255, 255, 0.74);
-  border-radius: 6px;
-  background-color: rgba(255, 255, 255, 0.623);
-  color: rgba(0, 0, 0, 0.623);
+main.container {
+  display: block;
+  width: 100%;
+}
 
-  font-family: Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: inherit;
-  text-align: center;
+.profileComponent {
+  display: block;
+  width: 100%;
+  padding: 5vh 0 0 0;
+}
+
+.recipezLogo {
+  height: 3rem;
+  margin: 0 -1.6rem 0 -0.7rem;
+}
+
+.greetingContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.greetingCard {
+  width: 60vh;
+  padding: 2vh 4vw 2vh 4vw;
+  border-radius: 15px;
+  background: #fff;
+}
+
+.greeting {
+  font-weight: 350;
+  color: #6ca429;
 }
